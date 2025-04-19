@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const partners = [
   {
     name: "Telos Initiative",
-    description: "The Telos Initiative hosts live events, including philosophical salons and theatrical "Situations," both within VRChat and occasionally in real-world settings.",
+    description: "The Telos Initiative hosts live events, including philosophical salons and theatrical \"Situations,\" both within VRChat and occasionally in real-world settings.",
     image: "/lovable-uploads/a1bcc2f3-650e-4782-8511-c8fcb30cd6a5.png"
   },
   {
