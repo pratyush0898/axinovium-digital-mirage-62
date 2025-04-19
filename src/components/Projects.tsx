@@ -5,19 +5,19 @@ const projects = [
   {
     title: "Chromatic Frequency",
     description: "An immersive VRChat world blending music visualization with interactive art",
-    image: "photo-1470813740244-df37b8c1edcb",
+    videoId: "Y8yyFeVs1gs",
     link: "#"
   },
   {
     title: "Meshy Hub",
     description: "Collaborative 3D asset gallery for next-gen creators",
-    image: "photo-1487058792275-0ad4aaf24ca7",
+    videoId: "VoUWYyVmcoQ",
     link: "#"
   },
   {
-    title: "Dream Logic",
-    description: "AI-powered storytelling system generating interactive narratives",
-    image: "photo-1526374965328-7f61d4dc18c5",
+    title: "Telos Initiative",
+    description: "Live events hosting philosophical salons and theatrical 'Situations', both within VRChat and real-world settings",
+    image: "/lovable-uploads/a1bcc2f3-650e-4782-8511-c8fcb30cd6a5.png",
     link: "#"
   }
 ];
@@ -49,11 +49,21 @@ export const Projects = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative bg-gray-900 p-6 rounded-lg h-full">
                     <div className="aspect-video rounded-lg overflow-hidden mb-4">
-                      <img
-                        src={`https://source.unsplash.com/${project.image}`}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform group-hover:scale-110"
-                      />
+                      {project.videoId ? (
+                        <iframe
+                          src={`https://www.youtube.com/embed/${project.videoId}`}
+                          title={project.title}
+                          className="w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform group-hover:scale-110"
+                        />
+                      )}
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                     <p className="text-gray-400">{project.description}</p>
