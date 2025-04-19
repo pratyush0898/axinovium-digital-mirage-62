@@ -79,3 +79,84 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #8b5cf6, #6366f1);
 }
+
+/* Circuit board cursor trail effect */
+.circuit-node {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #8b5cf6, #6366f1);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.circuit-node::before,
+.circuit-node::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.7), rgba(139, 92, 246, 0));
+}
+
+.circuit-node::before {
+  left: 4px;
+  top: 1.5px;
+  transform: rotate(45deg);
+}
+
+.circuit-node::after {
+  left: 4px;
+  top: 1.5px;
+  transform: rotate(-45deg);
+}
+
+/* Terminal-like text appearance */
+.terminal-text {
+  font-family: monospace;
+  color: #50fa7b;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(80, 250, 123, 0.3);
+  overflow: hidden;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* Welcome screen styles */
+.welcome-screen {
+  background-color: #000000;
+  color: #50fa7b;
+  font-family: monospace;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.welcome-input {
+  background-color: rgba(0, 0, a0, 0.3);
+  border: 1px solid rgba(80, 250, 123, 0.3);
+  color: #50fa7b;
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  border-radius: 0.25rem;
+}
+
+.welcome-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(80, 250, 123, 0.2);
+}
+
+/* Animation for typing effect */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
