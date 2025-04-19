@@ -53,3 +53,29 @@
 .hover-glow {
   @apply hover:shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300;
 }
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(127, 95, 248, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(127, 95, 248, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6b46c1, #4834d4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #8b5cf6, #6366f1);
+}
