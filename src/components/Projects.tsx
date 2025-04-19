@@ -1,6 +1,14 @@
-
 import { motion } from "framer-motion";
 import { useState } from "react";
+
+interface Project {
+  title: string;
+  description: string;
+  videoId: string;
+  link: string;
+  category: string;
+  image?: string;
+}
 
 const projects = [
   {
