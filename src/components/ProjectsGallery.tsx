@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
@@ -37,6 +37,11 @@ export const ProjectsGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("VRChat Worlds");
   const [slideshowIndices, setSlideshowIndices] = useState<Record<number, number>>({});
+  const [currentImages, setCurrentImages] = useState<Record<number, string>>({});
+  const [previousImages, setPreviousImages] = useState<Record<number, string>>({});
+  const [isFading, setIsFading] = useState<Record<number, boolean>>({});
+  
+  const slideshowIntervals = useRef<Record<number, NodeJS.Timeout>>({});
   
   const categories = ["VRChat Worlds", "Free Tools", "Digital Marketplace", "Youtube Videos"];
   
@@ -45,33 +50,84 @@ export const ProjectsGallery = () => {
     : images.filter(img => img.category === activeCategory);
 
   useEffect(() => {
-    // Initialize slideshow indices
+    // Initialize slideshow indices and current images
     const initialIndices: Record<number, number> = {};
+    const initialCurrentImages: Record<number, string> = {};
+    
     images.forEach(img => {
-      if (img.slideshow) {
+      if (img.slideshow && img.slideshow.length > 0) {
         initialIndices[img.id] = 0;
+        initialCurrentImages[img.id] = img.slideshow[0];
       }
     });
+    
     setSlideshowIndices(initialIndices);
+    setCurrentImages(initialCurrentImages);
+    
+    // Cleanup function
+    return () => {
+      Object.values(slideshowIntervals.current).forEach(interval => {
+        clearInterval(interval);
+      });
+    };
   }, []);
 
-  // Function to handle slideshow rotation
+  // Function to handle slideshow rotation with fade effect
   const startSlideshow = (imageId: number) => {
-    if (!images.find(img => img.id === imageId)?.slideshow) return;
+    if (slideshowIntervals.current[imageId]) {
+      clearInterval(slideshowIntervals.current[imageId]);
+    }
     
-    const interval = setInterval(() => {
+    const image = images.find(img => img.id === imageId);
+    if (!image?.slideshow || image.slideshow.length <= 1) return;
+    
+    slideshowIntervals.current[imageId] = setInterval(() => {
       setSlideshowIndices(prev => {
-        const image = images.find(img => img.id === imageId);
-        if (!image?.slideshow) return prev;
-        
         const currentIndex = prev[imageId] || 0;
-        const nextIndex = (currentIndex + 1) % image.slideshow.length;
+        const nextIndex = (currentIndex + 1) % image.slideshow!.length;
+        
+        // Store the previous image for fade transition
+        setPreviousImages(prev => ({
+          ...prev,
+          [imageId]: image.slideshow![currentIndex]
+        }));
+        
+        // Set fading state to true to trigger transition
+        setIsFading(prev => ({
+          ...prev,
+          [imageId]: true
+        }));
+        
+        // Update current image
+        setCurrentImages(prev => ({
+          ...prev,
+          [imageId]: image.slideshow![nextIndex]
+        }));
+        
+        // Reset fading state after transition
+        setTimeout(() => {
+          setIsFading(prev => ({
+            ...prev,
+            [imageId]: false
+          }));
+        }, 500);
         
         return { ...prev, [imageId]: nextIndex };
       });
     }, 2000);
     
-    return () => clearInterval(interval);
+    return () => {
+      if (slideshowIntervals.current[imageId]) {
+        clearInterval(slideshowIntervals.current[imageId]);
+      }
+    };
+  };
+
+  const stopSlideshow = (imageId: number) => {
+    if (slideshowIntervals.current[imageId]) {
+      clearInterval(slideshowIntervals.current[imageId]);
+      delete slideshowIntervals.current[imageId];
+    }
   };
 
   return (
@@ -81,7 +137,7 @@ export const ProjectsGallery = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
+          className="text-4xl font-bold text-center mb-12 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
         >
           Projects
         </motion.h2>
@@ -127,8 +183,13 @@ export const ProjectsGallery = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
               onMouseEnter={() => {
-                if (image.slideshow) {
+                if (image.slideshow && image.slideshow.length > 1) {
                   startSlideshow(image.id);
+                }
+              }}
+              onMouseLeave={() => {
+                if (image.slideshow) {
+                  stopSlideshow(image.id);
                 }
               }}
               className="cursor-pointer relative group"
@@ -137,11 +198,25 @@ export const ProjectsGallery = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg z-10" />
                 
                 {image.slideshow ? (
-                  <img
-                    src={image.slideshow[slideshowIndices[image.id] || 0]}
-                    alt={image.title}
-                    className="w-full h-full object-cover rounded-md"
-                  />
+                  <div className="relative w-full h-full">
+                    {previousImages[image.id] && isFading[image.id] && (
+                      <div className="absolute inset-0 z-0">
+                        <img
+                          src={previousImages[image.id]}
+                          alt={`${image.title} previous`}
+                          className="w-full h-full object-cover rounded-md"
+                        />
+                      </div>
+                    )}
+                    <img
+                      src={currentImages[image.id] || image.slideshow[0]}
+                      alt={image.title}
+                      className={`w-full h-full object-cover rounded-md transition-opacity duration-500 ${
+                        isFading[image.id] ? 'opacity-0' : 'opacity-100'
+                      }`}
+                      style={{ position: 'relative', zIndex: 1 }}
+                    />
+                  </div>
                 ) : image.src ? (
                   <img
                     src={image.src}

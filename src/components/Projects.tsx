@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Project {
@@ -57,7 +57,7 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
+          className="text-4xl font-bold text-center mb-12 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
         >
           Featured Projects
         </motion.h2>
@@ -70,7 +70,7 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="group h-[400px]"
+              className="group h-[450px]"
             >
               <div className="relative h-full">
                 <motion.div 
@@ -78,7 +78,7 @@ export const Projects = () => {
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  <div className="relative bg-gray-900 p-6 rounded-lg h-full">
+                  <div className="relative bg-gray-900 p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4">
                       <div 
                         className="absolute inset-0 z-10 cursor-pointer"
@@ -96,7 +96,7 @@ export const Projects = () => {
                           href={project.award.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="absolute bottom-8 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
+                          className="absolute bottom-12 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <img
@@ -107,11 +107,13 @@ export const Projects = () => {
                         </a>
                       )}
                     </div>
-                    <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                    <p className="text-gray-400">{project.description}</p>
-                    {project.longDescription && (
-                      <p className="text-sm text-gray-500 mt-2">{project.longDescription}</p>
-                    )}
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                      <p className="text-gray-400">{project.description}</p>
+                      {project.longDescription && (
+                        <p className="text-sm text-gray-500 mt-2">{project.longDescription}</p>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -143,7 +145,7 @@ export const Projects = () => {
                     href={selectedProject.award.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-12 right-4 w-1/5 hover:scale-105 transition-transform duration-200"
+                    className="absolute bottom-16 right-4 w-1/5 hover:scale-105 transition-transform duration-200"
                   >
                     <img
                       src={selectedProject.award.image}
