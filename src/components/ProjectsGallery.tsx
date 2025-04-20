@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
@@ -13,7 +12,7 @@ const images = [
     title: "The Old Cemetery",
     category: "VRChat Worlds",
     visits: "60,000+",
-    description: "🏆 Featured by VRChat for Spookality 2024",
+    description: <>🏆 Featured by VRChat for Spookality 2024 <br/><span className="font-bold text-[#0FA0CE]"><a href="https://x.com/search?q=%22The%20Old%20Cemetery%22%20Axinovium&src=typed_query" target="_blank" rel="noopener noreferrer" className="hover:underline">100k+ Impressions on X</a></span></>,
     link: "https://vrchat.com/home/launch?worldId=wrld_7482338d-40b9-4c8d-92fb-bc1623e7122f"
   },
   {
@@ -27,7 +26,7 @@ const images = [
     ],
     title: "Warm With You",
     category: "VRChat Worlds",
-    description: <span>🏆 <a href="https://www.meshy.ai/collections/Colorful-Furry-ChristmasAdventure-collection-by-Axinovium-0193ccb2-3938-738c-8195-1050793c29f5" className="text-purple-400 hover:text-purple-300 underline" target="_blank" rel="noopener noreferrer">Winner Meshy 2024 Christmas Adventure event</a></span>,
+    description: <>A cozy Christmas bedroom in the Swiss Alps<br/>🏆 <a href="https://www.meshy.ai/collections/Colorful-Furry-ChristmasAdventure-collection-by-Axinovium-0193ccb2-3938-738c-8195-1050793c29f5" className="text-purple-400 hover:text-purple-300 underline" target="_blank" rel="noopener noreferrer">Winner Meshy 2024 Christmas Adventure event</a></>,
     link: "https://vrchat.com/home/launch?worldId=wrld_741c199d-ee56-46b4-9488-e99150847974"
   },
   {
@@ -41,8 +40,21 @@ const images = [
     title: "Opal Bay",
     category: "VRChat Worlds",
     visits: "130k",
-    description: <span>A tropical beach with white sand and sparkling opal-like water <br/><span className="font-bold text-[#0FA0CE]"><a href="https://twitter.com/axinovium" target="_blank" rel="noopener noreferrer" className="hover:underline">200k+ Impressions on X</a></span></span>,
+    description: <span>A tropical beach with white sand and sparkling opal-like water <br/><span className="font-bold text-[#0FA0CE]"><a href="https://x.com/search?q=%22Opal%20Bay%22%20Axinovium&src=typed_query" target="_blank" rel="noopener noreferrer" className="hover:underline">200k+ Impressions on X</a></span></span>,
     link: "https://vrchat.com/home/launch?worldId=wrld_eca2ddde-f794-4c59-ae3a-4dd5881eb18b"
+  },
+  {
+    id: 4,
+    slideshow: [
+      "/lovable-uploads/946741e4-08ba-4910-a127-6a40c8e086bf.png",
+      "/lovable-uploads/afa862c3-b65c-4c43-aea1-085ff0a409c7.png",
+      "/lovable-uploads/b338aed7-e9b7-41cd-87b6-7ee5562c3d14.png",
+      "/lovable-uploads/4d599d75-cedc-4c1c-a0e3-765d43163e6a.png"
+    ],
+    title: "Meshy Fanhub",
+    category: "VRChat Worlds",
+    description: <>A commissioned world showcasing Meshy AI 3D Model Gen for VRChat Avatars and Worlds, with examples and tutorials.<br/><a href="https://www.youtube.com/watch?v=-V_93GThVdU" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300">Showcase video link</a></>,
+    link: "https://vrchat.com/home/launch"
   }
 ];
 
@@ -54,27 +66,10 @@ export const ProjectsGallery = () => {
   const slideshowIntervals = useRef<Record<number, NodeJS.Timeout>>({});
   
   const categories = ["VRChat Worlds", "Free Tools", "Digital Marketplace", "Content Creation"];
-  
+
   const filteredImages = activeCategory === "All" 
     ? images 
     : images.filter(img => img.category === activeCategory);
-
-  useEffect(() => {
-    // Clear all intervals when category changes
-    Object.values(slideshowIntervals.current).forEach(interval => {
-      clearInterval(interval);
-    });
-    
-    setSlideshowIndices({});
-    setSlideshowActive({});
-    
-    return () => {
-      // Clean up all intervals on unmount
-      Object.values(slideshowIntervals.current).forEach(interval => {
-        clearInterval(interval);
-      });
-    };
-  }, [activeCategory]);
 
   const startSlideshow = (imageId: number) => {
     if (slideshowIntervals.current[imageId]) {
@@ -89,13 +84,11 @@ export const ProjectsGallery = () => {
       [imageId]: true
     }));
     
-    // Start with the first image
     setSlideshowIndices(prev => ({
       ...prev,
       [imageId]: 0
     }));
     
-    // Set up interval for transitions
     slideshowIntervals.current[imageId] = setInterval(() => {
       setSlideshowIndices(prev => {
         const currentIndex = prev[imageId] || 0;
@@ -116,12 +109,26 @@ export const ProjectsGallery = () => {
       [imageId]: false
     }));
     
-    // Reset to first image
     setSlideshowIndices(prev => ({
       ...prev,
       [imageId]: 0
     }));
   };
+
+  useEffect(() => {
+    Object.values(slideshowIntervals.current).forEach(interval => {
+      clearInterval(interval);
+    });
+    
+    setSlideshowIndices({});
+    setSlideshowActive({});
+    
+    return () => {
+      Object.values(slideshowIntervals.current).forEach(interval => {
+        clearInterval(interval);
+      });
+    };
+  }, [activeCategory]);
 
   return (
     <section className="py-20 bg-black">
@@ -131,9 +138,9 @@ export const ProjectsGallery = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
-          id="projects"
+          id="our-projects"
         >
-          Projects
+          Our Projects
         </motion.h2>
 
         <div className="flex justify-center gap-4 mb-12">
@@ -181,7 +188,7 @@ export const ProjectsGallery = () => {
                 }
               }}
             >
-              <div className="glass-card hover-glow overflow-hidden h-full flex flex-col">
+              <div className="glass-card hover-glow overflow-hidden h-full flex flex-col shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]">
                 <div className="relative aspect-video">
                   <img
                     src={project.slideshow ? 
@@ -194,7 +201,7 @@ export const ProjectsGallery = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-4 flex-grow flex flex-col">
+                <div className="p-4 flex-grow flex flex-col min-h-[200px]">
                   <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                   <div className="flex flex-col justify-between flex-grow">
                     <div>

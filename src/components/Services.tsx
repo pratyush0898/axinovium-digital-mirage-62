@@ -10,9 +10,9 @@ const services = {
   ],
   content: [
     { title: "Digital Asset Sales" },
-    { title: "Video Content Creation" },
-    { title: "Tutorial Creation" },
+    { title: "Video & Tutorial Content Creation" },
     { title: "Event design, Management and Execution" },
+    { title: "AI Training" },
   ],
 };
 
