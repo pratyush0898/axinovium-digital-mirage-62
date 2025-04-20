@@ -183,3 +183,26 @@ export const Projects = () => {
     </section>
   );
 };
+
+const ProjectVideoCard = ({ project }: { project: Project }) => {
+  return (
+    <div className="relative h-[500px] w-full cursor-pointer" onClick={() => setSelectedProject(project)}>
+      <iframe
+        src={`https://www.youtube.com/embed/${project.videoId}`}
+        title={project.title}
+        className="w-full h-full pointer-events-none"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      />
+      {project.award && (
+        <div className="absolute top-4 right-4 w-1/4 z-10">
+          <img
+            src={project.award.image}
+            alt="Award"
+            className="w-full h-auto"
+          />
+        </div>
+      )}
+      <div className="absolute inset-0 bg-transparent z-20" />
+    </div>
+  );
+};
