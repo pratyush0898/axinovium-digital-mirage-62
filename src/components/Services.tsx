@@ -1,5 +1,6 @@
-
 import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Check } from "lucide-react";
 
 const services = {
   technology: [
@@ -9,10 +10,10 @@ const services = {
     { title: "Custom Unity Game Dev Tooling" },
   ],
   content: [
-    { title: "Digital Asset Sales" },
+    { title: "Digital Asset Sale Consulting" },
     { title: "Video & Tutorial Content Creation" },
     { title: "Event design, Management and Execution" },
-    { title: "AI Training" },
+    { title: "AI Education and user training" },
   ],
 };
 
@@ -29,7 +30,7 @@ export const Services = () => {
           Services
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-white mb-6">Technology & Strategy</h3>
             <div className="grid gap-4">
@@ -65,6 +66,32 @@ export const Services = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-4 glass-card px-8 py-4 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+          >
+            <img
+              src="/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"
+              alt="Venice Award"
+              className="w-12 h-12 object-contain"
+            />
+            <span className="text-white font-semibold">Award winning worlds</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-4 glass-card px-8 py-4 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+          >
+            <Check className="w-8 h-8 text-green-500" />
+            <span className="text-white font-semibold">700k+ Player World Visits</span>
+          </motion.div>
         </div>
       </div>
     </div>

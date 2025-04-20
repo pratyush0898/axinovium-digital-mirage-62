@@ -25,7 +25,7 @@ const projects: Project[] = [
     description: "🏆 Featured at the Venice Film Festival 2024, Best of Worlds",
     longDescription: "This \"digital acid trip\" takes the viewer on a journey through a strange, flooded chasm filled with geometric bismuth-like structures.",
     videoId: "Y8yyFeVs1gs",
-    link: "#",
+    link: "https://vrchat.com/home/launch?worldId=wrld_bff9ded4-af0a-4783-8d24-e0df9625bd79",
     category: "VRChat",
     award: {
       image: "/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png",
@@ -37,7 +37,7 @@ const projects: Project[] = [
     description: "A commissioned world showcasing VRChat's literary community",
     longDescription: "Contains fully interactive VR typewriters and books written by the members.",
     image: "/lovable-uploads/babbec86-c371-48cb-9bc4-10e2748b9425.png",
-    link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-48abc-b832-63a80ab5f076",
+    link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076",
     category: "VRChat",
     visits: "60,000+",
     impressions: "Over 180k impressions on X"
@@ -68,6 +68,7 @@ export const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               className="h-[500px] shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+              onClick={() => window.open(project.link, '_blank')}
             >
               <div className="relative h-full">
                 <motion.div
@@ -77,39 +78,41 @@ export const Projects = () => {
                 >
                   <div className="relative bg-gray-900 p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4">
-                      <div 
-                        className="absolute inset-0 z-10 cursor-pointer"
-                        onClick={() => setSelectedProject(project)}
-                      />
                       {project.videoId ? (
-                        <iframe
-                          src={`https://www.youtube.com/embed/${project.videoId}`}
-                          title={project.title}
-                          className="w-full h-full"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
+                        <div className="relative">
+                          <iframe
+                            src={`https://www.youtube.com/embed/${project.videoId}`}
+                            title={project.title}
+                            className="w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedProject(project);
+                            }}
+                          />
+                          {project.award && (
+                            <a 
+                              href={project.award.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="absolute bottom-16 right-4 w-1/4 hover:scale-105 transition-transform duration-200 z-10"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <img
+                                src={project.award.image}
+                                alt="Award"
+                                className="w-full h-auto"
+                              />
+                            </a>
+                          )}
+                        </div>
                       ) : (
                         <img
-                          src={project.image || (project.slideshow && project.slideshow[0])}
+                          src={project.image}
                           alt={project.title}
                           className="w-full h-full object-cover"
                         />
-                      )}
-                      {project.award && (
-                        <a 
-                          href={project.award.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="absolute bottom-16 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <img
-                            src={project.award.image}
-                            alt="Award"
-                            className="w-full h-auto"
-                          />
-                        </a>
                       )}
                     </div>
                     <div className="flex-grow flex flex-col justify-between">
@@ -127,7 +130,7 @@ export const Projects = () => {
                         {project.impressions && (
                           <p className="text-sm font-bold text-[#0FA0CE] mt-1">
                             <a 
-                              href="https://twitter.com/axinovium" 
+                              href="https://x.com/search?q=%22The%20Writers%20Parlor%22&src=typed_query&f=top" 
                               target="_blank" 
                               rel="noopener noreferrer"
                               className="hover:underline"

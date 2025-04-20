@@ -1,9 +1,7 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-// Define the Project type that was missing
 type Project = {
   id: number;
   slideshow?: string[];
@@ -109,7 +107,7 @@ export const ProjectsGallery = () => {
     }
   };
 
-  const categories = ["VRChat Worlds", "Free Tools", "Digital Marketplace", "Content Creation"];
+  const categories = ["VRChat Worlds", "Free Tools", "Content Creation"];
 
   const filteredImages = activeCategory === "All" 
     ? images 
