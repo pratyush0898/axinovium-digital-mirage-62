@@ -1,16 +1,33 @@
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
   {
     id: 1,
-    src: "/lovable-uploads/3fc501d4-453c-48bc-a4dc-47ccc1cda170.png",
+    slideshow: [
+      "/lovable-uploads/3fc501d4-453c-48bc-a4dc-47ccc1cda170.png",
+      "/lovable-uploads/27556d3b-f65b-4216-a1f8-08448be0a811.png",
+      "/lovable-uploads/582f1fc5-4d6e-461e-a7fc-1e7c84c65309.png"
+    ],
     title: "The Old Cemetery",
     category: "VRChat Worlds",
     visits: "62,071",
     link: "https://vrchat.com/home/launch?worldId=wrld_7482338d-40b9-4c8d-92fb-bc1623e7122f"
   },
-  { id: 2, src: "photo-1518770660439-4636190af475", title: "AI Generated Landscape", category: "VRChat Worlds" },
+  {
+    id: 2,
+    slideshow: [
+      "/lovable-uploads/9aae67c2-1f35-46a8-b5b4-e73acb6b1c60.png",
+      "/lovable-uploads/3ee605d7-77cf-4ac4-8634-bcd14497e4c7.png"
+    ],
+    title: "The Writers Parlor",
+    category: "VRChat Worlds",
+    visits: "60,000",
+    description: "Featured by VRChat for Spookality 2024",
+    impressions: "Over 180k impressions on X",
+    link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076"
+  },
   { id: 3, src: "photo-1526374965328-7f61d4dc18c5", title: "Digital Abstract", category: "Free Tools" },
   { id: 4, src: "photo-1470813740244-df37b8c1edcb", title: "Neural Network Art", category: "Digital Marketplace" },
   { id: 5, src: "photo-1487058792275-0ad4aaf24ca7", title: "Virtual Reality Space", category: "Youtube Videos" },
@@ -19,12 +36,43 @@ const images = [
 export const ProjectsGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("VRChat Worlds");
+  const [slideshowIndices, setSlideshowIndices] = useState<Record<number, number>>({});
   
   const categories = ["VRChat Worlds", "Free Tools", "Digital Marketplace", "Youtube Videos"];
   
   const filteredImages = activeCategory === "All" 
     ? images 
     : images.filter(img => img.category === activeCategory);
+
+  useEffect(() => {
+    // Initialize slideshow indices
+    const initialIndices: Record<number, number> = {};
+    images.forEach(img => {
+      if (img.slideshow) {
+        initialIndices[img.id] = 0;
+      }
+    });
+    setSlideshowIndices(initialIndices);
+  }, []);
+
+  // Function to handle slideshow rotation
+  const startSlideshow = (imageId: number) => {
+    if (!images.find(img => img.id === imageId)?.slideshow) return;
+    
+    const interval = setInterval(() => {
+      setSlideshowIndices(prev => {
+        const image = images.find(img => img.id === imageId);
+        if (!image?.slideshow) return prev;
+        
+        const currentIndex = prev[imageId] || 0;
+        const nextIndex = (currentIndex + 1) % image.slideshow.length;
+        
+        return { ...prev, [imageId]: nextIndex };
+      });
+    }, 2000);
+    
+    return () => clearInterval(interval);
+  };
 
   return (
     <section className="py-20 bg-black">
@@ -78,20 +126,41 @@ export const ProjectsGallery = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
+              onMouseEnter={() => {
+                if (image.slideshow) {
+                  startSlideshow(image.id);
+                }
+              }}
               className="cursor-pointer relative group"
             >
               <div className="aspect-square rounded-lg overflow-hidden bg-gray-900 p-1">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg z-10" />
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-full object-cover rounded-md"
-                />
+                
+                {image.slideshow ? (
+                  <img
+                    src={image.slideshow[slideshowIndices[image.id] || 0]}
+                    alt={image.title}
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                ) : image.src ? (
+                  <img
+                    src={image.src}
+                    alt={image.title}
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                ) : null}
+                
                 <div className="absolute inset-0 flex items-end justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                   <div className="bg-black/70 backdrop-blur-sm p-2 rounded-md w-full">
                     <h3 className="text-sm font-medium text-white">{image.title}</h3>
                     {image.visits && (
                       <p className="text-xs text-gray-300">Player visits: {image.visits}</p>
+                    )}
+                    {image.description && (
+                      <p className="text-xs text-purple-300">{image.description}</p>
+                    )}
+                    {image.impressions && (
+                      <p className="text-xs text-gray-300">{image.impressions}</p>
                     )}
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -28,6 +29,14 @@ const projects: Project[] = [
       image: "/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png",
       link: "https://www.labiennale.org/en/cinema/2024/venice-immersive/chromatic-frequency"
     }
+  },
+  {
+    title: "The Writers Parlor",
+    description: "A commissioned world showcasing VRChat's literary community",
+    longDescription: "Contains fully interactive VR typewriters and books written by the members. Featured by VRChat for Spookality 2024.",
+    videoId: "VoUWYyVmcoQ",
+    link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076",
+    category: "VRChat",
   },
   {
     title: "Meshy Hub",

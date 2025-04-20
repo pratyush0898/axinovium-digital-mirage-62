@@ -1,11 +1,11 @@
 
-import { Mail, Patreon, Youtube, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Footer = () => {
   const socials = [
     { icon: Mail, href: "mailto:axinovium@gmail.com", label: "Email" },
-    { icon: Patreon, href: "https://patreon.com/Axinovium", label: "Patreon" },
+    { icon: "patreon", href: "https://patreon.com/Axinovium", label: "Patreon" },
     { icon: Youtube, href: "https://www.youtube.com/channel/UCrgS4q_x0tGr-qbuElKyToA", label: "YouTube" },
     { icon: MessageCircle, href: "https://discord.com/invite/PtvFrba3wP", label: "Discord Community" },
   ];
@@ -31,7 +31,13 @@ export const Footer = () => {
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <social.icon className="h-8 w-8 relative z-10" />
+                {social.icon === "patreon" ? (
+                  <svg className="h-8 w-8 relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.22 0 3.97-3.22 7.21-7.18 7.21-3.97 0-7.19-3.24-7.19-7.21 0-3.98 3.22-7.22 7.19-7.22M2 21.6h3.5V2.41H2V21.6z" />
+                  </svg>
+                ) : (
+                  <social.icon className="h-8 w-8 relative z-10" />
+                )}
                 <motion.div 
                   className="absolute -inset-2 rounded-full bg-purple-600/0 group-hover:bg-purple-600/20 transition-colors duration-300"
                   whileHover={{ 
