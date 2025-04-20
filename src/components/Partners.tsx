@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 const partners = [
   {
     name: "Telos Initiative",
-    logo: "/lovable-uploads/fed1fc4b-34d3-404e-8cbf-93ad713a5a50.png",
-    link: "https://www.telosinitiative.org/"
+    logo: "/lovable-uploads/-BUApZ3Y_400x400",
+    description: "A visionary conversation group that hosts philosophical Salons and theatrical Situations in VRChat.",
+    link: "https://vrchat.com/home/group/grp_c87607f7-1688-48dd-86b9-6e49519e92f7"
   },
   {
     name: "Meshy",
     logo: "/lovable-uploads/3ee605d7-77cf-4ac4-8634-bcd14497e4c7.png",
-    link: "https://www.meshy.ai/"
+    description: "A revolutionary platform for AI-generated 3D assets and creative tools for digital artists.",
+    link: "https://app.meshy.ai/?via=axinovium"
   }
 ];
 
@@ -35,20 +37,27 @@ export const Partners = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
           {partners.map((partner) => (
-            <motion.a
+            <motion.div
               key={partner.name}
-              href={partner.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card p-8 flex items-center justify-center hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
+              className="flex flex-col gap-4"
             >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="max-h-24 object-contain filter brightness-100 hover:brightness-110 transition-all duration-300"
-              />
-            </motion.a>
+              <motion.a
+                href={partner.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-card p-8 flex items-center justify-center hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] transition-all duration-300 h-48"
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="max-h-32 object-contain filter brightness-100 hover:brightness-110 transition-all duration-300"
+                />
+              </motion.a>
+              <p className="text-gray-300 text-center text-sm leading-relaxed font-light">
+                {partner.description}
+              </p>
+            </motion.div>
           ))}
         </motion.div>
       </div>
