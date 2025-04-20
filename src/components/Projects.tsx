@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -16,13 +17,14 @@ interface Project {
   longDescription?: string;
   visits?: string;
   impressions?: string;
+  impressionsLink?: string;
   slideshow?: string[];
 }
 
 const projects: Project[] = [
   {
     title: "Chromatic Frequency",
-    description: "🏆 Featured at the Venice Film Festival 2024, Best of Worlds",
+    description: <><a href="https://www.labiennale.org/en/cinema/2024/venice-immersive/chromatic-frequency" target="_blank" rel="noopener noreferrer" className="hover:underline">🏆 Featured at the Venice Film Festival 2024, Best of Worlds</a></>,
     longDescription: "This \"digital acid trip\" takes the viewer on a journey through a strange, flooded chasm filled with geometric bismuth-like structures.",
     videoId: "Y8yyFeVs1gs",
     link: "https://vrchat.com/home/launch?worldId=wrld_bff9ded4-af0a-4783-8d24-e0df9625bd79",
@@ -40,7 +42,8 @@ const projects: Project[] = [
     link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076",
     category: "VRChat",
     visits: "60,000+",
-    impressions: "Over 180k impressions on X"
+    impressions: "Over 180k impressions on X",
+    impressionsLink: "https://x.com/search?q=%22The%20Writers%20Parlor%22&src=typed_query&f=top"
   }
 ];
 
@@ -67,7 +70,7 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="h-[500px] shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+              className="h-[500px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)]"
               onClick={() => window.open(project.link, '_blank')}
             >
               <div className="relative h-full">
@@ -96,7 +99,7 @@ export const Projects = () => {
                               href={project.award.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="absolute bottom-16 right-4 w-1/4 hover:scale-105 transition-transform duration-200 z-10"
+                              className="absolute bottom-4 right-4 w-1/4 hover:scale-105 transition-transform duration-200 z-10"
                               onClick={(e) => e.stopPropagation()}
                             >
                               <img
@@ -118,9 +121,9 @@ export const Projects = () => {
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
                         <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                        <p className="text-gray-400">{project.description}</p>
+                        <div className="text-white">{project.description}</div>
                         {project.longDescription && (
-                          <p className="text-sm text-gray-500 mt-2">{project.longDescription}</p>
+                          <p className="text-sm text-gray-300 mt-2">{project.longDescription}</p>
                         )}
                       </div>
                       <div className="mt-auto">
@@ -130,10 +133,11 @@ export const Projects = () => {
                         {project.impressions && (
                           <p className="text-sm font-bold text-[#0FA0CE] mt-1">
                             <a 
-                              href="https://x.com/search?q=%22The%20Writers%20Parlor%22&src=typed_query&f=top" 
+                              href={project.impressionsLink || "#"}
                               target="_blank" 
                               rel="noopener noreferrer"
                               className="hover:underline"
+                              onClick={(e) => e.stopPropagation()}
                             >
                               {project.impressions}
                             </a>

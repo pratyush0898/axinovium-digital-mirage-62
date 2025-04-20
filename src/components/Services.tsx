@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
@@ -41,7 +42,7 @@ export const Services = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/20 hover:border-purple-500/40 shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+                  className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)] transition-all duration-300"
                 >
                   <p className="text-white font-medium">{service.title}</p>
                 </motion.div>
@@ -59,7 +60,7 @@ export const Services = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/20 hover:border-purple-500/40 shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+                  className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)] transition-all duration-300"
                 >
                   <p className="text-white font-medium">{service.title}</p>
                 </motion.div>
@@ -73,7 +74,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-4 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+            className="flex items-center gap-4 glass-card px-8 py-4 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)] transition-all duration-300"
           >
             <img
               src="/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"
@@ -87,7 +88,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-4 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+            className="flex items-center gap-4 glass-card px-8 py-4 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)] transition-all duration-300"
           >
             <Check className="w-8 h-8 text-green-500" />
             <span className="text-white font-semibold">700k+ Player World Visits</span>

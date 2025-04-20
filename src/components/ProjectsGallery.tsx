@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -82,27 +83,19 @@ export const ProjectsGallery = () => {
     switch (category) {
       case "VRChat Worlds":
         return {
-          border: "border-pink-500/30",
           tag: "bg-pink-500/20 text-pink-200",
-          hover: "hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]"
         };
       case "Free Tools":
         return {
-          border: "border-blue-500/30",
           tag: "bg-blue-500/20 text-blue-200",
-          hover: "hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
         };
       case "Content Creation":
         return {
-          border: "border-green-500/30",
           tag: "bg-green-500/20 text-green-200",
-          hover: "hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"
         };
       default:
         return {
-          border: "border-purple-500/30",
           tag: "bg-purple-500/20 text-purple-200",
-          hover: "hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(147,51,234,0.3)]"
         };
     }
   };
@@ -173,14 +166,13 @@ export const ProjectsGallery = () => {
   }, [activeCategory]);
 
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-black" id="our-projects">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
-          id="our-projects"
         >
           Our Projects
         </motion.h2>
@@ -233,7 +225,7 @@ export const ProjectsGallery = () => {
                   }
                 }}
               >
-                <div className={`glass-card overflow-hidden h-full flex flex-col shadow-[0_0_15px_rgba(139,92,246,0.2)] ${categoryStyles.hover} ${categoryStyles.border} transition-all duration-300`}>
+                <div className="glass-card overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)]">
                   <div className="relative aspect-video">
                     <img
                       src={project.slideshow ? 
