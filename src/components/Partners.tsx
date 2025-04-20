@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 const partners = [
   {
     name: "Telos Initiative",
-    description: "The Telos Initiative hosts live events, including philosophical salons and theatrical \"Situations,\" both within VRChat and occasionally in real-world settings.",
-    image: "/lovable-uploads/a1bcc2f3-650e-4782-8511-c8fcb30cd6a5.png"
+    description: "The Telos Initiative hosts philosophical salons and theatrical Situations in VRChat.",
+    image: "/lovable-uploads/a1bcc2f3-650e-4782-8511-c8fcb30cd6a5.png",
+    link: "https://vrchat.com/home/group/grp_c87607f7-1688-48dd-86b9-6e49519e92f7"
   },
   {
     name: "Meshy AI",
@@ -30,8 +31,11 @@ export const Partners = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {partners.map((partner, index) => (
-            <motion.div
+            <motion.a
               key={partner.name}
+              href={partner.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -61,7 +65,7 @@ export const Partners = () => {
                   <p className="text-gray-300">{partner.description}</p>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

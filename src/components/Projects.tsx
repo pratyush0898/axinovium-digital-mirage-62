@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Project {
   title: string;
@@ -13,12 +14,14 @@ interface Project {
     image: string;
     link: string;
   };
+  longDescription?: string;
 }
 
 const projects: Project[] = [
   {
     title: "Chromatic Frequency",
-    description: "An immersive VRChat world blending music visualization with interactive art",
+    description: "Featured at the Venice Film Festival 2024, Best of Worlds",
+    longDescription: "This \"digital acid trip\" takes the viewer on a journey through a strange, flooded chasm filled with geometric bismuth-like structures.",
     videoId: "Y8yyFeVs1gs",
     link: "#",
     category: "VRChat",
@@ -38,6 +41,7 @@ const projects: Project[] = [
 
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const categories = ["All", ...new Set(projects.map(project => project.category))];
 
   const filteredProjects = activeFilter === "All" 
@@ -45,7 +49,7 @@ export const Projects = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section className="py-20 bg-black/95">
+    <section className="py-12 bg-black/95">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -87,9 +91,10 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="group"
+              className="group cursor-pointer"
+              onClick={() => setSelectedProject(project)}
             >
-              <a href={project.link} className="block">
+              <div className="relative">
                 <motion.div 
                   className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-1"
                   whileHover={{ 
@@ -120,6 +125,7 @@ export const Projects = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                               className="absolute bottom-4 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
+                              onClick={(e) => e.stopPropagation()}
                             >
                               <img
                                 src={project.award.image}
@@ -143,13 +149,38 @@ export const Projects = () => {
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                     <p className="text-gray-400">{project.description}</p>
+                    {project.longDescription && (
+                      <p className="text-sm text-gray-500 mt-2">{project.longDescription}</p>
+                    )}
                   </div>
                 </motion.div>
-              </a>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+        <DialogContent className="max-w-[90vw] w-[1200px] bg-black/95 border-gray-800">
+          {selectedProject && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="w-full aspect-video rounded-lg overflow-hidden"
+            >
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedProject.videoId}?autoplay=1`}
+                title={selectedProject.title}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </motion.div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
