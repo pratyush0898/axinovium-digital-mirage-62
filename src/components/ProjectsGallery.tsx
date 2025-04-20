@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
@@ -14,8 +13,22 @@ const images = [
     title: "The Old Cemetery",
     category: "VRChat Worlds",
     visits: "60,000+",
-    description: "Featured by VRChat for Spookality 2024",
+    description: "🏆 Featured by VRChat for Spookality 2024",
     link: "https://vrchat.com/home/launch?worldId=wrld_7482338d-40b9-4c8d-92fb-bc1623e7122f"
+  },
+  {
+    id: 2,
+    slideshow: [
+      "/lovable-uploads/ee2ba1d7-900b-4495-8621-807c6c03310f.png",
+      "/lovable-uploads/debfe5e2-da8f-4175-a8f5-5dcbb4a5c8cb.png",
+      "/lovable-uploads/2a27a6d8-18b1-4d2a-b0b9-61c26b2264ce.png",
+      "/lovable-uploads/5d81b536-e241-4f42-b786-9e325dec7fa5.png",
+      "/lovable-uploads/ddaf6bbf-4c95-4d6a-b0f9-80363e46330d.png"
+    ],
+    title: "Warm With You",
+    category: "VRChat Worlds",
+    description: "🏆 Winner Meshy 2024 Christmas Adventure event",
+    link: "https://vrchat.com/home/launch?worldId=wrld_741c199d-ee56-46b4-9488-e99150847974"
   }
 ];
 

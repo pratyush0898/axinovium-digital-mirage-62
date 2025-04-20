@@ -22,7 +22,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Chromatic Frequency",
-    description: "Featured at the Venice Film Festival 2024, Best of Worlds",
+    description: "🏆 Featured at the Venice Film Festival 2024, Best of Worlds",
     longDescription: "This \"digital acid trip\" takes the viewer on a journey through a strange, flooded chasm filled with geometric bismuth-like structures.",
     videoId: "Y8yyFeVs1gs",
     link: "#",
@@ -35,7 +35,7 @@ const projects: Project[] = [
   {
     title: "The Writers Parlor",
     description: "A commissioned world showcasing VRChat's literary community",
-    longDescription: "Contains fully interactive VR typewriters and books written by the members. Featured by VRChat for Spookality 2024.",
+    longDescription: "Contains fully interactive VR typewriters and books written by the members.",
     image: "/lovable-uploads/babbec86-c371-48cb-9bc4-10e2748b9425.png",
     link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076",
     category: "VRChat",
