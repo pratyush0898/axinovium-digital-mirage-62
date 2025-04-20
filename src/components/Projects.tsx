@@ -58,7 +58,7 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
+          className="text-5xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed shadow-[0_0_10px_rgba(255,0,255,0.4)]"
         >
           Featured Projects
         </motion.h2>
@@ -71,7 +71,7 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="h-[500px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)]"
+              className="h-[500px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
               onClick={() => window.open(project.link, '_blank')}
             >
               <div className="relative h-full">
@@ -81,9 +81,9 @@ export const Projects = () => {
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
                   <div className="relative bg-gray-900 p-6 rounded-lg h-full flex flex-col">
-                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4">
+                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[200px]">
                       {project.videoId ? (
-                        <div className="relative">
+                        <div className="relative h-full">
                           <iframe
                             src={`https://www.youtube.com/embed/${project.videoId}`}
                             title={project.title}
@@ -121,18 +121,18 @@ export const Projects = () => {
                     </div>
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                        <div className="text-white">{project.description}</div>
+                        <h3 className="text-2xl font-semibold text-white mb-2">{project.title}</h3>
+                        <div className="text-white text-lg">{project.description}</div>
                         {project.longDescription && (
-                          <p className="text-sm text-gray-300 mt-2">{project.longDescription}</p>
+                          <p className="text-base text-gray-300 mt-2">{project.longDescription}</p>
                         )}
                       </div>
                       <div className="mt-auto">
                         {project.visits && (
-                          <p className="text-sm text-purple-400 mt-2">Player visits: {project.visits}</p>
+                          <p className="text-base text-purple-400 mt-2">Player visits: {project.visits}</p>
                         )}
                         {project.impressions && (
-                          <p className="text-sm font-bold text-[#0FA0CE] mt-1">
+                          <p className="text-base font-bold text-[#0FA0CE] mt-1">
                             <a 
                               href={project.impressionsLink || "#"}
                               target="_blank" 

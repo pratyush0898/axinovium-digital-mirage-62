@@ -172,7 +172,7 @@ export const ProjectsGallery = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
+          className="text-5xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed shadow-[0_0_10px_rgba(255,0,255,0.4)]"
         >
           Our Projects
         </motion.h2>
@@ -225,7 +225,7 @@ export const ProjectsGallery = () => {
                   }
                 }}
               >
-                <div className="glass-card overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)]">
+                <div className="glass-card overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]">
                   <div className="relative aspect-video">
                     <img
                       src={project.slideshow ? 
@@ -242,11 +242,11 @@ export const ProjectsGallery = () => {
                     </div>
                   </div>
                   <div className="p-6 flex-grow flex flex-col min-h-[200px]">
-                    <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                    <h3 className="text-2xl font-semibold text-white mb-2">{project.title}</h3>
                     <div className="flex flex-col justify-between flex-grow">
-                      <div className="text-white text-base">
+                      <div className="text-white text-lg">
                         {project.visits && (
-                          <p className="text-sm text-purple-400 mt-2">Player visits: {project.visits}</p>
+                          <p className="text-base text-purple-400 mt-2">Player visits: {project.visits}</p>
                         )}
                         {project.description && (
                           <div className="text-white mt-2">{project.description}</div>

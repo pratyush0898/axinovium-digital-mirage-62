@@ -25,7 +25,7 @@ export const Partners = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 text-gradient"
+          className="text-5xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text shadow-[0_0_10px_rgba(255,0,255,0.4)]"
         >
           Partners
         </motion.h2>
@@ -40,7 +40,7 @@ export const Partners = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="glass-card p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.6)]"
+              className="glass-card p-6 transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
             >
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="w-24 h-24 relative flex-shrink-0 mb-4 md:mb-0">
@@ -52,7 +52,7 @@ export const Partners = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-2 text-white">{partner.name}</h3>
-                  <p className="text-white">{partner.description}</p>
+                  <p className="text-white text-lg">{partner.description}</p>
                 </div>
               </div>
             </motion.a>
