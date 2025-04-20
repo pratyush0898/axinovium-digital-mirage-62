@@ -35,7 +35,7 @@ export const ProjectDialog = ({ project, onClose }: ProjectDialogProps) => {
                 <img
                   src={project.award.image}
                   alt="Award"
-                  className="absolute top-1/2 right-2 w-24 hover:scale-105 transition-transform duration-200 -translate-y-1/2"
+                  className="absolute top-1/2 right-4 w-48 hover:scale-105 transition-transform duration-200 -translate-y-1/2 z-50"
                 />
               )}
             </div>

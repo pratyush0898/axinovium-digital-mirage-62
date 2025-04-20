@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
 
@@ -25,20 +24,21 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
         <div className="relative aspect-video">
           {project.videoId ? (
             <div className="w-full h-full cursor-pointer">
+              {project.award && (
+                <img
+                  src={project.award.image}
+                  alt="Award"
+                  className="absolute top-1/2 right-4 w-20 hover:scale-105 transition-transform duration-200 z-50 -translate-y-1/2"
+                  onClick={() => onSelect(project)}
+                />
+              )}
               <iframe
                 src={`https://www.youtube.com/embed/${project.videoId}`}
                 title={project.title}
                 className="w-full h-full pointer-events-none"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
-              <div className="absolute inset-0 bg-transparent z-20" />
-              {project.award && (
-                <img
-                  src={project.award.image}
-                  alt="Award"
-                  className="absolute top-1/2 right-2 w-1/4 hover:scale-105 transition-transform duration-200 z-10 -translate-y-1/2"
-                />
-              )}
+              <div className="absolute inset-0 bg-transparent z-40" onClick={() => onSelect(project)} />
             </div>
           ) : (
             <img
