@@ -1,7 +1,6 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const achievements = [
   { title: "Award-Winning Projects" },
@@ -17,8 +16,6 @@ const achievements = [
 ];
 
 export const Achievements = () => {
-  const navigate = useNavigate();
-
   const handleClick = () => {
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
@@ -37,7 +34,7 @@ export const Achievements = () => {
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 10, // Increased speed (reduced from 20 to 10)
+              duration: 3.33, // 3x faster (reduced from 10 to 3.33)
               ease: "linear",
             },
           }}

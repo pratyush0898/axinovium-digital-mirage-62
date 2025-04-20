@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -17,6 +16,7 @@ interface Project {
   longDescription?: string;
   visits?: string;
   impressions?: string;
+  slideshow?: string[];
 }
 
 const projects: Project[] = [
@@ -41,11 +41,29 @@ const projects: Project[] = [
     category: "VRChat",
     visits: "60,000+",
     impressions: "Over 180k impressions on X"
+  },
+  {
+    title: "Opal Bay",
+    description: "A tropical beach with white sand and sparkling opal-like water",
+    link: "https://vrchat.com/home/launch?worldId=wrld_eca2ddde-f794-4c59-ae3a-4dd5881eb18b",
+    category: "VRChat",
+    visits: "130k",
+    impressions: "200k+ Impressions on X",
+    slideshow: [
+      "/lovable-uploads/ebc49ac0-e46c-401c-8b0a-d49a5619172c.png",
+      "/lovable-uploads/85f7aef3-6107-482b-be4f-e4dc90559920.png",
+      "/lovable-uploads/c9b972bd-0fa4-4763-a0cf-3ed848552340.png",
+      "/lovable-uploads/da08b244-37ce-4683-81c7-aa7621bdf289.png"
+    ]
   }
 ];
 
 export const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const updateDialog = (project: Project | null) => {
+    setSelectedProject(project);
+  };
 
   return (
     <section className="py-20 bg-black/95">
@@ -70,8 +88,8 @@ export const Projects = () => {
               className="group h-[500px]"
             >
               <div className="relative h-full">
-                <motion.div 
-                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-1 h-full"
+                <motion.div
+                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-1 h-full aspect-video"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
@@ -91,7 +109,7 @@ export const Projects = () => {
                         />
                       ) : (
                         <img
-                          src={project.image}
+                          src={project.image || (project.slideshow && project.slideshow[0])}
                           alt={project.title}
                           className="w-full h-full object-cover"
                         />
@@ -106,7 +124,7 @@ export const Projects = () => {
                         >
                           <img
                             src={project.award.image}
-                            alt="Venice Biennale Award"
+                            alt="Award"
                             className="w-full h-auto"
                           />
                         </a>
@@ -122,11 +140,26 @@ export const Projects = () => {
                         <p className="text-sm text-purple-400 mt-2">Player visits: {project.visits}</p>
                       )}
                       {project.impressions && (
-                        <p className="text-sm text-gray-400 mt-1">{project.impressions}</p>
+                        <p className="text-sm font-bold text-[#0FA0CE] mt-1">{project.impressions}</p>
                       )}
                     </div>
                   </div>
                 </motion.div>
+              </div>
+            </motion.div>
+          ))}
+          
+          {[1, 2, 3].map((num) => (
+            <motion.div
+              key={`template-${num}`}
+              className="group h-[500px] opacity-50"
+            >
+              <div className="relative h-full">
+                <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-1 h-full aspect-video">
+                  <div className="relative bg-gray-900 p-6 rounded-lg h-full flex items-center justify-center">
+                    <span className="text-4xl font-bold text-gray-700">Project {num}</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -160,7 +193,7 @@ export const Projects = () => {
                   >
                     <img
                       src={selectedProject.award.image}
-                      alt="Venice Biennale Award"
+                      alt="Award"
                       className="w-full h-auto"
                     />
                   </a>

@@ -27,7 +27,7 @@ const images = [
     ],
     title: "Warm With You",
     category: "VRChat Worlds",
-    description: "🏆 Winner Meshy 2024 Christmas Adventure event",
+    description: <span>🏆 <a href="https://www.meshy.ai/collections/Colorful-Furry-ChristmasAdventure-collection-by-Axinovium-0193ccb2-3938-738c-8195-1050793c29f5" className="text-purple-400 hover:text-purple-300 underline" target="_blank" rel="noopener noreferrer">Winner Meshy 2024 Christmas Adventure event</a></span>,
     link: "https://vrchat.com/home/launch?worldId=wrld_741c199d-ee56-46b4-9488-e99150847974"
   }
 ];
@@ -49,25 +49,14 @@ export const ProjectsGallery = () => {
     : images.filter(img => img.category === activeCategory);
 
   useEffect(() => {
-    const initialIndices: Record<number, number> = {};
-    const initialCurrentImages: Record<number, string> = {};
-    
-    images.forEach(img => {
-      if (img.slideshow && img.slideshow.length > 0) {
-        initialIndices[img.id] = 0;
-        initialCurrentImages[img.id] = img.slideshow[0];
-      }
+    Object.values(slideshowIntervals.current).forEach(interval => {
+      clearInterval(interval);
     });
-    
-    setSlideshowIndices(initialIndices);
-    setCurrentImages(initialCurrentImages);
-    
-    return () => {
-      Object.values(slideshowIntervals.current).forEach(interval => {
-        clearInterval(interval);
-      });
-    };
-  }, []);
+    setSlideshowIndices({});
+    setCurrentImages({});
+    setPreviousImages({});
+    setIsFading({});
+  }, [activeCategory]);
 
   const startSlideshow = (imageId: number) => {
     if (slideshowIntervals.current[imageId]) {
@@ -144,6 +133,15 @@ export const ProjectsGallery = () => {
     if (slideshowIntervals.current[imageId]) {
       clearInterval(slideshowIntervals.current[imageId]);
       delete slideshowIntervals.current[imageId];
+      
+      // Reset to first image
+      const image = images.find(img => img.id === imageId);
+      if (image?.slideshow) {
+        setCurrentImages(prev => ({
+          ...prev,
+          [imageId]: image.slideshow![0]
+        }));
+      }
     }
   };
 
