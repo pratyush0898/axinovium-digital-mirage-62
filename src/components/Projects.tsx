@@ -9,6 +9,10 @@ interface Project {
   link: string;
   category: string;
   image?: string;
+  award?: {
+    image: string;
+    link: string;
+  };
 }
 
 const projects: Project[] = [
@@ -17,7 +21,11 @@ const projects: Project[] = [
     description: "An immersive VRChat world blending music visualization with interactive art",
     videoId: "Y8yyFeVs1gs",
     link: "#",
-    category: "VRChat"
+    category: "VRChat",
+    award: {
+      image: "/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png",
+      link: "https://www.labiennale.org/en/cinema/2024/venice-immersive/chromatic-frequency"
+    }
   },
   {
     title: "Meshy Hub",
@@ -71,7 +79,7 @@ export const Projects = () => {
           ))}
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1920px] mx-auto">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -96,23 +104,41 @@ export const Projects = () => {
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative bg-gray-900 p-6 rounded-lg h-full">
-                    <div className="aspect-video rounded-lg overflow-hidden mb-4">
+                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4">
                       {project.videoId ? (
-                        <iframe
-                          src={`https://www.youtube.com/embed/${project.videoId}`}
-                          title={project.title}
-                          className="w-full h-full"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
+                        <div className="relative w-full h-full">
+                          <iframe
+                            src={`https://www.youtube.com/embed/${project.videoId}`}
+                            title={project.title}
+                            className="w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                          {project.award && (
+                            <a 
+                              href={project.award.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="absolute bottom-4 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
+                            >
+                              <img
+                                src={project.award.image}
+                                alt="Venice Biennale Award"
+                                className="w-full h-auto"
+                              />
+                            </a>
+                          )}
+                        </div>
                       ) : (
-                        <motion.img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.5 }}
-                        />
+                        project.image && (
+                          <motion.img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.5 }}
+                          />
+                        )
                       )}
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
