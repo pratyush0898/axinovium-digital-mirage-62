@@ -58,7 +58,7 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-6xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed shadow-[0_0_20px_rgba(255,0,255,0.4)]"
+          className="text-7xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
         >
           Featured Projects
         </motion.h2>
@@ -71,10 +71,9 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="min-h-[500px] transition-all duration-300"
-              onClick={(e) => {
+              className="min-h-[500px] transition-all duration-300 cursor-pointer"
+              onClick={() => {
                 if (project.videoId) {
-                  e.preventDefault();
                   setSelectedProject(project);
                 } else {
                   window.open(project.link, '_blank');
@@ -90,28 +89,21 @@ export const Projects = () => {
                   <div className="relative bg-gray-900 p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[300px]">
                       {project.videoId ? (
-                        <div className="relative h-full cursor-pointer">
+                        <div className="relative h-full">
+                          <div className="absolute inset-0 z-10" />
                           <iframe
                             src={`https://www.youtube.com/embed/${project.videoId}`}
                             title={project.title}
-                            className="w-full h-full"
+                            className="w-full h-full pointer-events-none"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                           />
                           {project.award && (
-                            <a 
-                              href={project.award.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="absolute bottom-4 right-4 w-1/4 hover:scale-105 transition-transform duration-200 z-10"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <img
-                                src={project.award.image}
-                                alt="Award"
-                                className="w-full h-auto"
-                              />
-                            </a>
+                            <img
+                              src={project.award.image}
+                              alt="Award"
+                              className="absolute top-2 right-2 w-1/4 hover:scale-105 transition-transform duration-200 z-10"
+                            />
                           )}
                         </div>
                       ) : (
@@ -125,7 +117,13 @@ export const Projects = () => {
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
                         <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
-                        <div className="text-white text-xl">{project.description}</div>
+                        <div className="text-white text-xl">
+                          {project.description === "Chromatic Frequency" ? (
+                            "Featured at the Venice Film Festival 2024, Best of Worlds"
+                          ) : (
+                            project.description
+                          )}
+                        </div>
                         {project.longDescription && (
                           <p className="text-lg text-gray-300 mt-2">{project.longDescription}</p>
                         )}
@@ -169,13 +167,22 @@ export const Projects = () => {
             >
               <div className="relative">
                 <h2 className="text-3xl font-bold text-white mb-4">{selectedProject.title}</h2>
-                <iframe
-                  src={`https://www.youtube.com/embed/${selectedProject.videoId}?autoplay=1`}
-                  title={selectedProject.title}
-                  className="w-full aspect-video rounded-lg"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <div className="relative">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${selectedProject.videoId}?autoplay=1`}
+                    title={selectedProject.title}
+                    className="w-full aspect-video rounded-lg"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                  {selectedProject.award && (
+                    <img
+                      src={selectedProject.award.image}
+                      alt="Award"
+                      className="absolute top-2 right-2 w-24 hover:scale-105 transition-transform duration-200"
+                    />
+                  )}
+                </div>
               </div>
             </motion.div>
           )}
@@ -184,6 +191,3 @@ export const Projects = () => {
     </section>
   );
 };
-
-// Removing the ProjectVideoCard component since it was causing the error with setSelectedProject
-// and doesn't appear to be used anywhere in the code
