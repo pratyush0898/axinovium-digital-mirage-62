@@ -1,5 +1,7 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
 
 const images = [
   {
@@ -27,14 +29,13 @@ export const ProjectsGallery = () => {
   
   const slideshowIntervals = useRef<Record<number, NodeJS.Timeout>>({});
   
-  const categories = ["VRChat Worlds", "Free Tools", "Digital Marketplace", "Youtube Videos"];
+  const categories = ["VRChat Worlds", "Free Tools", "Digital Marketplace", "Content Creation"];
   
   const filteredImages = activeCategory === "All" 
     ? images 
     : images.filter(img => img.category === activeCategory);
 
   useEffect(() => {
-    // Initialize slideshow indices and current images
     const initialIndices: Record<number, number> = {};
     const initialCurrentImages: Record<number, string> = {};
     
@@ -48,7 +49,6 @@ export const ProjectsGallery = () => {
     setSlideshowIndices(initialIndices);
     setCurrentImages(initialCurrentImages);
     
-    // Cleanup function
     return () => {
       Object.values(slideshowIntervals.current).forEach(interval => {
         clearInterval(interval);
@@ -56,7 +56,6 @@ export const ProjectsGallery = () => {
     };
   }, []);
 
-  // Function to handle slideshow rotation with fade effect
   const startSlideshow = (imageId: number) => {
     if (slideshowIntervals.current[imageId]) {
       clearInterval(slideshowIntervals.current[imageId]);
@@ -65,30 +64,57 @@ export const ProjectsGallery = () => {
     const image = images.find(img => img.id === imageId);
     if (!image?.slideshow || image.slideshow.length <= 1) return;
     
+    // Trigger first transition immediately
+    setSlideshowIndices(prev => {
+      const currentIndex = prev[imageId] || 0;
+      const nextIndex = (currentIndex + 1) % image.slideshow!.length;
+      
+      setPreviousImages(prev => ({
+        ...prev,
+        [imageId]: image.slideshow![currentIndex]
+      }));
+      
+      setIsFading(prev => ({
+        ...prev,
+        [imageId]: true
+      }));
+      
+      setCurrentImages(prev => ({
+        ...prev,
+        [imageId]: image.slideshow![nextIndex]
+      }));
+      
+      setTimeout(() => {
+        setIsFading(prev => ({
+          ...prev,
+          [imageId]: false
+        }));
+      }, 500);
+      
+      return { ...prev, [imageId]: nextIndex };
+    });
+    
+    // Set up interval for subsequent transitions
     slideshowIntervals.current[imageId] = setInterval(() => {
       setSlideshowIndices(prev => {
         const currentIndex = prev[imageId] || 0;
         const nextIndex = (currentIndex + 1) % image.slideshow!.length;
         
-        // Store the previous image for fade transition
         setPreviousImages(prev => ({
           ...prev,
           [imageId]: image.slideshow![currentIndex]
         }));
         
-        // Set fading state to true to trigger transition
         setIsFading(prev => ({
           ...prev,
           [imageId]: true
         }));
         
-        // Update current image
         setCurrentImages(prev => ({
           ...prev,
           [imageId]: image.slideshow![nextIndex]
         }));
         
-        // Reset fading state after transition
         setTimeout(() => {
           setIsFading(prev => ({
             ...prev,
@@ -99,12 +125,6 @@ export const ProjectsGallery = () => {
         return { ...prev, [imageId]: nextIndex };
       });
     }, 2000);
-    
-    return () => {
-      if (slideshowIntervals.current[imageId]) {
-        clearInterval(slideshowIntervals.current[imageId]);
-      }
-    };
   };
 
   const stopSlideshow = (imageId: number) => {
@@ -125,6 +145,22 @@ export const ProjectsGallery = () => {
         >
           Projects
         </motion.h2>
+
+        <div className="flex justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-4 py-2 rounded-full transition-colors ${
+                activeCategory === category
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
         
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -132,7 +168,7 @@ export const ProjectsGallery = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          {images.map((project) => (
+          {filteredImages.map((project) => (
             <motion.a
               key={project.id}
               href={project.link}
@@ -157,12 +193,13 @@ export const ProjectsGallery = () => {
             >
               <div className="glass-card hover-glow overflow-hidden">
                 <div className="relative aspect-video">
-                  {/* Slideshow images */}
                   {currentImages[project.id] && (
                     <img
                       src={currentImages[project.id]}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-opacity duration-500"
+                      className={`w-full h-full object-cover transition-opacity duration-500 ${
+                        isFading[project.id] ? 'opacity-0' : 'opacity-100'
+                      }`}
                     />
                   )}
                 </div>

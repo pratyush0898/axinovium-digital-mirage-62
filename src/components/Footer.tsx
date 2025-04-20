@@ -1,3 +1,4 @@
+
 import { Mail, MessageCircle, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -13,11 +14,6 @@ export const Footer = () => {
     <footer className="bg-black/90 py-12 border-t border-white/10">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center">
-          <img 
-            src="/lovable-uploads/36e2fa8a-1319-475a-a816-0ab0a910a3d5.png" 
-            alt="Axinovium Logo" 
-            className="h-12 mb-6"
-          />
           <div className="flex space-x-10 mb-8">
             {socials.map((social) => (
               <motion.a
@@ -31,11 +27,11 @@ export const Footer = () => {
                 whileTap={{ scale: 0.9 }}
               >
                 {social.icon === "patreon" ? (
-                  <svg className="h-10 w-10 relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="h-12 w-12 relative z-10" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.22 0 3.97-3.22 7.21-7.18 7.21-3.97 0-7.19-3.24-7.19-7.21 0-3.98 3.22-7.22 7.19-7.22M2 21.6h3.5V2.41H2V21.6z" />
                   </svg>
                 ) : (
-                  <social.icon className="h-10 w-10 relative z-10" />
+                  <social.icon className="h-12 w-12 relative z-10" />
                 )}
                 <motion.div 
                   className="absolute -inset-2 rounded-full bg-purple-600/0 group-hover:bg-purple-600/20 transition-colors duration-300"
@@ -46,10 +42,12 @@ export const Footer = () => {
               </motion.a>
             ))}
           </div>
-          <div className="text-gray-400 text-center">
-            <p className="mb-2">contact@axinovium.com</p>
-            <p>&copy; {new Date().getFullYear()} Axinovium. All rights reserved.</p>
-          </div>
+          <img 
+            src="/lovable-uploads/36e2fa8a-1319-475a-a816-0ab0a910a3d5.png" 
+            alt="Axinovium Logo" 
+            className="h-8 mt-6"
+          />
+          <p className="text-gray-400 text-center mt-4">&copy; {new Date().getFullYear()} Axinovium. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -6,12 +6,14 @@ import { ProjectsGallery } from "@/components/ProjectsGallery";
 import { Partners } from "@/components/Partners";
 import { Footer } from "@/components/Footer";
 import { CursorEffect } from "@/components/CursorEffect";
+import { Achievements } from "@/components/Achievements";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-black">
       <CursorEffect />
       <Hero />
+      <Achievements />
       <About />
       <Projects />
       <ProjectsGallery />
