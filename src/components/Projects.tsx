@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -10,7 +11,7 @@ interface Project {
   image?: string;
 }
 
-const projects = [
+const projects: Project[] = [
   {
     title: "Chromatic Frequency",
     description: "An immersive VRChat world blending music visualization with interactive art",
