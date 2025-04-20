@@ -1,6 +1,6 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
 
 const images = [
   {
@@ -29,16 +29,27 @@ const images = [
     category: "VRChat Worlds",
     description: <span>🏆 <a href="https://www.meshy.ai/collections/Colorful-Furry-ChristmasAdventure-collection-by-Axinovium-0193ccb2-3938-738c-8195-1050793c29f5" className="text-purple-400 hover:text-purple-300 underline" target="_blank" rel="noopener noreferrer">Winner Meshy 2024 Christmas Adventure event</a></span>,
     link: "https://vrchat.com/home/launch?worldId=wrld_741c199d-ee56-46b4-9488-e99150847974"
+  },
+  {
+    id: 3,
+    slideshow: [
+      "/lovable-uploads/ebc49ac0-e46c-401c-8b0a-d49a5619172c.png",
+      "/lovable-uploads/85f7aef3-6107-482b-be4f-e4dc90559920.png",
+      "/lovable-uploads/c9b972bd-0fa4-4763-a0cf-3ed848552340.png",
+      "/lovable-uploads/da08b244-37ce-4683-81c7-aa7621bdf289.png"
+    ],
+    title: "Opal Bay",
+    category: "VRChat Worlds",
+    visits: "130k",
+    description: <span>A tropical beach with white sand and sparkling opal-like water <br/><span className="font-bold text-[#0FA0CE]"><a href="https://twitter.com/axinovium" target="_blank" rel="noopener noreferrer" className="hover:underline">200k+ Impressions on X</a></span></span>,
+    link: "https://vrchat.com/home/launch?worldId=wrld_eca2ddde-f794-4c59-ae3a-4dd5881eb18b"
   }
 ];
 
 export const ProjectsGallery = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("VRChat Worlds");
   const [slideshowIndices, setSlideshowIndices] = useState<Record<number, number>>({});
-  const [currentImages, setCurrentImages] = useState<Record<number, string>>({});
-  const [previousImages, setPreviousImages] = useState<Record<number, string>>({});
-  const [isFading, setIsFading] = useState<Record<number, boolean>>({});
+  const [slideshowActive, setSlideshowActive] = useState<Record<number, boolean>>({});
   
   const slideshowIntervals = useRef<Record<number, NodeJS.Timeout>>({});
   
@@ -49,13 +60,20 @@ export const ProjectsGallery = () => {
     : images.filter(img => img.category === activeCategory);
 
   useEffect(() => {
+    // Clear all intervals when category changes
     Object.values(slideshowIntervals.current).forEach(interval => {
       clearInterval(interval);
     });
+    
     setSlideshowIndices({});
-    setCurrentImages({});
-    setPreviousImages({});
-    setIsFading({});
+    setSlideshowActive({});
+    
+    return () => {
+      // Clean up all intervals on unmount
+      Object.values(slideshowIntervals.current).forEach(interval => {
+        clearInterval(interval);
+      });
+    };
   }, [activeCategory]);
 
   const startSlideshow = (imageId: number) => {
@@ -66,64 +84,22 @@ export const ProjectsGallery = () => {
     const image = images.find(img => img.id === imageId);
     if (!image?.slideshow || image.slideshow.length <= 1) return;
     
-    // Trigger first transition immediately
-    setSlideshowIndices(prev => {
-      const currentIndex = prev[imageId] || 0;
-      const nextIndex = (currentIndex + 1) % image.slideshow!.length;
-      
-      setPreviousImages(prev => ({
-        ...prev,
-        [imageId]: image.slideshow![currentIndex]
-      }));
-      
-      setIsFading(prev => ({
-        ...prev,
-        [imageId]: true
-      }));
-      
-      setCurrentImages(prev => ({
-        ...prev,
-        [imageId]: image.slideshow![nextIndex]
-      }));
-      
-      setTimeout(() => {
-        setIsFading(prev => ({
-          ...prev,
-          [imageId]: false
-        }));
-      }, 500);
-      
-      return { ...prev, [imageId]: nextIndex };
-    });
+    setSlideshowActive(prev => ({
+      ...prev,
+      [imageId]: true
+    }));
     
-    // Set up interval for subsequent transitions
+    // Start with the first image
+    setSlideshowIndices(prev => ({
+      ...prev,
+      [imageId]: 0
+    }));
+    
+    // Set up interval for transitions
     slideshowIntervals.current[imageId] = setInterval(() => {
       setSlideshowIndices(prev => {
         const currentIndex = prev[imageId] || 0;
         const nextIndex = (currentIndex + 1) % image.slideshow!.length;
-        
-        setPreviousImages(prev => ({
-          ...prev,
-          [imageId]: image.slideshow![currentIndex]
-        }));
-        
-        setIsFading(prev => ({
-          ...prev,
-          [imageId]: true
-        }));
-        
-        setCurrentImages(prev => ({
-          ...prev,
-          [imageId]: image.slideshow![nextIndex]
-        }));
-        
-        setTimeout(() => {
-          setIsFading(prev => ({
-            ...prev,
-            [imageId]: false
-          }));
-        }, 500);
-        
         return { ...prev, [imageId]: nextIndex };
       });
     }, 2000);
@@ -133,16 +109,18 @@ export const ProjectsGallery = () => {
     if (slideshowIntervals.current[imageId]) {
       clearInterval(slideshowIntervals.current[imageId]);
       delete slideshowIntervals.current[imageId];
-      
-      // Reset to first image
-      const image = images.find(img => img.id === imageId);
-      if (image?.slideshow) {
-        setCurrentImages(prev => ({
-          ...prev,
-          [imageId]: image.slideshow![0]
-        }));
-      }
     }
+    
+    setSlideshowActive(prev => ({
+      ...prev,
+      [imageId]: false
+    }));
+    
+    // Reset to first image
+    setSlideshowIndices(prev => ({
+      ...prev,
+      [imageId]: 0
+    }));
   };
 
   return (
@@ -153,6 +131,7 @@ export const ProjectsGallery = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
+          id="projects"
         >
           Projects
         </motion.h2>
@@ -185,7 +164,7 @@ export const ProjectsGallery = () => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="block h-full"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -202,30 +181,41 @@ export const ProjectsGallery = () => {
                 }
               }}
             >
-              <div className="glass-card hover-glow overflow-hidden">
+              <div className="glass-card hover-glow overflow-hidden h-full flex flex-col">
                 <div className="relative aspect-video">
-                  {currentImages[project.id] && (
-                    <img
-                      src={currentImages[project.id]}
-                      alt={project.title}
-                      className={`w-full h-full object-cover transition-opacity duration-500 ${
-                        isFading[project.id] ? 'opacity-0' : 'opacity-100'
-                      }`}
-                    />
-                  )}
+                  <img
+                    src={project.slideshow ? 
+                      (slideshowActive[project.id] ? 
+                        project.slideshow[slideshowIndices[project.id] || 0] : 
+                        project.slideshow[0]
+                      ) : 
+                      project.slideshow?.[0]}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="p-4">
+                <div className="p-4 flex-grow flex flex-col">
                   <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                  {project.visits && (
-                    <p className="text-sm text-purple-400">Player visits: {project.visits}</p>
-                  )}
-                  {project.description && (
-                    <p className="text-sm text-gray-300 mt-2">{project.description}</p>
-                  )}
+                  <div className="flex flex-col justify-between flex-grow">
+                    <div>
+                      {project.visits && (
+                        <p className="text-sm text-purple-400">Player visits: {project.visits}</p>
+                      )}
+                      {project.description && (
+                        <div className="text-sm text-gray-300 mt-2">{project.description}</div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.a>
           ))}
+          
+          {filteredImages.length === 0 && activeCategory !== "VRChat Worlds" && (
+            <div className="col-span-3 text-center py-10">
+              <p className="text-gray-400 text-lg">Coming soon! Check back later for {activeCategory} projects.</p>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

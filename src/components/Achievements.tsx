@@ -16,35 +16,24 @@ const achievements = [
 ];
 
 export const Achievements = () => {
-  const handleClick = () => {
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="py-20 bg-black overflow-hidden">
-      <div className="relative">
-        <motion.div
-          animate={{
-            x: [0, -50],
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 3.33, // 3x faster (reduced from 10 to 3.33)
-              ease: "linear",
-            },
-          }}
-          className="flex gap-6 mb-6"
-        >
-          {[...achievements, ...achievements].map((achievement, index) => (
-            <div
+    <div className="py-10 bg-black overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {achievements.map((achievement, index) => (
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
               className="flex-shrink-0 glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 cursor-pointer"
-              onClick={handleClick}
+              onClick={() => {
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                  projectsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               <div className="flex items-center gap-3">
                 <div className="rounded-full bg-purple-500/20 p-2">
@@ -52,9 +41,9 @@ export const Achievements = () => {
                 </div>
                 <p className="text-white font-medium">{achievement.title}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

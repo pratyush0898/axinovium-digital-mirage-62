@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -61,12 +62,8 @@ const projects: Project[] = [
 export const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const updateDialog = (project: Project | null) => {
-    setSelectedProject(project);
-  };
-
   return (
-    <section className="py-20 bg-black/95">
+    <section id="projects" className="py-20 bg-black/95">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -77,7 +74,7 @@ export const Projects = () => {
           Featured Projects
         </motion.h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1920px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-[1920px] mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -130,36 +127,34 @@ export const Projects = () => {
                         </a>
                       )}
                     </div>
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                      <p className="text-gray-400">{project.description}</p>
-                      {project.longDescription && (
-                        <p className="text-sm text-gray-500 mt-2">{project.longDescription}</p>
-                      )}
-                      {project.visits && (
-                        <p className="text-sm text-purple-400 mt-2">Player visits: {project.visits}</p>
-                      )}
-                      {project.impressions && (
-                        <p className="text-sm font-bold text-[#0FA0CE] mt-1">{project.impressions}</p>
-                      )}
+                    <div className="flex-grow flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                        <p className="text-gray-400">{project.description}</p>
+                        {project.longDescription && (
+                          <p className="text-sm text-gray-500 mt-2">{project.longDescription}</p>
+                        )}
+                      </div>
+                      <div className="mt-auto">
+                        {project.visits && (
+                          <p className="text-sm text-purple-400 mt-2">Player visits: {project.visits}</p>
+                        )}
+                        {project.impressions && (
+                          <p className="text-sm font-bold text-[#0FA0CE] mt-1">
+                            <a 
+                              href="https://twitter.com/axinovium" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="hover:underline"
+                            >
+                              {project.impressions}
+                            </a>
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
-              </div>
-            </motion.div>
-          ))}
-          
-          {[1, 2, 3].map((num) => (
-            <motion.div
-              key={`template-${num}`}
-              className="group h-[500px] opacity-50"
-            >
-              <div className="relative h-full">
-                <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-1 h-full aspect-video">
-                  <div className="relative bg-gray-900 p-6 rounded-lg h-full flex items-center justify-center">
-                    <span className="text-4xl font-bold text-gray-700">Project {num}</span>
-                  </div>
-                </div>
               </div>
             </motion.div>
           ))}

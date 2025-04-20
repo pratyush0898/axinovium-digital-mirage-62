@@ -13,8 +13,8 @@ const Index = () => {
     <div className="min-h-screen bg-black">
       <CursorEffect />
       <Hero />
-      <Achievements />
       <About />
+      <Achievements />
       <Projects />
       <ProjectsGallery />
       <Partners />
