@@ -11,7 +11,8 @@ const partners = [
   {
     name: "Meshy AI",
     description: "A revolutionary platform for AI-generated 3D assets and creative tools for digital artists.",
-    image: "/lovable-uploads/fed1fc4b-34d3-404e-8cbf-93ad713a5a50.png"
+    image: "/lovable-uploads/fed1fc4b-34d3-404e-8cbf-93ad713a5a50.png",
+    link: "https://app.meshy.ai/?via=axinovium"
   }
 ];
 
@@ -26,7 +27,7 @@ export const Partners = () => {
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12 text-gradient"
         >
-          Our Partners
+          Partners
         </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

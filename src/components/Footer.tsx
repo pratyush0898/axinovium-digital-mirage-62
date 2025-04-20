@@ -1,4 +1,3 @@
-
 import { Mail, MessageCircle, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -19,7 +18,7 @@ export const Footer = () => {
             alt="Axinovium Logo" 
             className="h-12 mb-6"
           />
-          <div className="flex space-x-8 mb-8">
+          <div className="flex space-x-10 mb-8">
             {socials.map((social) => (
               <motion.a
                 key={social.label}
@@ -32,11 +31,11 @@ export const Footer = () => {
                 whileTap={{ scale: 0.9 }}
               >
                 {social.icon === "patreon" ? (
-                  <svg className="h-8 w-8 relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="h-10 w-10 relative z-10" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.22 0 3.97-3.22 7.21-7.18 7.21-3.97 0-7.19-3.24-7.19-7.21 0-3.98 3.22-7.22 7.19-7.22M2 21.6h3.5V2.41H2V21.6z" />
                   </svg>
                 ) : (
-                  <social.icon className="h-8 w-8 relative z-10" />
+                  <social.icon className="h-10 w-10 relative z-10" />
                 )}
                 <motion.div 
                   className="absolute -inset-2 rounded-full bg-purple-600/0 group-hover:bg-purple-600/20 transition-colors duration-300"

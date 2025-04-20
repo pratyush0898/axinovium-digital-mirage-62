@@ -1,20 +1,22 @@
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Project {
   title: string;
   description: string;
-  videoId: string;
+  videoId?: string;
+  image?: string;
   link: string;
   category: string;
-  image?: string;
   award?: {
     image: string;
     link: string;
   };
   longDescription?: string;
+  visits?: string;
+  impressions?: string;
 }
 
 const projects: Project[] = [
@@ -34,16 +36,11 @@ const projects: Project[] = [
     title: "The Writers Parlor",
     description: "A commissioned world showcasing VRChat's literary community",
     longDescription: "Contains fully interactive VR typewriters and books written by the members. Featured by VRChat for Spookality 2024.",
-    videoId: "VoUWYyVmcoQ",
+    image: "/lovable-uploads/babbec86-c371-48cb-9bc4-10e2748b9425.png",
     link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076",
     category: "VRChat",
-  },
-  {
-    title: "Meshy Hub",
-    description: "Collaborative 3D asset gallery for next-gen creators",
-    videoId: "VoUWYyVmcoQ",
-    link: "#",
-    category: "Tooling"
+    visits: "60,000+",
+    impressions: "Over 180k impressions on X"
   }
 ];
 
@@ -57,7 +54,7 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
+          className="text-4xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
         >
           Featured Projects
         </motion.h2>
@@ -70,7 +67,7 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="group h-[450px]"
+              className="group h-[500px]"
             >
               <div className="relative h-full">
                 <motion.div 
@@ -84,19 +81,27 @@ export const Projects = () => {
                         className="absolute inset-0 z-10 cursor-pointer"
                         onClick={() => setSelectedProject(project)}
                       />
-                      <iframe
-                        src={`https://www.youtube.com/embed/${project.videoId}`}
-                        title={project.title}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
+                      {project.videoId ? (
+                        <iframe
+                          src={`https://www.youtube.com/embed/${project.videoId}`}
+                          title={project.title}
+                          className="w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
                       {project.award && (
                         <a 
                           href={project.award.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="absolute bottom-12 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
+                          className="absolute bottom-16 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <img
@@ -112,6 +117,12 @@ export const Projects = () => {
                       <p className="text-gray-400">{project.description}</p>
                       {project.longDescription && (
                         <p className="text-sm text-gray-500 mt-2">{project.longDescription}</p>
+                      )}
+                      {project.visits && (
+                        <p className="text-sm text-purple-400 mt-2">Player visits: {project.visits}</p>
+                      )}
+                      {project.impressions && (
+                        <p className="text-sm text-gray-400 mt-1">{project.impressions}</p>
                       )}
                     </div>
                   </div>

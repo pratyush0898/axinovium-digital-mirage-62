@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -79,7 +78,6 @@ const CursorRipple = () => {
 };
 
 export const Hero = () => {
-  // Generate an array of particles
   const particles = Array.from({ length: 50 }, (_, i) => i);
 
   return (
@@ -95,20 +93,11 @@ export const Hero = () => {
         transition={{ duration: 0.8 }}
         className="container mx-auto px-4 text-center z-10"
       >
-        <motion.div
-          className="w-24 h-24 mx-auto mb-8 relative"
-          animate={{ rotateY: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        >
+        <div className="w-32 h-32 mx-auto mb-8 relative">
           <div className="w-full h-full flex items-center justify-center">
-            <img src="/lovable-uploads/36e2fa8a-1319-475a-a816-0ab0a910a3d5.png" alt="Axinovium Logo" className="w-16 h-16" />
+            <img src="/lovable-uploads/36e2fa8a-1319-475a-a816-0ab0a910a3d5.png" alt="Axinovium Logo" className="w-24 h-24" />
           </div>
-          <motion.div 
-            className="absolute inset-0 rounded-full border-2 border-purple-500/50"
-            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
+        </div>
         <motion.h1 
           className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text"
           initial={{ opacity: 0, y: -20 }}
@@ -118,12 +107,12 @@ export const Hero = () => {
           Axinovium
         </motion.h1>
         <motion.p 
-          className="text-xl md:text-2xl text-gray-300 mb-8"
+          className="text-xl md:text-2xl text-gray-300 mb-8 px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Digital Worlds. AI Creations. Experimental Interfaces.
+          AI strategy, immersive virtual spaces, and bold event execution - Let's create the future together.
         </motion.p>
         <motion.button
           initial={{ opacity: 0, scale: 0.9 }}
