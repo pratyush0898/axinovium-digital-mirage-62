@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
 
@@ -8,6 +9,15 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
+  const handleClick = (e: React.MouseEvent) => {
+    // Don't trigger card click if clicking on a link
+    if ((e.target as HTMLElement).tagName === 'A') {
+      e.stopPropagation();
+      return;
+    }
+    onSelect(project);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -15,7 +25,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       className="block h-full"
-      onClick={() => onSelect(project)}
+      onClick={handleClick}
     >
       <motion.div
         className="glass-card overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
@@ -25,12 +35,19 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
           {project.videoId ? (
             <div className="w-full h-full cursor-pointer">
               {project.award && (
-                <img
-                  src={project.award.image}
-                  alt="Award"
-                  className="absolute top-1/2 right-4 w-20 hover:scale-105 transition-transform duration-200 z-50 -translate-y-1/2"
-                  onClick={() => onSelect(project)}
-                />
+                <a
+                  href={project.award.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-1/2 right-4 w-20 z-50 -translate-y-1/2 transition-transform duration-200 hover:scale-125"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <img
+                    src={project.award.image}
+                    alt="Award"
+                    className="w-full h-full"
+                  />
+                </a>
               )}
               <iframe
                 src={`https://www.youtube.com/embed/${project.videoId}`}
@@ -38,7 +55,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
                 className="w-full h-full pointer-events-none"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
-              <div className="absolute inset-0 bg-transparent z-40" onClick={() => onSelect(project)} />
+              <div className="absolute inset-0 bg-transparent z-40" />
             </div>
           ) : (
             <img
@@ -54,12 +71,12 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
         <div className="p-6 flex-grow flex flex-col">
           <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
           <div className="flex flex-col justify-between flex-grow">
-            <div className="text-white text-xl">
+            <div className="text-white text-xl space-y-2">
               {project.visits && (
-                <p className="text-lg text-purple-400 mt-2">Player visits: {project.visits}</p>
+                <p className="text-lg text-purple-400">Player visits: {project.visits}</p>
               )}
               {project.description && (
-                <div className="text-white mt-2">{project.description}</div>
+                <div className="text-white">{project.description}</div>
               )}
             </div>
           </div>
