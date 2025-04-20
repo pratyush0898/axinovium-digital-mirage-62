@@ -1,8 +1,9 @@
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ReactNode } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 interface Project {
   title: string;
@@ -50,15 +51,66 @@ const projects: Project[] = [
 
 export const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // Simulate loading state for demonstration
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleKeyPress = (e: React.KeyboardEvent, project: Project) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleProjectSelect(project);
+    }
+  };
+
+  const handleProjectSelect = (project: Project) => {
+    try {
+      if (project.videoId) {
+        setSelectedProject(project);
+      } else {
+        window.open(project.link, '_blank');
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to open project. Please try again.",
+      });
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <section className="py-12 bg-black/95">
+        <div className="container mx-auto px-4">
+          <div className="animate-pulse space-y-8">
+            <div className="h-12 bg-gray-800 rounded-lg w-1/3 mx-auto"></div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {[1, 2].map((i) => (
+                <div key={i} className="h-[500px] bg-gray-800 rounded-xl"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section id="projects" className="py-20 bg-black/95">
+    <section id="projects" className="py-12 bg-black/95">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
+          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
         >
           Featured Projects
         </motion.h2>
@@ -72,13 +124,11 @@ export const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               className="min-h-[500px] transition-all duration-300 cursor-pointer"
-              onClick={() => {
-                if (project.videoId) {
-                  setSelectedProject(project);
-                } else {
-                  window.open(project.link, '_blank');
-                }
-              }}
+              onClick={() => handleProjectSelect(project)}
+              onKeyDown={(e) => handleKeyPress(e, project)}
+              role="button"
+              tabIndex={0}
+              aria-label={`View project: ${project.title}`}
             >
               <div className="relative h-full">
                 <motion.div
@@ -102,7 +152,7 @@ export const Projects = () => {
                             <img
                               src={project.award.image}
                               alt="Award"
-                              className="absolute top-2 right-2 w-1/4 hover:scale-105 transition-transform duration-200 z-10"
+                              className="absolute top-1/2 right-2 w-1/4 -translate-y-1/2 hover:scale-105 transition-transform duration-200 z-10"
                             />
                           )}
                         </div>
@@ -118,22 +168,18 @@ export const Projects = () => {
                       <div>
                         <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
                         <div className="text-white text-xl">
-                          {project.description === "Chromatic Frequency" ? (
-                            "Featured at the Venice Film Festival 2024, Best of Worlds"
-                          ) : (
-                            project.description
-                          )}
+                          {project.description}
                         </div>
                         {project.longDescription && (
                           <p className="text-lg text-gray-300 mt-2">{project.longDescription}</p>
                         )}
                       </div>
-                      <div className="mt-auto">
+                      <div className="mt-4">
                         {project.visits && (
-                          <p className="text-lg text-purple-400 mt-2">Player visits: {project.visits}</p>
+                          <p className="text-lg text-purple-400">Player visits: {project.visits}</p>
                         )}
                         {project.impressions && (
-                          <p className="text-lg font-bold text-[#0FA0CE] mt-1">
+                          <p className="text-lg font-bold text-[#0FA0CE]">
                             <a 
                               href={project.impressionsLink || "#"}
                               target="_blank" 
@@ -179,7 +225,7 @@ export const Projects = () => {
                     <img
                       src={selectedProject.award.image}
                       alt="Award"
-                      className="absolute top-2 right-2 w-24 hover:scale-105 transition-transform duration-200"
+                      className="absolute top-1/2 right-2 w-24 -translate-y-1/2 hover:scale-105 transition-transform duration-200"
                     />
                   )}
                 </div>

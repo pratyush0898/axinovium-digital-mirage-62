@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
 import { ProjectCard } from './ProjectCard';
@@ -99,18 +99,18 @@ export const ProjectsGallery = () => {
   };
 
   return (
-    <section className="py-20 bg-black" id="our-projects">
+    <section className="py-12 bg-black" id="our-projects">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
+          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
         >
           Our Projects
         </motion.h2>
 
-        <div className="flex justify-center gap-4 mb-12">
+        <div className="flex justify-center gap-4 mb-8">
           {categories.map((category) => (
             <button
               key={category}
