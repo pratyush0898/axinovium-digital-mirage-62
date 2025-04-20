@@ -1,6 +1,19 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+
+// Define the Project type that was missing
+type Project = {
+  id: number;
+  slideshow?: string[];
+  title: string;
+  category: string;
+  visits?: string;
+  description?: React.ReactNode;
+  link: string;
+  videoId?: string;
+};
 
 const images = [
   {

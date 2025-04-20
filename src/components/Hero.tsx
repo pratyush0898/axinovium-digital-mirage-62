@@ -1,5 +1,6 @@
+
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // Particle component for the background
 const Particle = ({ index }: { index: number }) => {
@@ -79,6 +80,19 @@ const CursorRipple = () => {
 
 export const Hero = () => {
   const particles = Array.from({ length: 50 }, (_, i) => i);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Set up YouTube API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+    return () => {
+      // Cleanup if needed
+    };
+  }, []);
 
   return (
     <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
@@ -86,12 +100,27 @@ export const Hero = () => {
       {particles.map((i) => (
         <Particle key={i} index={i} />
       ))}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
+      
+      {/* Background video overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-black/70 z-10"></div>
+        <iframe 
+          className="w-full h-full scale-[1.5] object-cover" 
+          src="https://www.youtube.com/embed/-V_93GThVdU?autoplay=1&mute=1&controls=0&loop=1&playlist=-V_93GThVdU&showinfo=0&rel=0&modestbranding=1" 
+          title="Background Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
+      </div>
+      
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent z-10" />
+      
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="container mx-auto px-4 text-center z-10"
+        className="container mx-auto px-4 text-center z-20"
       >
         <div className="w-32 h-32 mx-auto mb-8 relative">
           <div className="w-full h-full flex items-center justify-center">
