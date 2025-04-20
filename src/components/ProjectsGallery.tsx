@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
-import { ProjectCard } from './ProjectCard';
 import { ProjectDialog } from './ProjectDialog';
+import { ProjectList } from './projects/ProjectList';
+import { CategoryFilter } from './projects/CategoryFilter';
 
 const projects: Project[] = [
   {
@@ -110,32 +111,16 @@ export const ProjectsGallery = () => {
           Our Projects
         </motion.h2>
 
-        <div className="flex justify-center gap-4 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full transition-colors ${
-                activeCategory === category
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        <CategoryFilter
+          categories={categories}
+          activeCategory={activeCategory}
+          onSelectCategory={setActiveCategory}
+        />
         
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onSelect={handleProjectSelect}
-              index={index}
-            />
-          ))}
-        </motion.div>
+        <ProjectList
+          projects={filteredProjects}
+          onSelect={handleProjectSelect}
+        />
       </div>
 
       <ProjectDialog
