@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const images = [
   {
@@ -62,9 +63,39 @@ export const ProjectsGallery = () => {
   const [activeCategory, setActiveCategory] = useState("VRChat Worlds");
   const [slideshowIndices, setSlideshowIndices] = useState<Record<number, number>>({});
   const [slideshowActive, setSlideshowActive] = useState<Record<number, boolean>>({});
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
   const slideshowIntervals = useRef<Record<number, NodeJS.Timeout>>({});
-  
+
+  const getCategoryStyles = (category: string) => {
+    switch (category) {
+      case "VRChat Worlds":
+        return {
+          border: "border-pink-500/30",
+          tag: "bg-pink-500/20 text-pink-200",
+          hover: "hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)]"
+        };
+      case "Free Tools":
+        return {
+          border: "border-blue-500/30",
+          tag: "bg-blue-500/20 text-blue-200",
+          hover: "hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+        };
+      case "Content Creation":
+        return {
+          border: "border-green-500/30",
+          tag: "bg-green-500/20 text-green-200",
+          hover: "hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"
+        };
+      default:
+        return {
+          border: "border-purple-500/30",
+          tag: "bg-purple-500/20 text-purple-200",
+          hover: "hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(147,51,234,0.3)]"
+        };
+    }
+  };
+
   const categories = ["VRChat Worlds", "Free Tools", "Digital Marketplace", "Content Creation"];
 
   const filteredImages = activeCategory === "All" 
@@ -165,58 +196,65 @@ export const ProjectsGallery = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          {filteredImages.map((project) => (
-            <motion.a
-              key={project.id}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block h-full"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-              onMouseEnter={() => {
-                if (project.slideshow && project.slideshow.length > 1) {
-                  startSlideshow(project.id);
-                }
-              }}
-              onMouseLeave={() => {
-                if (project.slideshow) {
-                  stopSlideshow(project.id);
-                }
-              }}
-            >
-              <div className="glass-card hover-glow overflow-hidden h-full flex flex-col shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]">
-                <div className="relative aspect-video">
-                  <img
-                    src={project.slideshow ? 
-                      (slideshowActive[project.id] ? 
-                        project.slideshow[slideshowIndices[project.id] || 0] : 
-                        project.slideshow[0]
-                      ) : 
-                      project.slideshow?.[0]}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4 flex-grow flex flex-col min-h-[200px]">
-                  <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                  <div className="flex flex-col justify-between flex-grow">
-                    <div>
-                      {project.visits && (
-                        <p className="text-sm text-purple-400">Player visits: {project.visits}</p>
-                      )}
-                      {project.description && (
-                        <div className="text-sm text-gray-300 mt-2">{project.description}</div>
-                      )}
+          {filteredImages.map((project) => {
+            const categoryStyles = getCategoryStyles(project.category);
+            
+            return (
+              <motion.a
+                key={project.id}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                onMouseEnter={() => {
+                  if (project.slideshow && project.slideshow.length > 1) {
+                    startSlideshow(project.id);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (project.slideshow) {
+                    stopSlideshow(project.id);
+                  }
+                }}
+              >
+                <div className={`glass-card overflow-hidden h-full flex flex-col shadow-[0_0_15px_rgba(139,92,246,0.2)] ${categoryStyles.hover} ${categoryStyles.border} transition-all duration-300`}>
+                  <div className="relative aspect-video">
+                    <img
+                      src={project.slideshow ? 
+                        (slideshowActive[project.id] ? 
+                          project.slideshow[slideshowIndices[project.id] || 0] : 
+                          project.slideshow[0]
+                        ) : 
+                        project.slideshow?.[0]}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-opacity duration-300"
+                    />
+                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${categoryStyles.tag}`}>
+                      {project.category}
+                    </div>
+                  </div>
+                  <div className="p-6 flex-grow flex flex-col min-h-[200px]">
+                    <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                    <div className="flex flex-col justify-between flex-grow">
+                      <div className="text-white text-base">
+                        {project.visits && (
+                          <p className="text-sm text-purple-400 mt-2">Player visits: {project.visits}</p>
+                        )}
+                        {project.description && (
+                          <div className="text-white mt-2">{project.description}</div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.a>
-          ))}
+              </motion.a>
+            );
+          })}
           
           {filteredImages.length === 0 && activeCategory !== "VRChat Worlds" && (
             <div className="col-span-3 text-center py-10">
@@ -225,6 +263,33 @@ export const ProjectsGallery = () => {
           )}
         </motion.div>
       </div>
+
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+        <DialogContent className="max-w-[90vw] w-[1200px] bg-black/95 border-gray-800">
+          {selectedProject && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="w-full"
+            >
+              <div className="relative">
+                <h2 className="text-2xl font-bold text-white mb-4">{selectedProject.title}</h2>
+                {selectedProject.videoId && (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${selectedProject.videoId}?autoplay=1`}
+                    title={selectedProject.title}
+                    className="w-full aspect-video rounded-lg"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )}
+              </div>
+            </motion.div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
