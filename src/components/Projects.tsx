@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -58,7 +57,7 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-5xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed shadow-[0_0_10px_rgba(255,0,255,0.4)]"
+          className="text-6xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed shadow-[0_0_20px_rgba(255,0,255,0.4)]"
         >
           Featured Projects
         </motion.h2>
@@ -71,29 +70,32 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="h-[500px] transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
-              onClick={() => window.open(project.link, '_blank')}
+              className="min-h-[500px] transition-all duration-300"
+              onClick={(e) => {
+                if (project.videoId) {
+                  e.preventDefault();
+                  setSelectedProject(project);
+                } else {
+                  window.open(project.link, '_blank');
+                }
+              }}
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-1 h-full"
+                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 h-full hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
                   <div className="relative bg-gray-900 p-6 rounded-lg h-full flex flex-col">
-                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[200px]">
+                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[300px]">
                       {project.videoId ? (
-                        <div className="relative h-full">
+                        <div className="relative h-full cursor-pointer">
                           <iframe
                             src={`https://www.youtube.com/embed/${project.videoId}`}
                             title={project.title}
                             className="w-full h-full"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setSelectedProject(project);
-                            }}
                           />
                           {project.award && (
                             <a 
@@ -121,18 +123,18 @@ export const Projects = () => {
                     </div>
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
-                        <h3 className="text-2xl font-semibold text-white mb-2">{project.title}</h3>
-                        <div className="text-white text-lg">{project.description}</div>
+                        <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
+                        <div className="text-white text-xl">{project.description}</div>
                         {project.longDescription && (
-                          <p className="text-base text-gray-300 mt-2">{project.longDescription}</p>
+                          <p className="text-lg text-gray-300 mt-2">{project.longDescription}</p>
                         )}
                       </div>
                       <div className="mt-auto">
                         {project.visits && (
-                          <p className="text-base text-purple-400 mt-2">Player visits: {project.visits}</p>
+                          <p className="text-lg text-purple-400 mt-2">Player visits: {project.visits}</p>
                         )}
                         {project.impressions && (
-                          <p className="text-base font-bold text-[#0FA0CE] mt-1">
+                          <p className="text-lg font-bold text-[#0FA0CE] mt-1">
                             <a 
                               href={project.impressionsLink || "#"}
                               target="_blank" 
@@ -165,6 +167,7 @@ export const Projects = () => {
               className="w-full"
             >
               <div className="relative">
+                <h2 className="text-3xl font-bold text-white mb-4">{selectedProject.title}</h2>
                 <iframe
                   src={`https://www.youtube.com/embed/${selectedProject.videoId}?autoplay=1`}
                   title={selectedProject.title}
@@ -172,20 +175,6 @@ export const Projects = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
-                {selectedProject.award && (
-                  <a 
-                    href={selectedProject.award.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute bottom-16 right-4 w-1/5 hover:scale-105 transition-transform duration-200"
-                  >
-                    <img
-                      src={selectedProject.award.image}
-                      alt="Award"
-                      className="w-full h-auto"
-                    />
-                  </a>
-                )}
               </div>
             </motion.div>
           )}

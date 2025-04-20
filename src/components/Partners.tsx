@@ -25,7 +25,7 @@ export const Partners = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-5xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text shadow-[0_0_10px_rgba(255,0,255,0.4)]"
+          className="text-6xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text shadow-[0_0_20px_rgba(255,0,255,0.4)]"
         >
           Partners
         </motion.h2>

@@ -20,13 +20,13 @@ export const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="md:w-1/2 text-center md:text-left mb-10 md:mb-0 md:pr-10"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text shadow-[0_0_10px_rgba(255,0,255,0.4)]">
+            <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text shadow-[0_0_20px_rgba(255,0,255,0.4)]">
               About Axinovium.AI
             </h2>
-            <p className="text-gray-300 text-lg leading-relaxed mb-4">
+            <p className="text-gray-300 text-xl leading-relaxed mb-4">
               We are an experimental think-tank operating from within virtual reality—united as a global team of futurists, developers, artists, philosophers, and creatives.
             </p>
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-gray-300 text-xl leading-relaxed">
               Together, we design and execute visionary projects that harness the full potential of AI to construct entirely new realities.
             </p>
           </motion.div>
