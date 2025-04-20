@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -184,25 +185,5 @@ export const Projects = () => {
   );
 };
 
-const ProjectVideoCard = ({ project }: { project: Project }) => {
-  return (
-    <div className="relative h-[500px] w-full cursor-pointer" onClick={() => setSelectedProject(project)}>
-      <iframe
-        src={`https://www.youtube.com/embed/${project.videoId}`}
-        title={project.title}
-        className="w-full h-full pointer-events-none"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      />
-      {project.award && (
-        <div className="absolute top-4 right-4 w-1/4 z-10">
-          <img
-            src={project.award.image}
-            alt="Award"
-            className="w-full h-auto"
-          />
-        </div>
-      )}
-      <div className="absolute inset-0 bg-transparent z-20" />
-    </div>
-  );
-};
+// Removing the ProjectVideoCard component since it was causing the error with setSelectedProject
+// and doesn't appear to be used anywhere in the code

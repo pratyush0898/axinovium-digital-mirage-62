@@ -90,7 +90,7 @@ const images = [
     title: "High Orbit",
     category: "VRChat Worlds",
     description: <>A cozy bedroom on a satellite in high orbit․ Puzzle world requiring 4 people to finish.<br/>🏆Featured by VRChat for Space Jam 2024</>,
-    link: "https://vrchat.com/home/launch?worldId=wrld_0bd6cc56-3e37-4530-a43c-8c7e6645bd1e"
+    link: "https://vrchat.com/home/launch?worldId=wrld_0bd6cc56-3e37-4530-a43c-8c7e6647bd1e"
   }
 ];
 
