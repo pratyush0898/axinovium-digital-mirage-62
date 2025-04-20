@@ -2,10 +2,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ReactNode } from "react";
 
 interface Project {
   title: string;
-  description: string;
+  description: ReactNode;
   videoId?: string;
   image?: string;
   link: string;
