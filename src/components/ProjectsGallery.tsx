@@ -1,23 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Project } from '@/types/project';
+import { ProjectCard } from './ProjectCard';
+import { ProjectDialog } from './ProjectDialog';
 
-type Project = {
-  id: number;
-  slideshow?: string[];
-  title: string;
-  category: string;
-  visits?: string;
-  description?: React.ReactNode;
-  link: string;
-  videoId?: string;
-  award?: {
-    link: string;
-    image: string;
-  };
-};
-
-const images = [
+const projects: Project[] = [
   {
     id: 1,
     slideshow: [
@@ -96,97 +83,20 @@ const images = [
 
 export const ProjectsGallery = () => {
   const [activeCategory, setActiveCategory] = useState("VRChat Worlds");
-  const [slideshowIndices, setSlideshowIndices] = useState<Record<number, number>>({});
-  const [slideshowActive, setSlideshowActive] = useState<Record<number, boolean>>({});
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  
-  const slideshowIntervals = useRef<Record<number, NodeJS.Timeout>>({});
-
-  const getCategoryStyles = (category: string) => {
-    switch (category) {
-      case "VRChat Worlds":
-        return {
-          tag: "bg-pink-500/20 text-pink-200",
-        };
-      case "Free Tools":
-        return {
-          tag: "bg-blue-500/20 text-blue-200",
-        };
-      case "Content Creation":
-        return {
-          tag: "bg-green-500/20 text-green-200",
-        };
-      default:
-        return {
-          tag: "bg-purple-500/20 text-purple-200",
-        };
-    }
-  };
-
   const categories = ["VRChat Worlds", "Free Tools", "Content Creation"];
 
-  const filteredImages = activeCategory === "All" 
-    ? images 
-    : images.filter(img => img.category === activeCategory);
+  const filteredProjects = activeCategory === "All" 
+    ? projects 
+    : projects.filter(project => project.category === activeCategory);
 
-  const startSlideshow = (imageId: number) => {
-    if (slideshowIntervals.current[imageId]) {
-      clearInterval(slideshowIntervals.current[imageId]);
+  const handleProjectSelect = (project: Project) => {
+    if (project.videoId) {
+      setSelectedProject(project);
+    } else {
+      window.open(project.link, '_blank');
     }
-    
-    const image = images.find(img => img.id === imageId);
-    if (!image?.slideshow || image.slideshow.length <= 1) return;
-    
-    setSlideshowActive(prev => ({
-      ...prev,
-      [imageId]: true
-    }));
-    
-    setSlideshowIndices(prev => ({
-      ...prev,
-      [imageId]: 0
-    }));
-    
-    slideshowIntervals.current[imageId] = setInterval(() => {
-      setSlideshowIndices(prev => {
-        const currentIndex = prev[imageId] || 0;
-        const nextIndex = (currentIndex + 1) % image.slideshow!.length;
-        return { ...prev, [imageId]: nextIndex };
-      });
-    }, 1000);
   };
-
-  const stopSlideshow = (imageId: number) => {
-    if (slideshowIntervals.current[imageId]) {
-      clearInterval(slideshowIntervals.current[imageId]);
-      delete slideshowIntervals.current[imageId];
-    }
-    
-    setSlideshowActive(prev => ({
-      ...prev,
-      [imageId]: false
-    }));
-    
-    setSlideshowIndices(prev => ({
-      ...prev,
-      [imageId]: 0
-    }));
-  };
-
-  useEffect(() => {
-    Object.values(slideshowIntervals.current).forEach(interval => {
-      clearInterval(interval);
-    });
-    
-    setSlideshowIndices({});
-    setSlideshowActive({});
-    
-    return () => {
-      Object.values(slideshowIntervals.current).forEach(interval => {
-        clearInterval(interval);
-      });
-    };
-  }, [activeCategory]);
 
   return (
     <section className="py-20 bg-black" id="our-projects">
@@ -217,130 +127,21 @@ export const ProjectsGallery = () => {
         </div>
         
         <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredImages.map((project) => {
-            const categoryStyles = getCategoryStyles(project.category);
-            
-            return (
-              <motion.div
-                key={project.id}
-                className="block h-full"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => {
-                  if (project.videoId) {
-                    setSelectedProject(project);
-                  } else {
-                    window.open(project.link, '_blank');
-                  }
-                }}
-                onMouseEnter={() => {
-                  if (project.slideshow && project.slideshow.length > 1) {
-                    startSlideshow(project.id);
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (project.slideshow) {
-                    stopSlideshow(project.id);
-                  }
-                }}
-              >
-                <div className="glass-card overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]">
-                  <div className="relative aspect-video">
-                    {project.videoId ? (
-                      <div className="w-full h-full cursor-pointer" onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setSelectedProject(project);
-                      }}>
-                        <iframe
-                          src={`https://www.youtube.com/embed/${project.videoId}`}
-                          title={project.title}
-                          className="w-full h-full pointer-events-none"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        />
-                        <div className="absolute inset-0 bg-transparent z-20" />
-                      </div>
-                    ) : (
-                      <img
-                        src={project.slideshow ? 
-                          (slideshowActive[project.id] ? 
-                            project.slideshow[slideshowIndices[project.id] || 0] : 
-                            project.slideshow[0]
-                          ) : 
-                          project.slideshow?.[0]}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-opacity duration-300"
-                      />
-                    )}
-                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${categoryStyles.tag}`}>
-                      {project.category}
-                    </div>
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
-                    <div className="flex flex-col justify-between flex-grow">
-                      <div className="text-white text-xl">
-                        {project.visits && (
-                          <p className="text-lg text-purple-400 mt-2">Player visits: {project.visits}</p>
-                        )}
-                        {project.description && (
-                          <div className="text-white mt-2">{project.description}</div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+          {filteredProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onSelect={handleProjectSelect}
+              index={index}
+            />
+          ))}
         </motion.div>
       </div>
 
-      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-[90vw] w-[1200px] bg-black/95 border-gray-800">
-          {selectedProject && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className="w-full"
-            >
-              <div className="relative">
-                <h2 className="text-3xl font-bold text-white mb-4">{selectedProject.title}</h2>
-                <div className="relative">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${selectedProject.videoId}?autoplay=1`}
-                    title={selectedProject.title}
-                    className="w-full aspect-video rounded-lg"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                  {selectedProject.award && (
-                    <div className="absolute top-4 right-4 w-24">
-                      <a 
-                        href={selectedProject.award.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <img
-                          src={selectedProject.award.image}
-                          alt="Award"
-                          className="w-full h-auto"
-                        />
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <ProjectDialog
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 };
