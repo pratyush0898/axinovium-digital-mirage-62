@@ -10,8 +10,11 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
   const handleClick = (e: React.MouseEvent) => {
-    // Don't trigger card click if clicking on a link
-    if ((e.target as HTMLElement).tagName === 'A') {
+    // Don't trigger card click if clicking on a link or any of its children
+    const target = e.target as HTMLElement;
+    const isLink = target.tagName === 'A' || target.closest('a');
+    
+    if (isLink) {
       e.stopPropagation();
       return;
     }
@@ -76,7 +79,10 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
                 <p className="text-lg text-purple-400">Player visits: {project.visits}</p>
               )}
               {project.description && (
-                <div className="text-white">{project.description}</div>
+                <div className="text-white">
+                  {/* Ensure all links inside the description have proper attributes for middle-clicking */}
+                  {typeof project.description === 'object' ? project.description : project.description}
+                </div>
               )}
             </div>
           </div>
