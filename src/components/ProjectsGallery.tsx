@@ -2,10 +2,18 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
-  { id: 1, src: "photo-1518770660439-4636190af475", title: "AI Generated Landscape", category: "VRChat Worlds" },
-  { id: 2, src: "photo-1526374965328-7f61d4dc18c5", title: "Digital Abstract", category: "Free Tools" },
-  { id: 3, src: "photo-1470813740244-df37b8c1edcb", title: "Neural Network Art", category: "Digital Marketplace" },
-  { id: 4, src: "photo-1487058792275-0ad4aaf24ca7", title: "Virtual Reality Space", category: "Youtube Videos" },
+  {
+    id: 1,
+    src: "/lovable-uploads/3fc501d4-453c-48bc-a4dc-47ccc1cda170.png",
+    title: "The Old Cemetery",
+    category: "VRChat Worlds",
+    visits: "62,071",
+    link: "https://vrchat.com/home/launch?worldId=wrld_7482338d-40b9-4c8d-92fb-bc1623e7122f"
+  },
+  { id: 2, src: "photo-1518770660439-4636190af475", title: "AI Generated Landscape", category: "VRChat Worlds" },
+  { id: 3, src: "photo-1526374965328-7f61d4dc18c5", title: "Digital Abstract", category: "Free Tools" },
+  { id: 4, src: "photo-1470813740244-df37b8c1edcb", title: "Neural Network Art", category: "Digital Marketplace" },
+  { id: 5, src: "photo-1487058792275-0ad4aaf24ca7", title: "Virtual Reality Space", category: "Youtube Videos" },
 ];
 
 export const ProjectsGallery = () => {
@@ -25,7 +33,7 @@ export const ProjectsGallery = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
+          className="text-4xl font-bold text-center mb-12 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
         >
           Projects
         </motion.h2>
@@ -60,33 +68,35 @@ export const ProjectsGallery = () => {
           viewport={{ once: true }}
         >
           {filteredImages.map((image, index) => (
-            <motion.div
+            <motion.a
               key={image.id}
+              href={image.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
               className="cursor-pointer relative group"
-              onClick={() => setSelectedImage(image.id)}
             >
               <div className="aspect-square rounded-lg overflow-hidden bg-gray-900 p-1">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg z-10" />
-                <motion.img
-                  src={`https://source.unsplash.com/${image.src}`}
+                <img
+                  src={image.src}
                   alt={image.title}
                   className="w-full h-full object-cover rounded-md"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
                 />
                 <div className="absolute inset-0 flex items-end justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                  <div className="bg-black/70 backdrop-blur-sm p-2 rounded-md">
+                  <div className="bg-black/70 backdrop-blur-sm p-2 rounded-md w-full">
                     <h3 className="text-sm font-medium text-white">{image.title}</h3>
-                    <p className="text-xs text-gray-300">{image.category}</p>
+                    {image.visits && (
+                      <p className="text-xs text-gray-300">Player visits: {image.visits}</p>
+                    )}
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
 

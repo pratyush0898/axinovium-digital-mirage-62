@@ -11,7 +11,7 @@ const partners = [
   {
     name: "Meshy AI",
     description: "A revolutionary platform for AI-generated 3D assets and creative tools for digital artists.",
-    image: "/lovable-uploads/e3c42ec4-7a9d-43e4-9d10-14fdbf7dd3c4.png"
+    image: "/lovable-uploads/fed1fc4b-34d3-404e-8cbf-93ad713a5a50.png"
   }
 ];
 

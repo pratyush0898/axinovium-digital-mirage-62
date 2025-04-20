@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -43,13 +42,13 @@ export const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section className="py-12 bg-black/95">
+    <section className="py-20 bg-black/95">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
+          className="text-4xl font-bold text-center mb-12 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
         >
           Featured Projects
         </motion.h2>
@@ -62,53 +61,41 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="group cursor-pointer h-full"
-              onClick={() => setSelectedProject(project)}
+              className="group h-[400px]"
             >
               <div className="relative h-full">
                 <motion.div 
                   className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-1 h-full"
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)"
-                  }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 20
-                  }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
                   <div className="relative bg-gray-900 p-6 rounded-lg h-full">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4">
-                      {project.videoId && (
-                        <div className="relative w-full h-full">
-                          <div 
-                            className="absolute inset-0 z-10 cursor-pointer"
-                            onClick={() => setSelectedProject(project)}
+                      <div 
+                        className="absolute inset-0 z-10 cursor-pointer"
+                        onClick={() => setSelectedProject(project)}
+                      />
+                      <iframe
+                        src={`https://www.youtube.com/embed/${project.videoId}`}
+                        title={project.title}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                      {project.award && (
+                        <a 
+                          href={project.award.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute bottom-8 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <img
+                            src={project.award.image}
+                            alt="Venice Biennale Award"
+                            className="w-full h-auto"
                           />
-                          <iframe
-                            src={`https://www.youtube.com/embed/${project.videoId}`}
-                            title={project.title}
-                            className="w-full h-full"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                          {project.award && (
-                            <a 
-                              href={project.award.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="absolute top-4 right-4 w-1/4 hover:scale-105 transition-transform duration-200"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <img
-                                src={project.award.image}
-                                alt="Venice Biennale Award"
-                                className="w-full h-auto"
-                              />
-                            </a>
-                          )}
-                        </div>
+                        </a>
                       )}
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
@@ -147,7 +134,7 @@ export const Projects = () => {
                     href={selectedProject.award.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-4 right-4 w-1/5 hover:scale-105 transition-transform duration-200"
+                    className="absolute bottom-12 right-4 w-1/5 hover:scale-105 transition-transform duration-200"
                   >
                     <img
                       src={selectedProject.award.image}
