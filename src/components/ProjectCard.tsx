@@ -79,7 +79,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
                 <p className="text-lg text-purple-400">Player visits: {project.visits}</p>
               )}
               {project.description && (
-                <div className="text-white">
+                <div className="text-white" onClick={(e) => e.stopPropagation()}>
                   {/* Ensure all links inside the description have proper attributes for middle-clicking */}
                   {typeof project.description === 'object' ? project.description : project.description}
                 </div>
