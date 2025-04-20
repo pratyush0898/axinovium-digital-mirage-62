@@ -2,8 +2,8 @@
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
+import { ProjectsGallery } from "@/components/ProjectsGallery";
 import { Partners } from "@/components/Partners";
-import { Gallery } from "@/components/Gallery";
 import { Footer } from "@/components/Footer";
 import { CursorEffect } from "@/components/CursorEffect";
 
@@ -14,8 +14,8 @@ const Index = () => {
       <Hero />
       <About />
       <Projects />
+      <ProjectsGallery />
       <Partners />
-      <Gallery />
       <Footer />
     </div>
   );

@@ -30,7 +30,7 @@ export const Partners = () => {
         </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {partners.map((partner, index) => (
+          {partners.map((partner) => (
             <motion.a
               key={partner.name}
               href={partner.link}
@@ -39,27 +39,16 @@ export const Partners = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
               className="glass-card p-6 hover-glow"
             >
               <div className="flex flex-col md:flex-row items-center gap-6">
-                <motion.div 
-                  className="w-24 h-24 relative flex-shrink-0 mb-4 md:mb-0"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                >
-                  <motion.img
+                <div className="w-24 h-24 relative flex-shrink-0 mb-4 md:mb-0">
+                  <img
                     src={partner.image}
                     alt={partner.name}
                     className="w-full h-full object-contain"
-                    initial={{ filter: "brightness(0.8)" }}
-                    whileHover={{ filter: "brightness(1.2)" }}
                   />
-                  <motion.div 
-                    className="absolute inset-0 rounded-full border-2 border-purple-500/50"
-                    animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                </motion.div>
+                </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-2 text-white">{partner.name}</h3>
                   <p className="text-gray-300">{partner.description}</p>
