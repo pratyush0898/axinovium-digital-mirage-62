@@ -1,5 +1,5 @@
 
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -16,6 +16,7 @@ export const ProjectDialog = ({ project, onClose }: ProjectDialogProps) => {
     <Dialog open={!!project} onOpenChange={onClose}>
       <DialogContent className="max-w-[90vw] w-[1200px] bg-black/95 border-gray-800">
         <DialogTitle className="sr-only">{project.title}</DialogTitle>
+        <DialogDescription className="sr-only">Details about {project.title} project</DialogDescription>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -39,7 +40,6 @@ export const ProjectDialog = ({ project, onClose }: ProjectDialogProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block absolute top-1/2 right-4 w-48 -translate-y-1/2 z-50"
-                  onClick={(e) => e.stopPropagation()}
                 >
                   <img
                     src={project.award.image}

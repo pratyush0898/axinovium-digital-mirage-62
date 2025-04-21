@@ -58,7 +58,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
                 className="w-full h-full pointer-events-none"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
-              <div className="absolute inset-0 bg-transparent z-40" />
+              <div className="absolute inset-0 bg-transparent z-10" />
             </div>
           ) : (
             <img

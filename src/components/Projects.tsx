@@ -132,15 +132,15 @@ export const Projects = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 h-full hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+                  className="relative overflow-hidden rounded-xl bg-gradient-to-t from-blue-500/10 via-purple-500/20 to-purple-700/10 h-full hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  <div className="relative bg-gray-900 p-6 rounded-lg h-full flex flex-col">
+                  <div className="relative bg-black/50 backdrop-blur-sm p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[300px]">
                       {project.videoId ? (
                         <div className="relative h-full">
-                          <div className="absolute inset-0 z-10" />
+                          <div className="absolute inset-0 z-10 pointer-events-none" />
                           <iframe
                             src={`https://www.youtube.com/embed/${project.videoId}`}
                             title={project.title}
@@ -149,11 +149,19 @@ export const Projects = () => {
                             allowFullScreen
                           />
                           {project.award && (
-                            <img
-                              src={project.award.image}
-                              alt="Award"
-                              className="absolute top-1/2 right-2 w-1/4 -translate-y-1/2 hover:scale-105 transition-transform duration-200 z-10"
-                            />
+                            <a 
+                              href={project.award.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="absolute top-1/2 right-2 w-1/4 -translate-y-1/2 hover:scale-105 transition-transform duration-200 z-20"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <img
+                                src={project.award.image}
+                                alt="Award"
+                                className="w-full h-auto"
+                              />
+                            </a>
                           )}
                         </div>
                       ) : (
@@ -167,7 +175,7 @@ export const Projects = () => {
                     <div className="flex-grow flex flex-col justify-between">
                       <div>
                         <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
-                        <div className="text-white text-xl">
+                        <div className="text-white text-xl" onClick={(e) => e.stopPropagation()}>
                           {project.description}
                         </div>
                         {project.longDescription && (
@@ -222,11 +230,19 @@ export const Projects = () => {
                     allowFullScreen
                   />
                   {selectedProject.award && (
-                    <img
-                      src={selectedProject.award.image}
-                      alt="Award"
-                      className="absolute top-1/2 right-2 w-24 -translate-y-1/2 hover:scale-105 transition-transform duration-200"
-                    />
+                    <a
+                      href={selectedProject.award.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-1/2 right-2 w-24 -translate-y-1/2 hover:scale-105 transition-transform duration-200 z-20"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <img
+                        src={selectedProject.award.image}
+                        alt="Award"
+                        className="w-full h-auto"
+                      />
+                    </a>
                   )}
                 </div>
               </div>
