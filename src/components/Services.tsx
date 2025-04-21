@@ -81,7 +81,7 @@ export const Services = () => {
               alt="Venice Award"
               className="w-12 h-12 object-contain"
             />
-            <span className="text-white font-semibold">Award winning worlds</span>
+            <span className="text-white font-semibold">Award winning creativity</span>
           </motion.div>
 
           <motion.div
