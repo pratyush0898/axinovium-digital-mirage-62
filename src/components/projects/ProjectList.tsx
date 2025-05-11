@@ -17,6 +17,7 @@ export const ProjectList = ({ projects, onSelect }: ProjectListProps) => {
           project={project}
           onSelect={onSelect}
           index={index}
+          animate={true} // Add animate prop to enable hue shift on borders
         />
       ))}
     </motion.div>

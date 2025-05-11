@@ -118,7 +118,7 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
+          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 via-blue-500 via-green-400 to-yellow-300 text-transparent bg-clip-text leading-relaxed"
           animate={{
             filter: [
               'hue-rotate(0deg)',
@@ -157,6 +157,27 @@ export const Projects = () => {
                   className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  animate={{
+                    boxShadow: [
+                      '0 0 10px rgba(139, 92, 246, 0.6)',
+                      '0 0 10px rgba(59, 130, 246, 0.6)',
+                      '0 0 10px rgba(236, 72, 153, 0.6)',
+                      '0 0 10px rgba(16, 185, 129, 0.6)',
+                      '0 0 10px rgba(139, 92, 246, 0.6)',
+                    ],
+                    borderColor: [
+                      'rgba(139, 92, 246, 0.6)',
+                      'rgba(59, 130, 246, 0.6)',
+                      'rgba(236, 72, 153, 0.6)',
+                      'rgba(16, 185, 129, 0.6)',
+                      'rgba(139, 92, 246, 0.6)',
+                    ]
+                  }}
+                  transition={{
+                    duration: 6.67,
+                    ease: "linear",
+                    repeat: Infinity,
+                  }}
                 >
                   <div className="relative p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]">

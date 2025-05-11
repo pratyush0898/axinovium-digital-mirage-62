@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -89,7 +90,7 @@ export const ContactForm = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
+          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 via-blue-500 via-green-400 to-yellow-300 text-transparent bg-clip-text leading-relaxed"
           animate={{
             filter: [
               'hue-rotate(0deg)',
@@ -115,7 +116,30 @@ export const ContactForm = () => {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <div className="bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] rounded-lg p-8 shadow-lg border border-gray-700">
+          <motion.div 
+            className="bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] rounded-lg p-8 shadow-lg border border-gray-700"
+            animate={{
+              boxShadow: [
+                '0 0 10px rgba(139, 92, 246, 0.3)',
+                '0 0 10px rgba(59, 130, 246, 0.3)',
+                '0 0 10px rgba(236, 72, 153, 0.3)',
+                '0 0 10px rgba(16, 185, 129, 0.3)',
+                '0 0 10px rgba(139, 92, 246, 0.3)',
+              ],
+              borderColor: [
+                'rgba(139, 92, 246, 0.3)',
+                'rgba(59, 130, 246, 0.3)',
+                'rgba(236, 72, 153, 0.3)',
+                'rgba(16, 185, 129, 0.3)',
+                'rgba(139, 92, 246, 0.3)',
+              ]
+            }}
+            transition={{
+              duration: 6.67,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+          >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -194,7 +218,7 @@ export const ContactForm = () => {
                 </Button>
               </form>
             </Form>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
