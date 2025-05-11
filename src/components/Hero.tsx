@@ -94,7 +94,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
+    <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-transparent">
       <CursorRipple />
       {particles.map((i) => (
         <Particle key={i} index={i} />
