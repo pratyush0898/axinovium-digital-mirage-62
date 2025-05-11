@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -122,19 +121,15 @@ export const Hero = () => {
         transition={{ duration: 0.8 }}
         className="container mx-auto px-4 text-center z-20"
       >
-        <div className="w-32 h-32 mx-auto mb-8 relative">
+        {/* Logo container - increased size by 400% */}
+        <div className="w-96 h-96 mx-auto mb-8 relative">
           <div className="w-full h-full flex items-center justify-center">
-            <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-24 h-24" />
+            <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-96 h-96" />
           </div>
         </div>
-        <motion.h1 
-          className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Axinovium
-        </motion.h1>
+        
+        {/* Removed the Axinovium text header */}
+        
         <motion.p 
           className="text-xl md:text-2xl text-gray-300 mb-8 px-4"
           initial={{ opacity: 0 }}

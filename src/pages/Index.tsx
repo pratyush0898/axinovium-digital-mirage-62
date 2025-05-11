@@ -13,9 +13,9 @@ const Index = () => {
     <div className="min-h-screen bg-black relative">
       {/* Circuit board background image */}
       <div 
-        className="fixed inset-0 z-0 pointer-events-none opacity-40" 
+        className="fixed inset-0 z-0 pointer-events-none opacity-80" 
         style={{ 
-          backgroundImage: `url(${'/lovable-uploads/cc74be45-3ebc-4d4b-98b7-0f026ccac412.png'})`,
+          backgroundImage: `url(${'/lovable-uploads/8f00f588-d80d-42ea-97dc-08a6621c9947.png'})`,
           backgroundSize: '400px',
           backgroundRepeat: 'repeat',
         }}
