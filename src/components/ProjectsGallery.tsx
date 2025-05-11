@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
@@ -79,6 +80,23 @@ const projects: Project[] = [
     category: "VRChat Worlds",
     description: <>A cozy bedroom on a satellite in high orbit․ Puzzle world requiring 4 people to finish.<br/>🏆Featured by VRChat for Space Jam 2024</>,
     link: "https://vrchat.com/home/launch?worldId=wrld_0bd6cc56-3e37-4530-a43c-8c7e6647bd1e"
+  },
+  // Adding new Content Creation projects
+  {
+    id: 7,
+    title: "Meshy Fanhub VRChat World Showcase Commission",
+    category: "Content Creation",
+    description: "A video showcase of the Meshy Fanhub",
+    videoId: "-V_93GThVdU",
+    link: "https://www.youtube.com/watch?v=-V_93GThVdU"
+  },
+  {
+    id: 8,
+    title: "Meshy AI For VRChat Avatar Creation TUTORIAL",
+    category: "Content Creation",
+    description: "A full tutorial for how to turn Meshy characters into VRChat Avatars",
+    videoId: "VoUWYyVmcoQ",
+    link: "https://www.youtube.com/watch?v=VoUWYyVmcoQ"
   }
 ];
 

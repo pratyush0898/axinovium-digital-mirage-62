@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
+import { Film } from "lucide-react";
 
 interface ProjectCardProps {
   project: Project;
@@ -60,12 +61,16 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
               />
               <div className="absolute inset-0 bg-transparent z-10" />
             </div>
-          ) : (
+          ) : project.slideshow ? (
             <img
-              src={project.slideshow?.[0]}
+              src={project.slideshow[0]}
               alt={project.title}
               className="w-full h-full object-cover"
             />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-purple-900/20">
+              <Film className="text-purple-300" size={48} />
+            </div>
           )}
           <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${getCategoryStyles(project.category).tag}`}>
             {project.category}
@@ -80,7 +85,6 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
               )}
               {project.description && (
                 <div className="text-white" onClick={(e) => e.stopPropagation()}>
-                  {/* Ensure all links inside the description have proper attributes for middle-clicking */}
                   {typeof project.description === 'object' ? project.description : project.description}
                 </div>
               )}
