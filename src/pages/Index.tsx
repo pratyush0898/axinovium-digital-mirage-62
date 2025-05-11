@@ -15,14 +15,13 @@ const Index = () => {
       {/* Matrix cursor effect behind everything */}
       <CursorEffect />
       
-      {/* Content container with proper z-index and background for components */}
+      {/* Content container with proper z-index */}
       <div className="relative z-10">
         <Hero />
         <div className="relative z-10">
           <About />
           <Services />
           <Projects />
-          {/* Add relative positioning and background to ensure content blocks don't show matrix through */}
           <div className="relative bg-black">
             <ProjectsGallery />
           </div>

@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -122,15 +123,15 @@ export const Hero = () => {
         transition={{ duration: 0.8 }}
         className="container mx-auto px-4 text-center z-20"
       >
-        {/* Logo container with background to ensure matrix doesn't show through */}
-        <div className="w-96 h-96 mx-auto mb-8 relative bg-black/50 rounded-full backdrop-blur-sm">
+        {/* Logo container - removed bg-black/50 and backdrop-blur-sm */}
+        <div className="w-96 h-96 mx-auto mb-8 relative">
           <div className="w-full h-full flex items-center justify-center">
             <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-96 h-96" />
           </div>
         </div>
         
         <motion.p 
-          className="text-xl md:text-2xl text-gray-300 mb-8 px-4 bg-black/50 inline-block rounded-lg py-2"
+          className="text-xl md:text-2xl text-gray-300 mb-8 px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}

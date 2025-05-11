@@ -31,7 +31,7 @@ export const CursorEffect = () => {
           const opacity = 0.01; // Nearly invisible by default
           const left = j * cellSize;
           const top = i * cellSize;
-          matrixHTML += `<div class="matrix-char absolute text-lg" style="left: ${left}px; top: ${top}px; opacity: ${opacity}; color: #D946EF;">${char}</div>`;
+          matrixHTML += `<div class="matrix-char absolute text-2xl" style="left: ${left}px; top: ${top}px; opacity: ${opacity}; color: #D946EF;">${char}</div>`;
         }
       }
       
@@ -90,7 +90,7 @@ export const CursorEffect = () => {
       const viewportBottom = window.scrollY + window.innerHeight + viewportMargin;
       
       // Process all characters at once with a larger radius
-      const highlightRadius = 200; // Doubled highlight radius
+      const highlightRadius = 300; // Larger highlight radius for broader effect
       
       // Reset all characters to nearly invisible first
       matrixCharsRef.current.forEach(char => {
@@ -137,7 +137,7 @@ export const CursorEffect = () => {
                 char.style.opacity = '0.01';
                 char.style.textShadow = 'none';
               }
-            }, 300); // Reduce fade time to 300ms
+            }, 200); // Reduce fade time to 200ms for faster disappearance
           }
         }
       });
@@ -209,17 +209,17 @@ export const CursorEffect = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-full h-full pointer-events-none"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
       {/* Matrix background characters */}
-      <div ref={matrixRef} className="absolute inset-0 overflow-hidden z-0"></div>
+      <div ref={matrixRef} className="absolute inset-0 overflow-hidden"></div>
       
       {/* Spotlight highlight effect */}
       <motion.div
-        className="fixed w-80 h-80 rounded-full pointer-events-none"
+        className="fixed w-96 h-96 rounded-full pointer-events-none"
         style={{
           background: `radial-gradient(circle, 
             rgba(217, 70, 239, 0.3) 0%, 
@@ -227,8 +227,8 @@ export const CursorEffect = () => {
             rgba(0, 0, 0, 0) 70%
           )`,
           mixBlendMode: "screen",
-          top: mousePosition.y - window.scrollY - 160,
-          left: mousePosition.x - window.scrollX - 160,
+          top: mousePosition.y - window.scrollY - 192,
+          left: mousePosition.x - window.scrollX - 192,
         }}
       />
     </motion.div>
