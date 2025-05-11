@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -64,6 +63,20 @@ export const Partners = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
+          animate={{
+            filter: [
+              'hue-rotate(0deg)',
+              'hue-rotate(90deg)',
+              'hue-rotate(180deg)',
+              'hue-rotate(270deg)',
+              'hue-rotate(360deg)',
+            ]
+          }}
+          transition={{
+            duration: 6.67, // 1.5x faster
+            ease: "linear",
+            repeat: Infinity,
+          }}
         >
           Partners
         </motion.h2>
