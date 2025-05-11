@@ -53,13 +53,16 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
                   />
                 </a>
               )}
-              <iframe
-                src={`https://www.youtube.com/embed/${project.videoId}`}
-                title={project.title}
-                className="w-full h-full pointer-events-none"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
-              <div className="absolute inset-0 bg-transparent z-10" />
+              <div className="relative w-full h-full">
+                <div className="absolute inset-0 bg-black/40 z-10"></div> {/* Darker overlay */}
+                <iframe
+                  src={`https://www.youtube.com/embed/${project.videoId}`}
+                  title={project.title}
+                  className="w-full h-full pointer-events-none"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+              </div>
+              <div className="absolute inset-0 bg-transparent z-20" />
             </div>
           ) : project.slideshow ? (
             <img
@@ -100,14 +103,14 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
 const getCategoryStyles = (category: string) => {
   switch (category) {
     case "VRChat Worlds":
-      return { tag: "bg-pink-500/40 text-pink-200 border border-pink-500/50" }; // Less transparent
+      return { tag: "bg-pink-500/70 text-pink-200 border border-pink-500/80" }; // Less transparent
     case "Free Tools":
-      return { tag: "bg-blue-500/40 text-blue-200 border border-blue-500/50" }; // Less transparent
+      return { tag: "bg-blue-500/70 text-blue-200 border border-blue-500/80" }; // Less transparent
     case "Content Creation":
-      return { tag: "bg-green-500/40 text-green-200 border border-green-500/50" }; // Less transparent
+      return { tag: "bg-green-500/70 text-green-200 border border-green-500/80" }; // Less transparent
     case "Community":
-      return { tag: "bg-yellow-500/40 text-yellow-200 border border-yellow-500/50" }; // New Community category
+      return { tag: "bg-yellow-500/70 text-yellow-200 border border-yellow-500/80" }; // Less transparent
     default:
-      return { tag: "bg-purple-500/40 text-purple-200 border border-purple-500/50" }; // Less transparent
+      return { tag: "bg-purple-500/70 text-purple-200 border border-purple-500/80" }; // Less transparent
   }
 };

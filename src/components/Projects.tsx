@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -147,7 +146,7 @@ export const Projects = () => {
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[350px]"> {/* Increased height */}
                       {project.videoId && project.videoId !== "undefined" ? (
                         <div className="relative h-full">
-                          <div className="absolute inset-0 z-10 pointer-events-none" />
+                          <div className="absolute inset-0 z-10 bg-black/50 pointer-events-none" /> {/* Darker overlay */}
                           <iframe
                             src={`https://www.youtube.com/embed/${project.videoId}`}
                             title={project.title}
@@ -270,14 +269,14 @@ const getCategoryStyles = (category: string) => {
   switch (category) {
     case "VRChat Worlds":
     case "VRChat":
-      return { tag: "bg-pink-500/40 text-pink-200 border border-pink-500/50" }; // Less transparent
+      return { tag: "bg-pink-500/70 text-pink-200 border border-pink-500/80" }; // Less transparent
     case "Free Tools":
-      return { tag: "bg-blue-500/40 text-blue-200 border border-blue-500/50" }; // Less transparent
+      return { tag: "bg-blue-500/70 text-blue-200 border border-blue-500/80" }; // Less transparent
     case "Content Creation":
-      return { tag: "bg-green-500/40 text-green-200 border border-green-500/50" }; // Less transparent
+      return { tag: "bg-green-500/70 text-green-200 border border-green-500/80" }; // Less transparent
     case "Community":
-      return { tag: "bg-yellow-500/40 text-yellow-200 border border-yellow-500/50" }; // New Community category
+      return { tag: "bg-yellow-500/70 text-yellow-200 border border-yellow-500/80" }; // Less transparent
     default:
-      return { tag: "bg-purple-500/40 text-purple-200 border border-purple-500/50" }; // Less transparent
+      return { tag: "bg-purple-500/70 text-purple-200 border border-purple-500/80" }; // Less transparent
   }
 };

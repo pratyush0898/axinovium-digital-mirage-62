@@ -121,8 +121,33 @@ const projects: Project[] = [
     title: "Meshy #AroundTheWorld# 2-Year Anniversary event",
     category: "Community",
     description: "Designed and managed this global event as Meshy's Community Ambassador, for 2.5 million users.",
-    link: "#",
-    slideshow: ["/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"] // Using Venice award image as placeholder
+    link: "https://www.meshy.ai/blog/around-the-world-2025",
+    slideshow: ["/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png"]
+  },
+  // Adding Free Tools projects
+  {
+    id: 12,
+    title: "Axinovium Collider Visualizer",
+    category: "Free Tools",
+    description: "Unity/VRChat tool to visualize and customize colliders for better development",
+    link: "https://axinovium.booth.pm/items/6632960",
+    slideshow: ["/lovable-uploads/d93c6d51-c209-45f4-b9e1-9da269825b3f.png"]
+  },
+  {
+    id: 13,
+    title: "Axinovium FREE Trampoline",
+    category: "Free Tools",
+    description: "Unity/VRChat asset for creating interactive trampolines with customizable physics",
+    link: "https://axinovium.booth.pm/items/6634305",
+    slideshow: ["/lovable-uploads/3b783e6b-73da-4879-aa70-9d2b26922cd8.png"]
+  },
+  {
+    id: 14,
+    title: "Axinovium Post Processing Swap",
+    category: "Free Tools",
+    description: "Tool to create striking visual differences between desktop and VR viewing modes",
+    link: "https://axinovium.booth.pm/items/6645490",
+    slideshow: ["/lovable-uploads/d7b29035-0ca6-4795-b00a-ff85628c0eaa.png"]
   }
 ];
 
