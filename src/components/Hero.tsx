@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -124,7 +123,7 @@ export const Hero = () => {
       >
         <div className="w-32 h-32 mx-auto mb-8 relative">
           <div className="w-full h-full flex items-center justify-center">
-            <img src="/lovable-uploads/36e2fa8a-1319-475a-a816-0ab0a910a3d5.png" alt="Axinovium Logo" className="w-24 h-24" />
+            <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-24 h-24" />
           </div>
         </div>
         <motion.h1 

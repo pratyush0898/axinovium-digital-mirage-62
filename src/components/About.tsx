@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 export const About = () => {
@@ -40,7 +41,7 @@ export const About = () => {
             <div className="relative">
               <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1">
                 <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <img src="/lovable-uploads/36e2fa8a-1319-475a-a816-0ab0a910a3d5.png" alt="Axinovium Logo" className="w-20 h-20" />
+                  <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-20 h-20" />
                 </div>
               </div>
             </div>

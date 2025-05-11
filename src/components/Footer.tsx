@@ -42,7 +42,7 @@ export const Footer = () => {
             ))}
           </div>
           <img 
-            src="/lovable-uploads/36e2fa8a-1319-475a-a816-0ab0a910a3d5.png" 
+            src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" 
             alt="Axinovium Logo" 
             className="h-8 mt-12"
           />
