@@ -9,6 +9,7 @@ export const CursorEffect = () => {
   const matrixCharsRef = useRef<HTMLElement[]>([]);
   const requestRef = useRef<number | null>(null);
   const previousTimeRef = useRef<number | null>(null);
+  const throttledMouseMoveRef = useRef<NodeJS.Timeout | null>(null);
   
   // Matrix characters
   const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?";
@@ -18,8 +19,8 @@ export const CursorEffect = () => {
     const createMatrixBackground = () => {
       if (!matrixRef.current) return;
       
-      // Reduce density for better performance
-      const cellSize = 25; // Increased cell size
+      // Significantly reduce density for better performance
+      const cellSize = 40; // Doubled cell size
       const columns = Math.floor(window.innerWidth / cellSize);
       const rows = Math.floor(window.innerHeight / cellSize);
       
@@ -27,10 +28,10 @@ export const CursorEffect = () => {
       for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
           const char = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
-          const opacity = Math.random() * 0.1; // Very faint by default
+          const opacity = 0.01; // Nearly invisible by default
           const left = j * cellSize;
           const top = i * cellSize;
-          matrixHTML += `<div class="matrix-char absolute text-sm" style="left: ${left}px; top: ${top}px; opacity: ${opacity}; color: #D946EF;">${char}</div>`;
+          matrixHTML += `<div class="matrix-char absolute text-lg" style="left: ${left}px; top: ${top}px; opacity: ${opacity}; color: #D946EF;">${char}</div>`;
         }
       }
       
@@ -45,12 +46,15 @@ export const CursorEffect = () => {
     
     const debouncedResize = debounce(() => {
       createMatrixBackground();
-    }, 300);
+    }, 500); // Increased debounce time
     
     window.addEventListener('resize', debouncedResize);
     
     return () => {
       window.removeEventListener('resize', debouncedResize);
+      if (throttledMouseMoveRef.current) {
+        clearTimeout(throttledMouseMoveRef.current);
+      }
     };
   }, []);
 
@@ -85,15 +89,19 @@ export const CursorEffect = () => {
       const viewportTop = window.scrollY - viewportMargin;
       const viewportBottom = window.scrollY + window.innerHeight + viewportMargin;
       
-      // Process in batches for better performance
-      const batchSize = 50;
-      for (let i = 0; i < Math.min(batchSize, matrixCharsRef.current.length); i++) {
-        // Pick random characters each frame instead of processing all
-        const index = Math.floor(Math.random() * matrixCharsRef.current.length);
-        const char = matrixCharsRef.current[index];
-        
-        if (!char) continue;
-        
+      // Process all characters at once with a larger radius
+      const highlightRadius = 200; // Doubled highlight radius
+      
+      // Reset all characters to nearly invisible first
+      matrixCharsRef.current.forEach(char => {
+        if (char.style.opacity !== '0.01' && !char.dataset.highlighted) {
+          char.style.opacity = '0.01';
+          char.style.textShadow = 'none';
+        }
+      });
+      
+      // Highlight characters within radius of cursor (process all at once)
+      matrixCharsRef.current.forEach(char => {
         const rect = char.getBoundingClientRect();
         const charX = rect.left + window.scrollX + (rect.width / 2);
         const charY = rect.top + window.scrollY + (rect.height / 2);
@@ -105,11 +113,7 @@ export const CursorEffect = () => {
           charY < viewportTop || 
           charY > viewportBottom
         ) {
-          if (char.style.opacity !== '0.05') {
-            char.style.opacity = '0.05';
-            char.style.textShadow = 'none';
-          }
-          continue;
+          return;
         }
         
         // Calculate distance to cursor
@@ -118,42 +122,61 @@ export const CursorEffect = () => {
           Math.pow(charY - y, 2)
         );
         
-        // Highlight characters within 100px of cursor
-        if (distance < 100) {
-          const opacity = 1 - (distance / 100);
+        // Highlight characters within radius of cursor
+        if (distance < highlightRadius) {
+          const opacity = 1 - (distance / highlightRadius);
           char.style.opacity = opacity.toString();
           char.style.textShadow = `0 0 ${5 * opacity}px #D946EF`;
-        } else if (char.style.opacity !== '0.05') {
-          char.style.opacity = '0.05';
-          char.style.textShadow = 'none';
+          
+          // Mark as highlighted and set a timer to fade it out
+          if (!char.dataset.highlighted) {
+            char.dataset.highlighted = "true";
+            setTimeout(() => {
+              if (char) {
+                delete char.dataset.highlighted;
+                char.style.opacity = '0.01';
+                char.style.textShadow = 'none';
+              }
+            }, 300); // Reduce fade time to 300ms
+          }
         }
-      }
+      });
     }
     
     requestRef.current = requestAnimationFrame(animateMatrixChars);
   };
 
   useEffect(() => {
-    const mouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX + window.scrollX,
-        y: e.clientY + window.scrollY
-      });
+    const handleMouseMove = (e: MouseEvent) => {
+      // Throttle mouse move updates
+      if (throttledMouseMoveRef.current) return;
       
-      if (!isVisible) {
-        setIsVisible(true);
-      }
+      throttledMouseMoveRef.current = setTimeout(() => {
+        setMousePosition({
+          x: e.clientX + window.scrollX,
+          y: e.clientY + window.scrollY
+        });
+        
+        if (!isVisible) {
+          setIsVisible(true);
+        }
+        
+        throttledMouseMoveRef.current = null;
+      }, 16); // ~60fps
     };
 
-    window.addEventListener('mousemove', mouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
     
     // Start animation frame loop
     requestRef.current = requestAnimationFrame(animateMatrixChars);
 
     return () => {
-      window.removeEventListener('mousemove', mouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
       if (requestRef.current !== null) {
         cancelAnimationFrame(requestRef.current);
+      }
+      if (throttledMouseMoveRef.current) {
+        clearTimeout(throttledMouseMoveRef.current);
       }
     };
   }, [isVisible, mousePosition]);
@@ -168,7 +191,7 @@ export const CursorEffect = () => {
       
       timeout = window.setTimeout(() => {
         setIsVisible(false);
-      }, 5000); // Hide after 5 seconds of inactivity
+      }, 3000); // Reduce idle timeout to 3 seconds
     };
     
     window.addEventListener('mousemove', handleMouseActivity);
@@ -186,17 +209,17 @@ export const CursorEffect = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-30"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none"
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
       {/* Matrix background characters */}
-      <div ref={matrixRef} className="absolute inset-0 overflow-hidden"></div>
+      <div ref={matrixRef} className="absolute inset-0 overflow-hidden z-0"></div>
       
       {/* Spotlight highlight effect */}
       <motion.div
-        className="fixed w-60 h-60 rounded-full pointer-events-none"
+        className="fixed w-80 h-80 rounded-full pointer-events-none"
         style={{
           background: `radial-gradient(circle, 
             rgba(217, 70, 239, 0.3) 0%, 
@@ -204,8 +227,8 @@ export const CursorEffect = () => {
             rgba(0, 0, 0, 0) 70%
           )`,
           mixBlendMode: "screen",
-          top: mousePosition.y - window.scrollY - 120,
-          left: mousePosition.x - window.scrollX - 120,
+          top: mousePosition.y - window.scrollY - 160,
+          left: mousePosition.x - window.scrollX - 160,
         }}
       />
     </motion.div>

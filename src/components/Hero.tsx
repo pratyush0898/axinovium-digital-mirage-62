@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -79,7 +78,7 @@ const CursorRipple = () => {
 };
 
 export const Hero = () => {
-  const particles = Array.from({ length: 50 }, (_, i) => i);
+  const particles = Array.from({ length: 30 }, (_, i) => i); // Reduced particle count
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -95,16 +94,16 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-transparent">
+    <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-black">
       <CursorRipple />
       {particles.map((i) => (
         <Particle key={i} index={i} />
       ))}
       
-      {/* Background video overlay - updated to be darker */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Using bg-black/60 for a darker overlay on the main background video */}
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
+      {/* Background video overlay - solid black background to block matrix effect */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        {/* Using bg-black/80 for a darker overlay on the main background video */}
+        <div className="absolute inset-0 bg-black/80 z-10"></div>
         <iframe 
           className="w-full h-full scale-[1.5] object-cover" 
           src="https://www.youtube.com/embed/h13kD1Bga6M?autoplay=1&mute=1&controls=0&loop=1&playlist=h13kD1Bga6M&showinfo=0&rel=0&modestbranding=1" 
@@ -123,17 +122,15 @@ export const Hero = () => {
         transition={{ duration: 0.8 }}
         className="container mx-auto px-4 text-center z-20"
       >
-        {/* Logo container - increased size by 400% */}
-        <div className="w-96 h-96 mx-auto mb-8 relative">
+        {/* Logo container with background to ensure matrix doesn't show through */}
+        <div className="w-96 h-96 mx-auto mb-8 relative bg-black/50 rounded-full backdrop-blur-sm">
           <div className="w-full h-full flex items-center justify-center">
             <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-96 h-96" />
           </div>
         </div>
         
-        {/* Removed the Axinovium text header */}
-        
         <motion.p 
-          className="text-xl md:text-2xl text-gray-300 mb-8 px-4"
+          className="text-xl md:text-2xl text-gray-300 mb-8 px-4 bg-black/50 inline-block rounded-lg py-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
