@@ -11,24 +11,26 @@ import { CursorEffect } from "@/components/CursorEffect";
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative">
-      {/* Circuit board background image with improved visibility */}
-      <div 
-        className="fixed inset-0 z-0 pointer-events-none opacity-30" 
-        style={{ 
-          backgroundImage: `url(${'/lovable-uploads/8f00f588-d80d-42ea-97dc-08a6621c9947.png'})`,
-          backgroundSize: '400px',
-          backgroundRepeat: 'repeat',
-        }}
-      />
+      {/* Removed circuit board background image */}
       
-      {/* Content container - removed backdrop-blur-md to make background more visible */}
+      {/* Content container */}
       <div className="relative z-10">
         <CursorEffect />
         <Hero />
         <div className="relative z-10">
           <About />
           <Services />
-          <Projects />
+          <Projects 
+            // Added the Meshy 2-year Anniversary showcase as a featured project
+            featuredProject={{
+              id: 9,
+              title: "Meshy 2-year Anniversary showcase",
+              category: "Content Creation",
+              description: "A scene I created using community models submitted for the Meshy #AroundTheWorld# celebration event. Animated with AI.",
+              videoId: "14Kcrj3iAH0",
+              link: "https://www.youtube.com/watch?v=14Kcrj3iAH0"
+            }}
+          />
           <ProjectsGallery />
           <Partners />
           <Footer />

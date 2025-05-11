@@ -32,7 +32,8 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       onClick={handleClick}
     >
       <motion.div
-        className="bg-gray-800 rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border border-gray-700 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+        // Enhanced border visibility and background contrast
+        className="bg-gray-900 rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border-2 border-purple-700/70 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
         whileHover={{ scale: 1.05 }}
       >
         <div className="relative aspect-video">
@@ -72,7 +73,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
               <Film className="text-purple-300" size={48} />
             </div>
           )}
-          {/* Moved the category tag down to bottom-4 instead of top-4 */}
+          {/* Kept the tag at bottom-4 */}
           <div className={`absolute bottom-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${getCategoryStyles(project.category).tag}`}>
             {project.category}
           </div>
