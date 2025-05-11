@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -88,19 +87,11 @@ export default {
           to: {
             height: '0'
           }
-        },
-        'rainbow-border': {
-          '0%': { borderColor: 'rgba(139, 92, 246, 0.6)' },
-          '25%': { borderColor: 'rgba(59, 130, 246, 0.6)' },
-          '50%': { borderColor: 'rgba(236, 72, 153, 0.6)' },
-          '75%': { borderColor: 'rgba(16, 185, 129, 0.6)' },
-          '100%': { borderColor: 'rgba(139, 92, 246, 0.6)' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-        'rainbow-border': 'rainbow-border 6.67s linear infinite'
+        'accordion-up': 'accordion-up 0.2s ease-out'
       }
     }
   },

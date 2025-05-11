@@ -17,7 +17,6 @@ export const ProjectList = ({ projects, onSelect }: ProjectListProps) => {
           project={project}
           onSelect={onSelect}
           index={index}
-          animate={true}
         />
       ))}
     </motion.div>
