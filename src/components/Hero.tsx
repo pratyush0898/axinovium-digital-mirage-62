@@ -126,7 +126,25 @@ export const Hero = () => {
         {/* Logo container - removed bg-black/50 and backdrop-blur-sm */}
         <div className="w-96 h-96 mx-auto mb-8 relative">
           <div className="w-full h-full flex items-center justify-center">
-            <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-96 h-96" />
+            <motion.img 
+              src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" 
+              alt="Axinovium Logo" 
+              className="w-96 h-96"
+              animate={{
+                filter: [
+                  'hue-rotate(0deg)',
+                  'hue-rotate(90deg)',
+                  'hue-rotate(180deg)',
+                  'hue-rotate(270deg)',
+                  'hue-rotate(360deg)',
+                ]
+              }}
+              transition={{
+                duration: 10,
+                ease: "linear",
+                repeat: Infinity,
+              }}
+            />
           </div>
         </div>
         

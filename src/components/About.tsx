@@ -101,7 +101,25 @@ export const About = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                    <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-48 h-48" />
+                    <motion.img 
+                      src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" 
+                      alt="Axinovium Logo" 
+                      className="w-48 h-48" 
+                      animate={{
+                        filter: [
+                          'hue-rotate(0deg)',
+                          'hue-rotate(90deg)',
+                          'hue-rotate(180deg)',
+                          'hue-rotate(270deg)',
+                          'hue-rotate(360deg)',
+                        ]
+                      }}
+                      transition={{
+                        duration: 10,
+                        ease: "linear",
+                        repeat: Infinity,
+                      }}
+                    />
                   </div>
                 </motion.div>
                 

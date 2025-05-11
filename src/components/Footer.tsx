@@ -41,10 +41,24 @@ export const Footer = () => {
               </motion.a>
             ))}
           </div>
-          <img 
+          <motion.img 
             src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" 
             alt="Axinovium Logo" 
             className="h-8 mt-12"
+            animate={{
+              filter: [
+                'hue-rotate(0deg)',
+                'hue-rotate(90deg)',
+                'hue-rotate(180deg)',
+                'hue-rotate(270deg)',
+                'hue-rotate(360deg)',
+              ]
+            }}
+            transition={{
+              duration: 10,
+              ease: "linear",
+              repeat: Infinity,
+            }}
           />
           <p className="text-gray-400 text-center mt-4">&copy; {new Date().getFullYear()} Axinovium. All rights reserved.</p>
         </div>
