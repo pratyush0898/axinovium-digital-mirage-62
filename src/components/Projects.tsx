@@ -5,13 +5,12 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ReactNode } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
-interface Project {
+export interface FeaturedProject {
   title: string;
   description: ReactNode;
-  videoId?: string;
-  image?: string;
+  videoId: string;
   link: string;
-  category: string;
+  category?: string;
   award?: {
     image: string;
     link: string;
@@ -20,10 +19,16 @@ interface Project {
   visits?: string;
   impressions?: string;
   impressionsLink?: string;
-  slideshow?: string[];
 }
 
-const projects: Project[] = [
+const featuredProjects: FeaturedProject[] = [
+  {
+    title: "Meshy 2-year Anniversary showcase",
+    description: "A scene I created using community models submitted for the Meshy #AroundTheWorld# celebration event. Animated with AI.",
+    videoId: "14Kcrj3iAH0",
+    link: "https://www.youtube.com/watch?v=14Kcrj3iAH0",
+    category: "Content Creation"
+  },
   {
     title: "Chromatic Frequency",
     description: <><a href="https://www.labiennale.org/en/cinema/2024/venice-immersive/chromatic-frequency" target="_blank" rel="noopener noreferrer" className="hover:underline">🏆 Featured at the Venice Film Festival 2024, Best of Worlds</a></>,
@@ -40,6 +45,7 @@ const projects: Project[] = [
     title: "The Writers Parlor",
     description: "A commissioned world showcasing VRChat's literary community",
     longDescription: "Contains fully interactive VR typewriters and books written by the members.",
+    videoId: "undefined",
     image: "/lovable-uploads/babbec86-c371-48cb-9bc4-10e2748b9425.png",
     link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076",
     category: "VRChat",
@@ -50,7 +56,7 @@ const projects: Project[] = [
 ];
 
 export const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<FeaturedProject | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
@@ -63,16 +69,16 @@ export const Projects = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleKeyPress = (e: React.KeyboardEvent, project: Project) => {
+  const handleKeyPress = (e: React.KeyboardEvent, project: FeaturedProject) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       handleProjectSelect(project);
     }
   };
 
-  const handleProjectSelect = (project: Project) => {
+  const handleProjectSelect = (project: FeaturedProject) => {
     try {
-      if (project.videoId) {
+      if (project.videoId && project.videoId !== "undefined") {
         setSelectedProject(project);
       } else {
         window.open(project.link, '_blank');
@@ -88,12 +94,12 @@ export const Projects = () => {
 
   if (isLoading) {
     return (
-      <section className="py-12 bg-black/95">
+      <section className="py-12 bg-black">
         <div className="container mx-auto px-4">
           <div className="animate-pulse space-y-8">
             <div className="h-12 bg-gray-800 rounded-lg w-1/3 mx-auto"></div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {[1, 2].map((i) => (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
                 <div key={i} className="h-[500px] bg-gray-800 rounded-xl"></div>
               ))}
             </div>
@@ -104,7 +110,7 @@ export const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-12 bg-black/95">
+    <section id="projects" className="py-12 bg-black">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -115,8 +121,8 @@ export const Projects = () => {
           Featured Projects
         </motion.h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1200px] mx-auto">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto">
+          {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
@@ -132,13 +138,13 @@ export const Projects = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gradient-to-t from-blue-500/10 via-purple-500/20 to-purple-700/10 h-full hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+                  className="relative overflow-hidden rounded-xl bg-gradient-to-t from-purple-900/40 to-black/80 h-full border-2 border-purple-500/40 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  <div className="relative bg-black/50 backdrop-blur-sm p-6 rounded-lg h-full flex flex-col">
+                  <div className="relative bg-black/70 backdrop-blur-sm p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[300px]">
-                      {project.videoId ? (
+                      {project.videoId && project.videoId !== "undefined" ? (
                         <div className="relative h-full">
                           <div className="absolute inset-0 z-10 pointer-events-none" />
                           <iframe
@@ -166,10 +172,15 @@ export const Projects = () => {
                         </div>
                       ) : (
                         <img
-                          src={project.image}
+                          src={(project as any).image}
                           alt={project.title}
                           className="w-full h-full object-cover"
                         />
+                      )}
+                      {project.category && (
+                        <div className={`absolute bottom-2 left-2 px-3 py-1 rounded-full text-sm font-medium ${getCategoryStyles(project.category).tag}`}>
+                          {project.category}
+                        </div>
                       )}
                     </div>
                     <div className="flex-grow flex flex-col justify-between">
@@ -252,4 +263,18 @@ export const Projects = () => {
       </Dialog>
     </section>
   );
+};
+
+const getCategoryStyles = (category: string) => {
+  switch (category) {
+    case "VRChat Worlds":
+    case "VRChat":
+      return { tag: "bg-pink-500/20 text-pink-200 border border-pink-500/30" };
+    case "Free Tools":
+      return { tag: "bg-blue-500/20 text-blue-200 border border-blue-500/30" };
+    case "Content Creation":
+      return { tag: "bg-green-500/20 text-green-200 border border-green-500/30" };
+    default:
+      return { tag: "bg-purple-500/20 text-purple-200 border border-purple-500/30" };
+  }
 };

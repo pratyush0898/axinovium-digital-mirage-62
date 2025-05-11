@@ -72,8 +72,8 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
               <Film className="text-purple-300" size={48} />
             </div>
           )}
-          {/* Moved the category tag down to bottom-4 instead of top-4 */}
-          <div className={`absolute bottom-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${getCategoryStyles(project.category).tag}`}>
+          {/* Moved the category tag to bottom-left instead of right */}
+          <div className={`absolute bottom-2 left-2 px-3 py-1 rounded-full text-sm font-medium ${getCategoryStyles(project.category).tag}`}>
             {project.category}
           </div>
         </div>

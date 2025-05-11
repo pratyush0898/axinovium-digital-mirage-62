@@ -81,7 +81,7 @@ const projects: Project[] = [
     description: <>A cozy bedroom on a satellite in high orbit․ Puzzle world requiring 4 people to finish.<br/>🏆Featured by VRChat for Space Jam 2024</>,
     link: "https://vrchat.com/home/launch?worldId=wrld_0bd6cc56-3e37-4530-a43c-8c7e6647bd1e"
   },
-  // Adding new Content Creation projects
+  // Content Creation projects
   {
     id: 7,
     title: "Meshy Fanhub VRChat World Showcase Commission",
@@ -98,7 +98,6 @@ const projects: Project[] = [
     videoId: "VoUWYyVmcoQ",
     link: "https://www.youtube.com/watch?v=VoUWYyVmcoQ"
   },
-  // Adding the new featured video project
   {
     id: 9,
     title: "Meshy 2-year Anniversary showcase",
@@ -106,6 +105,15 @@ const projects: Project[] = [
     description: "A scene I created using community models submitted for the Meshy #AroundTheWorld# celebration event. Animated with AI.",
     videoId: "14Kcrj3iAH0",
     link: "https://www.youtube.com/watch?v=14Kcrj3iAH0"
+  },
+  // Adding the new video
+  {
+    id: 10,
+    title: "Axinovium Worlds Showcase",
+    category: "Content Creation",
+    description: "VRchat virtual reality worlds I created between 2023-2025. Some unreleased.",
+    videoId: "h13kD1Bga6M",
+    link: "https://www.youtube.com/watch?v=h13kD1Bga6M"
   }
 ];
 
@@ -127,13 +135,13 @@ export const ProjectsGallery = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-900/80 backdrop-blur-md" id="our-projects">
+    <section className="py-12 bg-black" id="our-projects">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
+          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
         >
           Our Projects
         </motion.h2>
