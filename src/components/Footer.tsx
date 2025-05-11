@@ -55,7 +55,7 @@ export const Footer = () => {
               ]
             }}
             transition={{
-              duration: 10,
+              duration: 6.67, // Sped up from 10 to 6.67 (1.5x faster)
               ease: "linear",
               repeat: Infinity,
             }}

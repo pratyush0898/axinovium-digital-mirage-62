@@ -66,9 +66,25 @@ export const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="md:w-1/2 text-center md:text-left mb-10 md:mb-0 md:pr-10"
           >
-            <h2 className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text">
+            <motion.h2 
+              className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+              animate={{
+                filter: [
+                  'hue-rotate(0deg)',
+                  'hue-rotate(90deg)',
+                  'hue-rotate(180deg)',
+                  'hue-rotate(270deg)',
+                  'hue-rotate(360deg)',
+                ]
+              }}
+              transition={{
+                duration: 6.67, // Sped up from 10 to 6.67 (1.5x faster)
+                ease: "linear",
+                repeat: Infinity,
+              }}
+            >
               Axinovium.AI
-            </h2>
+            </motion.h2>
             <p className="text-gray-300 text-xl leading-relaxed mb-4">
               Independent AI Consultant.<br />
               Creative technologist.<br /> 
@@ -115,7 +131,7 @@ export const About = () => {
                         ]
                       }}
                       transition={{
-                        duration: 10,
+                        duration: 6.67, // Sped up from 10 to 6.67 (1.5x faster)
                         ease: "linear",
                         repeat: Infinity,
                       }}
