@@ -130,7 +130,7 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="min-h-[700px] transition-all duration-300 cursor-pointer" // Increased height
+              className="min-h-[700px] transition-all duration-300 cursor-pointer" 
               onClick={() => handleProjectSelect(project)}
               onKeyDown={(e) => handleKeyPress(e, project)}
               role="button"
@@ -144,14 +144,14 @@ export const Projects = () => {
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
                   <div className="relative bg-black/30 backdrop-blur-sm p-6 rounded-lg h-full flex flex-col">
-                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]"> {/* Increased height */}
+                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]">
                       {project.videoId && project.videoId !== "undefined" ? (
                         <div className="relative h-full">
-                          <div className="absolute inset-0 z-10 bg-black/50 pointer-events-none" /> {/* Darker overlay */}
+                          {/* Removed the overlay div that was adding darkness */}
                           <iframe
                             src={`https://www.youtube.com/embed/${project.videoId}`}
                             title={project.title}
-                            className="w-full h-full pointer-events-none"
+                            className="w-full h-full"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                           />
@@ -270,14 +270,15 @@ const getCategoryStyles = (category: string) => {
   switch (category) {
     case "VRChat Worlds":
     case "VRChat":
-      return { tag: "bg-pink-500 text-pink-200 border border-pink-500" }; // More visible color
+      return { tag: "bg-pink-500 text-pink-100 border border-pink-500" }; // More visible color
     case "Free Tools":
-      return { tag: "bg-blue-500 text-blue-200 border border-blue-500" }; // More visible color 
+      return { tag: "bg-blue-500 text-blue-100 border border-blue-500" }; // More visible color 
     case "Content Creation":
-      return { tag: "bg-green-500 text-green-200 border border-green-500" }; // More visible color
+      return { tag: "bg-green-500 text-green-100 border border-green-500" }; // More visible color
     case "Community":
-      return { tag: "bg-yellow-500 text-yellow-200 border border-yellow-500" }; // More visible color
+      return { tag: "bg-yellow-500 text-yellow-100 border border-yellow-500" }; // More visible color
     default:
-      return { tag: "bg-purple-500 text-purple-200 border border-purple-500" }; // More visible color
+      return { tag: "bg-purple-500 text-purple-100 border border-purple-500" }; // More visible color
   }
 };
+

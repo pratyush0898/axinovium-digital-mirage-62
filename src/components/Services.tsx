@@ -70,11 +70,12 @@ export const Services = () => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
+          {/* Making all three boxes the same width/height with consistent styling and larger font */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-4"
+            className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
           >
             <Users className="w-8 h-8 text-purple-400" />
             <span className="text-white font-semibold text-lg">Community Ambassador for 2.5 million Meshy Users</span>
@@ -84,7 +85,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-4"
+            className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
           >
             <img
               src="/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"
@@ -98,7 +99,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-4"
+            className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
           >
             <Check className="w-8 h-8 text-green-500" />
             <span className="text-white font-semibold text-lg">700k+ Player World Visits</span>

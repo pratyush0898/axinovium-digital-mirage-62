@@ -13,6 +13,7 @@ export const CategoryFilter = ({ categories, activeCategory, onSelectCategory }:
     
     switch (category) {
       case "VRChat Worlds":
+      case "VRChat":
         return "bg-pink-500 text-pink-100 border-pink-500";
       case "Free Tools":
         return "bg-blue-500 text-blue-100 border-blue-500";
