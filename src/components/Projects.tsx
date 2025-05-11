@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -154,7 +155,8 @@ export const Projects = () => {
               <div className="relative h-full">
                 <motion.div
                   className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
-                  whileHover={{ scale: 1.02, type: "spring", stiffness: 400, damping: 20 }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   animate={{
                     boxShadow: [
                       '0 0 10px rgba(139, 92, 246, 0.6)',
