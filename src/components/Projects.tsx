@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -100,7 +101,7 @@ export const Projects = () => {
             <div className="h-12 bg-gray-800 rounded-lg w-1/3 mx-auto"></div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-[600px] bg-gray-800 rounded-xl"></div>
+                <div key={i} className="h-[700px] bg-gray-800 rounded-xl"></div>
               ))}
             </div>
           </div>
@@ -129,7 +130,7 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="min-h-[600px] transition-all duration-300 cursor-pointer" // Increased height
+              className="min-h-[700px] transition-all duration-300 cursor-pointer" // Increased height
               onClick={() => handleProjectSelect(project)}
               onKeyDown={(e) => handleKeyPress(e, project)}
               role="button"
@@ -138,12 +139,12 @@ export const Projects = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gradient-to-t from-purple-900/80 to-black/90 h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]" // More visible background and border
+                  className="relative overflow-hidden rounded-xl bg-gray-800 h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]" // Changed to dark gray background
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  <div className="relative bg-black/70 backdrop-blur-sm p-6 rounded-lg h-full flex flex-col">
-                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[350px]"> {/* Increased height */}
+                  <div className="relative bg-black/30 backdrop-blur-sm p-6 rounded-lg h-full flex flex-col">
+                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]"> {/* Increased height */}
                       {project.videoId && project.videoId !== "undefined" ? (
                         <div className="relative h-full">
                           <div className="absolute inset-0 z-10 bg-black/50 pointer-events-none" /> {/* Darker overlay */}
@@ -269,14 +270,14 @@ const getCategoryStyles = (category: string) => {
   switch (category) {
     case "VRChat Worlds":
     case "VRChat":
-      return { tag: "bg-pink-500/70 text-pink-200 border border-pink-500/80" }; // Less transparent
+      return { tag: "bg-pink-500 text-pink-200 border border-pink-500" }; // More visible color
     case "Free Tools":
-      return { tag: "bg-blue-500/70 text-blue-200 border border-blue-500/80" }; // Less transparent
+      return { tag: "bg-blue-500 text-blue-200 border border-blue-500" }; // More visible color 
     case "Content Creation":
-      return { tag: "bg-green-500/70 text-green-200 border border-green-500/80" }; // Less transparent
+      return { tag: "bg-green-500 text-green-200 border border-green-500" }; // More visible color
     case "Community":
-      return { tag: "bg-yellow-500/70 text-yellow-200 border border-yellow-500/80" }; // Less transparent
+      return { tag: "bg-yellow-500 text-yellow-200 border border-yellow-500" }; // More visible color
     default:
-      return { tag: "bg-purple-500/70 text-purple-200 border border-purple-500/80" }; // Less transparent
+      return { tag: "bg-purple-500 text-purple-200 border border-purple-500" }; // More visible color
   }
 };

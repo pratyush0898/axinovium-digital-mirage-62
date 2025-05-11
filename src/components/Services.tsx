@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Check } from "lucide-react";
+import { Check, Users } from "lucide-react";
 
 const services = {
   technology: [
@@ -11,7 +11,7 @@ const services = {
     { title: "Custom Unity Game Dev Tooling" },
   ],
   content: [
-    { title: "Digital Asset Sale Consulting" },
+    { title: "Community Management" },
     { title: "Video & Tutorial Content Creation" },
     { title: "Event design, Management and Execution" },
     { title: "AI Education and user training" },
@@ -76,12 +76,22 @@ export const Services = () => {
             viewport={{ once: true }}
             className="flex items-center gap-4 glass-card px-8 py-4"
           >
+            <Users className="w-8 h-8 text-purple-400" />
+            <span className="text-white font-semibold text-lg">Community Ambassador for 2.5 million Meshy Users</span>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-4 glass-card px-8 py-4"
+          >
             <img
               src="/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"
               alt="Venice Award"
               className="w-12 h-12 object-contain"
             />
-            <span className="text-white font-semibold">Multi-award winning creativity</span>
+            <span className="text-white font-semibold text-lg">Multi-award winning creativity</span>
           </motion.div>
 
           <motion.div
@@ -91,7 +101,7 @@ export const Services = () => {
             className="flex items-center gap-4 glass-card px-8 py-4"
           >
             <Check className="w-8 h-8 text-green-500" />
-            <span className="text-white font-semibold">700k+ Player World Visits</span>
+            <span className="text-white font-semibold text-lg">700k+ Player World Visits</span>
           </motion.div>
         </div>
       </div>
