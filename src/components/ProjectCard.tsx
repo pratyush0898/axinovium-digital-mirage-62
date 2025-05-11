@@ -32,7 +32,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       onClick={handleClick}
     >
       <motion.div
-        className="bg-gray-800 rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border border-gray-700 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+        className="bg-[#2A303C] rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border border-gray-700 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
         whileHover={{ scale: 1.05 }}
       >
         <div className="relative aspect-video">
@@ -43,7 +43,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
                   href={project.award.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute top-1/2 right-4 w-20 z-50 -translate-y-1/2 transition-transform duration-200 hover:scale-125"
+                  className="absolute top-1/2 right-4 w-40 z-50 -translate-y-1/2 transition-transform duration-200 hover:scale-125"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <img

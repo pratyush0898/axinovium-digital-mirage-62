@@ -79,6 +79,7 @@ export const Projects = () => {
 
   const handleProjectSelect = (project: FeaturedProject) => {
     try {
+      // Always open the project in the modal dialog if it has a video
       if (project.videoId && project.videoId !== "undefined") {
         setSelectedProject(project);
       } else {
@@ -139,11 +140,11 @@ export const Projects = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gray-800 h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+                  className="relative overflow-hidden rounded-xl bg-[#2A303C] h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  <div className="relative bg-black/30 backdrop-blur-sm p-6 rounded-lg h-full flex flex-col">
+                  <div className="relative p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]">
                       {project.videoId && project.videoId !== "undefined" ? (
                         <div className="relative h-full">
@@ -154,7 +155,7 @@ export const Projects = () => {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                           />
-                          {/* Transparent overlay to make entire video clickable */}
+                          {/* Transparent overlay to make entire video clickable to open modal */}
                           <div 
                             className="absolute inset-0 cursor-pointer z-10" 
                             onClick={(e) => {

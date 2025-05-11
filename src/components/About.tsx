@@ -44,11 +44,27 @@ export const About = () => {
             className="md:w-1/2 flex justify-center"
           >
             <div className="relative">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1">
+              {/* Animated Logo with hover and pulse effects */}
+              <motion.div 
+                className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1"
+                animate={{ 
+                  rotate: [0, 10, 0, -10, 0],
+                  scale: [1, 1.05, 1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 8, 
+                  ease: "easeInOut", 
+                  repeat: Infinity 
+                }}
+                whileHover={{ 
+                  scale: 1.1,
+                  boxShadow: "0 0 25px rgba(255,0,255,0.8)"
+                }}
+              >
                 <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-20 h-20" />
+                  <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-32 h-32" />
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>
