@@ -21,7 +21,7 @@ const Index = () => {
         }}
       />
       
-      {/* Content container - ensures content elements stay above the background */}
+      {/* Content container - removed backdrop-blur-md to make background more visible */}
       <div className="relative z-10">
         <CursorEffect />
         <Hero />

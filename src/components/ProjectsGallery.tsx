@@ -97,6 +97,15 @@ const projects: Project[] = [
     description: "A full tutorial for how to turn Meshy characters into VRChat Avatars",
     videoId: "VoUWYyVmcoQ",
     link: "https://www.youtube.com/watch?v=VoUWYyVmcoQ"
+  },
+  // Adding the new featured video project
+  {
+    id: 9,
+    title: "Meshy 2-year Anniversary showcase",
+    category: "Content Creation",
+    description: "A scene I created using community models submitted for the Meshy #AroundTheWorld# celebration event. Animated with AI.",
+    videoId: "14Kcrj3iAH0",
+    link: "https://www.youtube.com/watch?v=14Kcrj3iAH0"
   }
 ];
 
