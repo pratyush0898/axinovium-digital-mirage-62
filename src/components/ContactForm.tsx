@@ -68,7 +68,7 @@ export const ContactForm = () => {
       window.open(mailtoLink, "_blank");
       
       // Show success message
-      toast.success("Thank you for your message! We'll be in touch soon.");
+      toast.success("Thank you for your message! I'll be in touch soon.");
       form.reset({
         name: "",
         email: "",
@@ -92,7 +92,7 @@ export const ContactForm = () => {
           viewport={{ once: true }}
           className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
         >
-          Contact Us
+          Contact me
         </motion.h2>
         
         <motion.div
@@ -102,7 +102,7 @@ export const ContactForm = () => {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <div className="bg-gray-100 rounded-lg p-8 shadow-lg">
+          <div className="bg-gray-800 rounded-lg p-8 shadow-lg border border-gray-700">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -110,11 +110,11 @@ export const ContactForm = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-black font-medium">Name</FormLabel>
+                      <FormLabel className="text-white font-medium">Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your name" className="bg-white text-black" {...field} />
+                        <Input placeholder="Your name" className="bg-gray-700 text-white border-gray-600" {...field} />
                       </FormControl>
-                      <FormMessage className="text-red-600" />
+                      <FormMessage className="text-red-400" />
                     </FormItem>
                   )}
                 />
@@ -124,11 +124,11 @@ export const ContactForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-black font-medium">Email</FormLabel>
+                      <FormLabel className="text-white font-medium">Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="your.email@example.com" className="bg-white text-black" {...field} />
+                        <Input placeholder="your.email@example.com" className="bg-gray-700 text-white border-gray-600" {...field} />
                       </FormControl>
-                      <FormMessage className="text-red-600" />
+                      <FormMessage className="text-red-400" />
                     </FormItem>
                   )}
                 />
@@ -138,22 +138,22 @@ export const ContactForm = () => {
                   name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-black font-medium">Subject</FormLabel>
+                      <FormLabel className="text-white font-medium">Subject</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="w-full bg-white text-black flex justify-between items-center">
+                          <SelectTrigger className="w-full bg-gray-700 text-white border-gray-600 flex justify-between items-center">
                             <SelectValue placeholder="Select a subject" />
                             <ChevronDown className="h-4 w-4 opacity-50" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="bg-white text-black">
+                        <SelectContent className="bg-gray-700 text-white border-gray-600">
                           <SelectItem value="AI consulting">AI Consulting</SelectItem>
                           <SelectItem value="Content Creation">Content Creation</SelectItem>
                           <SelectItem value="Speaking/Interview">Speaking/Interview</SelectItem>
                           <SelectItem value="Other">Other</SelectItem>
                         </SelectContent>
                       </Select>
-                      <FormMessage className="text-red-600" />
+                      <FormMessage className="text-red-400" />
                     </FormItem>
                   )}
                 />
@@ -163,11 +163,11 @@ export const ContactForm = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-black font-medium">Message</FormLabel>
+                      <FormLabel className="text-white font-medium">Message</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Type your message here..." rows={6} className="bg-white text-black" {...field} />
+                        <Textarea placeholder="Type your message here..." rows={6} className="bg-gray-700 text-white border-gray-600" {...field} />
                       </FormControl>
-                      <FormMessage className="text-red-600" />
+                      <FormMessage className="text-red-400" />
                     </FormItem>
                   )}
                 />

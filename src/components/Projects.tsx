@@ -119,7 +119,7 @@ export const Projects = () => {
           viewport={{ once: true }}
           className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
         >
-          Featured Projects
+          Featured
         </motion.h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto">

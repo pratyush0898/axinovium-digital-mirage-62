@@ -21,13 +21,18 @@ export const About = () => {
             className="md:w-1/2 text-center md:text-left mb-10 md:mb-0 md:pr-10"
           >
             <h2 className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text">
-              About Axinovium.AI
+              Axinovium.AI
             </h2>
             <p className="text-gray-300 text-xl leading-relaxed mb-4">
-              We are an experimental think-tank operating from within virtual reality—united as a global team of futurists, developers, artists, philosophers, and creatives.
+              Independent AI Consultant.<br />
+              Creative technologist.<br /> 
+              Reality engineer.
             </p>
             <p className="text-gray-300 text-xl leading-relaxed">
-              Together, we design and execute visionary projects that harness the full potential of AI to construct entirely new realities.
+              I design intelligent systems and immersive experiences - fusing mind, machine and aesthetics.
+            </p>
+            <p className="text-gray-300 text-xl leading-relaxed mt-4">
+              Based in New Zealand. Operating globally.
             </p>
           </motion.div>
           
