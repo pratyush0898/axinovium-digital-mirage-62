@@ -15,7 +15,7 @@ const Index = () => {
       {/* Matrix cursor effect behind everything */}
       <CursorEffect />
       
-      {/* Content container with proper z-index */}
+      {/* Content needs higher z-index */}
       <div className="relative z-10">
         <Hero />
         <div className="relative z-10">
