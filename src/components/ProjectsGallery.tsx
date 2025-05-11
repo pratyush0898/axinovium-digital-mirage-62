@@ -101,9 +101,9 @@ const projects: Project[] = [
 ];
 
 export const ProjectsGallery = () => {
-  const [activeCategory, setActiveCategory] = useState("VRChat Worlds");
+  const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const categories = ["VRChat Worlds", "Free Tools", "Content Creation"];
+  const categories = ["All", "VRChat Worlds", "Free Tools", "Content Creation"];
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
@@ -118,7 +118,7 @@ export const ProjectsGallery = () => {
   };
 
   return (
-    <section className="py-12 bg-black" id="our-projects">
+    <section className="py-12 bg-gray-900/80 backdrop-blur-md" id="our-projects">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}

@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -100,9 +101,9 @@ export const Hero = () => {
         <Particle key={i} index={i} />
       ))}
       
-      {/* Background video overlay */}
+      {/* Background video overlay - with increased transparency */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-black/70 z-10"></div>
+        <div className="absolute inset-0 bg-black/50 z-10"></div>
         <iframe 
           className="w-full h-full scale-[1.5] object-cover" 
           src="https://www.youtube.com/embed/h13kD1Bga6M?autoplay=1&mute=1&controls=0&loop=1&playlist=h13kD1Bga6M&showinfo=0&rel=0&modestbranding=1" 

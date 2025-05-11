@@ -13,7 +13,7 @@ const Index = () => {
     <div className="min-h-screen bg-black relative">
       {/* Circuit board background image with improved visibility */}
       <div 
-        className="fixed inset-0 z-0 pointer-events-none opacity-100" 
+        className="fixed inset-0 z-0 pointer-events-none opacity-30" 
         style={{ 
           backgroundImage: `url(${'/lovable-uploads/8f00f588-d80d-42ea-97dc-08a6621c9947.png'})`,
           backgroundSize: '400px',

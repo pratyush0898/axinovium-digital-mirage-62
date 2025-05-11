@@ -20,7 +20,7 @@ export const Gallery = () => {
     : images.filter(img => img.category === activeCategory);
 
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-gray-900/80 backdrop-blur-md">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -41,10 +41,10 @@ export const Gallery = () => {
             <motion.button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm transition-all duration-300 ${
+              className={`px-4 py-2 rounded-full text-sm transition-all duration-300 border ${
                 activeCategory === category 
-                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20" 
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  ? "bg-purple-600 border-purple-400 text-white shadow-lg shadow-purple-500/20" 
+                  : "bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -71,7 +71,7 @@ export const Gallery = () => {
               className="cursor-pointer relative group"
               onClick={() => setSelectedImage(image.id)}
             >
-              <div className="aspect-square rounded-lg overflow-hidden bg-gray-900 p-1">
+              <div className="aspect-square rounded-lg overflow-hidden bg-gray-800 p-1 border border-gray-700">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg z-10" />
                 <motion.img
                   src={`https://source.unsplash.com/${image.src}`}
@@ -81,7 +81,7 @@ export const Gallery = () => {
                   transition={{ duration: 0.5 }}
                 />
                 <div className="absolute inset-0 flex items-end justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                  <div className="bg-black/70 backdrop-blur-sm p-2 rounded-md">
+                  <div className="bg-gray-800/70 backdrop-blur-sm p-2 rounded-md border border-gray-700">
                     <h3 className="text-sm font-medium text-white">{image.title}</h3>
                     <p className="text-xs text-gray-300">{image.category}</p>
                   </div>

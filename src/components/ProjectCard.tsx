@@ -32,7 +32,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       onClick={handleClick}
     >
       <motion.div
-        className="glass-card overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+        className="bg-gray-800 rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border border-gray-700 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
         whileHover={{ scale: 1.05 }}
       >
         <div className="relative aspect-video">
@@ -99,12 +99,12 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
 const getCategoryStyles = (category: string) => {
   switch (category) {
     case "VRChat Worlds":
-      return { tag: "bg-pink-500/20 text-pink-200" };
+      return { tag: "bg-pink-500/20 text-pink-200 border border-pink-500/30" };
     case "Free Tools":
-      return { tag: "bg-blue-500/20 text-blue-200" };
+      return { tag: "bg-blue-500/20 text-blue-200 border border-blue-500/30" };
     case "Content Creation":
-      return { tag: "bg-green-500/20 text-green-200" };
+      return { tag: "bg-green-500/20 text-green-200 border border-green-500/30" };
     default:
-      return { tag: "bg-purple-500/20 text-purple-200" };
+      return { tag: "bg-purple-500/20 text-purple-200 border border-purple-500/30" };
   }
 };
