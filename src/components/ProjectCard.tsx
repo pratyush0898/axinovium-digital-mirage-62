@@ -34,6 +34,27 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       <motion.div
         className="bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border border-gray-700 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
         whileHover={{ scale: 1.05 }}
+        style={{ transition: 'all 0.3s ease' }}
+        animate={{
+          borderColor: [
+            'rgba(168, 85, 247, 0.7)',
+            'rgba(59, 130, 246, 0.7)',
+            'rgba(236, 72, 153, 0.7)',
+            'rgba(168, 85, 247, 0.7)',
+          ]
+        }}
+        transition={{
+          borderColor: {
+            duration: 6.67,
+            ease: "linear",
+            repeat: Infinity,
+          },
+          scale: {
+            type: "spring",
+            stiffness: 400,
+            damping: 10
+          }
+        }}
       >
         <div className="relative aspect-video">
           {project.videoId ? (

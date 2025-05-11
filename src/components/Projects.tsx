@@ -129,7 +129,7 @@ export const Projects = () => {
             ]
           }}
           transition={{
-            duration: 6.67, // 1.5x faster
+            duration: 6.67,
             ease: "linear",
             repeat: Infinity,
           }}
@@ -157,6 +157,17 @@ export const Projects = () => {
                   className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  animate={{
+                    borderColor: [
+                      'rgba(168, 85, 247, 0.6)',
+                      'rgba(59, 130, 246, 0.6)',
+                      'rgba(236, 72, 153, 0.6)',
+                      'rgba(168, 85, 247, 0.6)',
+                    ]
+                  }}
+                  style={{
+                    transition: 'all 0.3s ease'
+                  }}
                 >
                   <div className="relative p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]">

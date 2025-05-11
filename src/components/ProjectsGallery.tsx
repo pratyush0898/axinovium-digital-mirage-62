@@ -186,7 +186,7 @@ export const ProjectsGallery = () => {
             ]
           }}
           transition={{
-            duration: 6.67, // 1.5x faster
+            duration: 6.67,
             ease: "linear",
             repeat: Infinity,
           }}
