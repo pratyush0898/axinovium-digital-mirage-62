@@ -139,7 +139,7 @@ export const Projects = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gray-800 h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]" // Changed to dark gray background
+                  className="relative overflow-hidden rounded-xl bg-gray-800 h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
@@ -147,13 +147,21 @@ export const Projects = () => {
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]">
                       {project.videoId && project.videoId !== "undefined" ? (
                         <div className="relative h-full">
-                          {/* Removed the overlay div that was adding darkness */}
                           <iframe
                             src={`https://www.youtube.com/embed/${project.videoId}`}
                             title={project.title}
                             className="w-full h-full"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
+                          />
+                          {/* Transparent overlay to make entire video clickable */}
+                          <div 
+                            className="absolute inset-0 cursor-pointer z-10" 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedProject(project);
+                            }}
+                            aria-label={`Open ${project.title} in fullscreen`}
                           />
                           {project.award && (
                             <a 
@@ -270,15 +278,14 @@ const getCategoryStyles = (category: string) => {
   switch (category) {
     case "VRChat Worlds":
     case "VRChat":
-      return { tag: "bg-pink-500 text-pink-100 border border-pink-500" }; // More visible color
+      return { tag: "bg-pink-500 text-pink-100 border border-pink-500" };
     case "Free Tools":
-      return { tag: "bg-blue-500 text-blue-100 border border-blue-500" }; // More visible color 
+      return { tag: "bg-blue-500 text-blue-100 border border-blue-500" }; 
     case "Content Creation":
-      return { tag: "bg-green-500 text-green-100 border border-green-500" }; // More visible color
+      return { tag: "bg-green-500 text-green-100 border border-green-500" }; 
     case "Community":
-      return { tag: "bg-yellow-500 text-yellow-100 border border-yellow-500" }; // More visible color
+      return { tag: "bg-yellow-500 text-yellow-100 border border-yellow-500" }; 
     default:
-      return { tag: "bg-purple-500 text-purple-100 border border-purple-500" }; // More visible color
+      return { tag: "bg-purple-500 text-purple-100 border border-purple-500" }; 
   }
 };
-

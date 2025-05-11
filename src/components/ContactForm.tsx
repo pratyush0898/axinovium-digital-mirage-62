@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { ChevronDown } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -49,7 +50,7 @@ export const ContactForm = () => {
     defaultValues: {
       name: "",
       email: "",
-      subject: "",
+      subject: "AI consulting", // Set default value to AI Consulting
       message: "",
     },
   });
@@ -68,7 +69,12 @@ export const ContactForm = () => {
       
       // Show success message
       toast.success("Thank you for your message! We'll be in touch soon.");
-      form.reset();
+      form.reset({
+        name: "",
+        email: "",
+        subject: "AI consulting", // Reset to default value
+        message: ""
+      });
     } catch (error) {
       toast.error("There was an error sending your message. Please try again.");
       console.error("Form submission error:", error);
@@ -96,7 +102,7 @@ export const ContactForm = () => {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <div className="glass-card p-8">
+          <div className="bg-gray-100 rounded-lg p-8 shadow-lg">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -104,11 +110,11 @@ export const ContactForm = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Name</FormLabel>
+                      <FormLabel className="text-black font-medium">Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your name" {...field} />
+                        <Input placeholder="Your name" className="bg-white text-black" {...field} />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-600" />
                     </FormItem>
                   )}
                 />
@@ -118,11 +124,11 @@ export const ContactForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Email</FormLabel>
+                      <FormLabel className="text-black font-medium">Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} />
+                        <Input placeholder="your.email@example.com" className="bg-white text-black" {...field} />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-600" />
                     </FormItem>
                   )}
                 />
@@ -132,21 +138,22 @@ export const ContactForm = () => {
                   name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Subject</FormLabel>
+                      <FormLabel className="text-black font-medium">Subject</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="w-full">
+                          <SelectTrigger className="w-full bg-white text-black flex justify-between items-center">
                             <SelectValue placeholder="Select a subject" />
+                            <ChevronDown className="h-4 w-4 opacity-50" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent>
+                        <SelectContent className="bg-white text-black">
                           <SelectItem value="AI consulting">AI Consulting</SelectItem>
                           <SelectItem value="Content Creation">Content Creation</SelectItem>
                           <SelectItem value="Speaking/Interview">Speaking/Interview</SelectItem>
                           <SelectItem value="Other">Other</SelectItem>
                         </SelectContent>
                       </Select>
-                      <FormMessage />
+                      <FormMessage className="text-red-600" />
                     </FormItem>
                   )}
                 />
@@ -156,11 +163,11 @@ export const ContactForm = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Message</FormLabel>
+                      <FormLabel className="text-black font-medium">Message</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Type your message here..." rows={6} {...field} />
+                        <Textarea placeholder="Type your message here..." rows={6} className="bg-white text-black" {...field} />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-600" />
                     </FormItem>
                   )}
                 />
