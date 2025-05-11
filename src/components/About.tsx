@@ -6,12 +6,11 @@ export const About = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [typingText1, setTypingText1] = useState("");
   const [typingText2, setTypingText2] = useState("");
-  const [glitchEffect, setGlitchEffect] = useState(false);
   
-  const fullText1 = "Systems initializing...";
-  const fullText2 = "Let's create the future...";
+  const glitchText1 = "\"̸S̵y̷s̷t̵e̵m̴s̶ ̵i̵n̶i̴t̶i̸a̵l̴i̸z̴i̶n̴g̷…̸\"̵ ̶";
+  const glitchText2 = "\"̵L̶e̷t̴'̷s̵ ̵u̸s̶ ̸c̸r̶e̷a̵t̷e̶ ̵t̶h̴e̴ ̴f̴u̴t̶u̸r̵e̷.̴.̶.̸\"̴ ̵";
   
-  // Typing effect with glitchy behavior
+  // Typing effect for glitch style text
   const handleMouseEnter = () => {
     setIsHovered(true);
     setTypingText1("");
@@ -19,60 +18,21 @@ export const About = () => {
     
     let currentText1 = "";
     let currentText2 = "";
-    let glitchCounter = 0;
     
     // First line typing effect
     const typeInterval1 = setInterval(() => {
-      if (currentText1.length < fullText1.length) {
-        // Add random glitch effect occasionally
-        if (Math.random() < 0.15) {
-          const randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-          setTypingText1(currentText1 + randomChar);
-          
-          // Remove the random character after a short delay
-          setTimeout(() => {
-            currentText1 += fullText1[currentText1.length];
-            setTypingText1(currentText1);
-          }, 50);
-        } else {
-          currentText1 += fullText1[currentText1.length];
-          setTypingText1(currentText1);
-        }
-        
-        // Create glitchy visual effect
-        glitchCounter++;
-        if (glitchCounter % 3 === 0) {
-          setGlitchEffect(true);
-          setTimeout(() => setGlitchEffect(false), 50);
-        }
+      if (currentText1.length < glitchText1.length) {
+        currentText1 += glitchText1[currentText1.length];
+        setTypingText1(currentText1);
       } else {
         clearInterval(typeInterval1);
         
         // Start typing the second line after a delay
         setTimeout(() => {
           const typeInterval2 = setInterval(() => {
-            if (currentText2.length < fullText2.length) {
-              // Add random glitch effect occasionally
-              if (Math.random() < 0.15) {
-                const randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-                setTypingText2(currentText2 + randomChar);
-                
-                // Remove the random character after a short delay
-                setTimeout(() => {
-                  currentText2 += fullText2[currentText2.length];
-                  setTypingText2(currentText2);
-                }, 50);
-              } else {
-                currentText2 += fullText2[currentText2.length];
-                setTypingText2(currentText2);
-              }
-              
-              // Create glitchy visual effect
-              glitchCounter++;
-              if (glitchCounter % 3 === 0) {
-                setGlitchEffect(true);
-                setTimeout(() => setGlitchEffect(false), 50);
-              }
+            if (currentText2.length < glitchText2.length) {
+              currentText2 += glitchText2[currentText2.length];
+              setTypingText2(currentText2);
             } else {
               clearInterval(typeInterval2);
             }
@@ -86,22 +46,7 @@ export const About = () => {
     setIsHovered(false);
     setTypingText1("");
     setTypingText2("");
-    setGlitchEffect(false);
   };
-  
-  // Effect to create random glitch after initial rendering
-  useEffect(() => {
-    if (isHovered) {
-      const glitchInterval = setInterval(() => {
-        if (Math.random() < 0.3) {
-          setGlitchEffect(true);
-          setTimeout(() => setGlitchEffect(false), 50 + Math.random() * 100);
-        }
-      }, 1000);
-      
-      return () => clearInterval(glitchInterval);
-    }
-  }, [isHovered]);
   
   return (
     <section id="about" className="py-20 bg-black relative">
@@ -152,7 +97,7 @@ export const About = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <motion.div 
-                  className={`w-64 h-64 rounded-full ${isHovered ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500' : 'bg-gradient-to-r from-blue-500 to-purple-500'} p-1 relative ${glitchEffect ? 'translate-x-[1px]' : ''}`}
+                  className={`w-64 h-64 rounded-full ${isHovered ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500' : 'bg-gradient-to-r from-blue-500 to-purple-500'} p-1 relative`}
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
@@ -160,41 +105,27 @@ export const About = () => {
                   </div>
                 </motion.div>
                 
-                {/* Typing text animation with glitch effect */}
+                {/* Typing text animation with pre-glitched characters */}
                 {isHovered && (
                   <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-full text-center flex flex-col gap-1">
-                    <div className={`relative ${glitchEffect ? 'translate-x-[0.5px] translate-y-[0.5px]' : ''}`}>
+                    <div className="relative">
                       <span className="text-pink-500 text-xl font-mono">
                         {typingText1}
-                        {typingText1.length < fullText1.length && (
+                        {typingText1.length < glitchText1.length && (
                           <span className="animate-pulse">|</span>
                         )}
                       </span>
-                      
-                      {/* Random characters that occasionally appear and disappear for glitch effect */}
-                      {glitchEffect && (
-                        <span className="absolute top-0 left-0 text-pink-500 text-xl font-mono opacity-70 translate-x-[1px]">
-                          {typingText1.substring(0, typingText1.length - 1) + (Math.random() > 0.5 ? '/' : '_')}
-                        </span>
-                      )}
                     </div>
                     
                     {/* Second line */}
-                    {typingText1.length === fullText1.length && (
-                      <div className={`relative ${glitchEffect ? 'translate-x-[0.5px] translate-y-[-0.5px]' : ''}`}>
+                    {typingText1.length === glitchText1.length && (
+                      <div className="relative">
                         <span className="text-pink-500 text-xl font-mono">
                           {typingText2}
-                          {typingText2.length < fullText2.length && (
+                          {typingText2.length < glitchText2.length && (
                             <span className="animate-pulse">|</span>
                           )}
                         </span>
-                        
-                        {/* Random characters for glitch effect */}
-                        {glitchEffect && (
-                          <span className="absolute top-0 left-0 text-pink-500 text-xl font-mono opacity-70 translate-x-[-1px]">
-                            {typingText2.substring(0, typingText2.length - 1) + (Math.random() > 0.5 ? '/' : '_')}
-                          </span>
-                        )}
                       </div>
                     )}
                   </div>
