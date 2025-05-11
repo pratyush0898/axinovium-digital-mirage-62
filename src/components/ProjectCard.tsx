@@ -72,7 +72,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
               <Film className="text-purple-300" size={48} />
             </div>
           )}
-          {/* Moved the category tag to bottom-left instead of right */}
+          {/* Category tag positioned at bottom-left with less transparency */}
           <div className={`absolute bottom-2 left-2 px-3 py-1 rounded-full text-sm font-medium ${getCategoryStyles(project.category).tag}`}>
             {project.category}
           </div>
@@ -100,12 +100,14 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
 const getCategoryStyles = (category: string) => {
   switch (category) {
     case "VRChat Worlds":
-      return { tag: "bg-pink-500/20 text-pink-200 border border-pink-500/30" };
+      return { tag: "bg-pink-500/40 text-pink-200 border border-pink-500/50" }; // Less transparent
     case "Free Tools":
-      return { tag: "bg-blue-500/20 text-blue-200 border border-blue-500/30" };
+      return { tag: "bg-blue-500/40 text-blue-200 border border-blue-500/50" }; // Less transparent
     case "Content Creation":
-      return { tag: "bg-green-500/20 text-green-200 border border-green-500/30" };
+      return { tag: "bg-green-500/40 text-green-200 border border-green-500/50" }; // Less transparent
+    case "Community":
+      return { tag: "bg-yellow-500/40 text-yellow-200 border border-yellow-500/50" }; // New Community category
     default:
-      return { tag: "bg-purple-500/20 text-purple-200 border border-purple-500/30" };
+      return { tag: "bg-purple-500/40 text-purple-200 border border-purple-500/50" }; // Less transparent
   }
 };

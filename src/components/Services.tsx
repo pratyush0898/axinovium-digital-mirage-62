@@ -26,7 +26,7 @@ export const Services = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
+          className="text-7xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text leading-relaxed"
         >
           Services
         </motion.h2>
@@ -81,7 +81,7 @@ export const Services = () => {
               alt="Venice Award"
               className="w-12 h-12 object-contain"
             />
-            <span className="text-white font-semibold">Award winning creativity</span>
+            <span className="text-white font-semibold">Multi-award winning creativity</span>
           </motion.div>
 
           <motion.div

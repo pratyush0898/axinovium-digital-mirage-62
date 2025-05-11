@@ -114,13 +114,22 @@ const projects: Project[] = [
     description: "VRchat virtual reality worlds I created between 2023-2025. Some unreleased.",
     videoId: "h13kD1Bga6M",
     link: "https://www.youtube.com/watch?v=h13kD1Bga6M"
+  },
+  // Adding new Community project
+  {
+    id: 11,
+    title: "Meshy #AroundTheWorld# 2-Year Anniversary event",
+    category: "Community",
+    description: "Designed and managed this global event as Meshy's Community Ambassador, for 2.5 million users.",
+    link: "#",
+    slideshow: ["/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"] // Using Venice award image as placeholder
   }
 ];
 
 export const ProjectsGallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const categories = ["All", "VRChat Worlds", "Free Tools", "Content Creation"];
+  const categories = ["All", "VRChat Worlds", "Content Creation", "Community", "Free Tools"];
 
   const filteredProjects = activeCategory === "All" 
     ? projects 

@@ -8,23 +8,46 @@ interface CategoryFilterProps {
 }
 
 export const CategoryFilter = ({ categories, activeCategory, onSelectCategory }: CategoryFilterProps) => {
+  const getCategoryStyles = (category: string, isActive: boolean) => {
+    if (!isActive) return "bg-gray-800 text-gray-300 hover:bg-gray-700";
+    
+    switch (category) {
+      case "VRChat Worlds":
+        return "bg-pink-500/40 text-pink-100 border-pink-500";
+      case "Free Tools":
+        return "bg-blue-500/40 text-blue-100 border-blue-500";
+      case "Content Creation":
+        return "bg-green-500/40 text-green-100 border-green-500";
+      case "Community":
+        return "bg-yellow-500/40 text-yellow-100 border-yellow-500";
+      case "All":
+        return "bg-purple-500/40 text-purple-100 border-purple-500";
+      default:
+        return "bg-purple-500/40 text-purple-100 border-purple-500";
+    }
+  };
+
   return (
-    <div className="flex justify-center flex-wrap gap-4 mb-8">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="flex flex-wrap justify-center gap-3 mb-8"
+    >
       {categories.map((category) => (
         <motion.button
           key={category}
           onClick={() => onSelectCategory(category)}
-          className={`px-4 py-2 rounded-full transition-all duration-300 border ${
+          className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${getCategoryStyles(
+            category,
             activeCategory === category
-              ? 'bg-purple-600 border-purple-400 text-white shadow-lg shadow-purple-500/20'
-              : 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700'
-          }`}
+          )}`}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           {category}
         </motion.button>
       ))}
-    </div>
+    </motion.div>
   );
 };

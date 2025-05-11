@@ -6,7 +6,6 @@ export interface Project {
   title: string;
   description: ReactNode;
   videoId?: string;
-  image?: string;
   link: string;
   category: string;
   award?: {
