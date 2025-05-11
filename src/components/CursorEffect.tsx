@@ -37,8 +37,8 @@ export const CursorEffect = () => {
           element.style.left = `${j * cellSize}px`;
           element.style.top = `${i * cellSize}px`;
           element.style.color = '#D946EF'; // Pink color
-          element.style.opacity = '0.01'; // Almost invisible by default
-          element.style.transition = 'text-shadow 0.1s ease-out';
+          element.style.opacity = '0.05'; // Make it slightly visible by default
+          element.style.transition = 'opacity 0.3s ease, text-shadow 0.1s ease-out';
           element.textContent = char;
           
           fragment.appendChild(element);
@@ -49,13 +49,23 @@ export const CursorEffect = () => {
       
       // Store references to characters
       matrixCharsRef.current = Array.from(containerRef.current.children) as HTMLElement[];
+
+      // Force trigger a reflow to ensure elements are rendered
+      containerRef.current.offsetHeight;
     };
     
     // Initialize
     initializeMatrix();
+    console.log("Matrix initialized with", matrixCharsRef.current.length, "characters");
+
+    // Set a small timeout to ensure matrix is visible
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
     
     // Handle window resize with debounce
     const handleResize = debounce(() => {
+      console.log("Window resized, reinitializing matrix");
       initializeMatrix();
     }, 500);
     
@@ -96,7 +106,8 @@ export const CursorEffect = () => {
   // Animation loop using requestAnimationFrame
   useEffect(() => {
     const updateSpotlightEffect = () => {
-      if (!isVisible || !matrixCharsRef.current.length) {
+      if (!matrixCharsRef.current.length) {
+        console.log("No matrix characters found!");
         animationFrameRef.current = requestAnimationFrame(updateSpotlightEffect);
         return;
       }
@@ -114,7 +125,7 @@ export const CursorEffect = () => {
       // Reset any fading characters first
       matrixCharsRef.current.forEach(char => {
         if (char.dataset.fading === 'true') {
-          char.style.opacity = '0.01';
+          char.style.opacity = '0.05';
           char.style.textShadow = 'none';
           delete char.dataset.fading;
         }
@@ -201,14 +212,13 @@ export const CursorEffect = () => {
   }
   
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="fixed inset-0 pointer-events-none z-0">
       {/* Matrix container */}
-      <div ref={containerRef} className="absolute inset-0 overflow-hidden"></div>
+      <div 
+        ref={containerRef}
+        className="absolute inset-0 overflow-hidden"
+        style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.3s ease' }}
+      ></div>
       
       {/* Spotlight overlay effect */}
       <motion.div
@@ -222,8 +232,11 @@ export const CursorEffect = () => {
           mixBlendMode: "screen",
           top: mousePosition.y - window.scrollY - 350,
           left: mousePosition.x - window.scrollX - 350,
+          opacity: isVisible ? 1 : 0,
+          transition: 'opacity 0.3s ease',
+          zIndex: 1
         }}
       />
-    </motion.div>
+    </div>
   );
 };
