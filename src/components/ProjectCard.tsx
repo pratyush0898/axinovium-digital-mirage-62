@@ -32,7 +32,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       onClick={handleClick}
     >
       <motion.div
-        className="bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border border-gray-700 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+        className="bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 border border-gray-700 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
         whileHover={{ scale: 1.05 }}
       >
         <div className="relative aspect-video">
