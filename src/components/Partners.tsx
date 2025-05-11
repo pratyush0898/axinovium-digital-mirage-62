@@ -84,7 +84,7 @@ export const Partners = () => {
                 href={partner.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card p-8 flex items-center justify-center hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] transition-all duration-300 h-48 group"
+                className="bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] p-8 flex items-center justify-center hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] transition-all duration-300 h-48 group rounded-xl border border-gray-800"
                 whileHover={{ scale: 1.05 }}
               >
                 <img

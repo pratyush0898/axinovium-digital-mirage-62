@@ -1,7 +1,32 @@
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export const About = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [typingText, setTypingText] = useState("");
+  const fullText = "Systems initializing...";
+  
+  // Typing effect hook
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setTypingText("");
+    let currentText = "";
+    const typeInterval = setInterval(() => {
+      if (currentText.length < fullText.length) {
+        currentText += fullText[currentText.length];
+        setTypingText(currentText);
+      } else {
+        clearInterval(typeInterval);
+      }
+    }, 80);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTypingText("");
+  };
+  
   return (
     <section id="about" className="py-20 bg-black relative">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -44,27 +69,30 @@ export const About = () => {
             className="md:w-1/2 flex justify-center"
           >
             <div className="relative">
-              {/* Animated Logo with hover and pulse effects */}
-              <motion.div 
-                className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1"
-                animate={{ 
-                  rotate: [0, 10, 0, -10, 0],
-                  scale: [1, 1.05, 1, 1.05, 1]
-                }}
-                transition={{ 
-                  duration: 8, 
-                  ease: "easeInOut", 
-                  repeat: Infinity 
-                }}
-                whileHover={{ 
-                  scale: 1.1,
-                  boxShadow: "0 0 25px rgba(255,0,255,0.8)"
-                }}
+              {/* Logo with gradient border on hover */}
+              <div 
+                className="relative w-64 h-64"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-32 h-32" />
-                </div>
-              </motion.div>
+                <motion.div 
+                  className={`w-64 h-64 rounded-full ${isHovered ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500' : 'bg-gradient-to-r from-blue-500 to-purple-500'} p-1 relative`}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+                    <img src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" alt="Axinovium Logo" className="w-48 h-48" />
+                  </div>
+                </motion.div>
+                
+                {/* Typing text animation */}
+                {isHovered && (
+                  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-full text-center">
+                    <span className="text-pink-500 text-xl font-mono">
+                      {typingText}<span className="animate-pulse">|</span>
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
           </motion.div>
         </motion.div>
