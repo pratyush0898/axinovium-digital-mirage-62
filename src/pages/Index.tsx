@@ -12,9 +12,11 @@ import { CursorEffect } from "@/components/CursorEffect";
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative">
+      {/* Matrix cursor effect */}
+      <CursorEffect />
+      
       {/* Content container */}
       <div className="relative z-10">
-        <CursorEffect />
         <Hero />
         <div className="relative z-10">
           <About />
