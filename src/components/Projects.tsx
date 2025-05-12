@@ -144,7 +144,7 @@ export const Projects = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] h-full border-2 border-transparent hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ 
                     scale: 1.02, 
                     transition: { type: "spring", damping: 20 }
