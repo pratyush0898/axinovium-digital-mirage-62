@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -100,10 +101,10 @@ export const Hero = () => {
         <Particle key={i} index={i} />
       ))}
       
-      {/* Background video overlay - solid black background to block matrix effect */}
+      {/* Background video overlay - reduced overlay opacity from bg-black/80 to bg-black/60 */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-        {/* Using bg-black/80 for a darker overlay on the main background video */}
-        <div className="absolute inset-0 bg-black/80 z-10"></div>
+        {/* Using bg-black/60 for a less dark overlay on the main background video */}
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
         <iframe 
           className="w-full h-full scale-[1.5] object-cover" 
           src="https://www.youtube.com/embed/h13kD1Bga6M?autoplay=1&mute=1&controls=0&loop=1&playlist=h13kD1Bga6M&showinfo=0&rel=0&modestbranding=1" 

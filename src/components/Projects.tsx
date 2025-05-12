@@ -118,20 +118,20 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
+          className="text-7xl font-bold text-center mb-8 py-4 bg-clip-text text-transparent"
+          style={{
+            backgroundImage: "linear-gradient(to right, #60a5fa, #9333ea, #ec4899)",
+            backgroundSize: "200% 200%",
+          }}
           animate={{
-            filter: [
-              'hue-rotate(0deg)',
-              'hue-rotate(90deg)',
-              'hue-rotate(180deg)',
-              'hue-rotate(270deg)',
-              'hue-rotate(360deg)',
-            ]
+            backgroundPosition: ["0% center", "100% center", "0% center"],
           }}
           transition={{
-            duration: 6.67,
-            ease: "linear",
-            repeat: Infinity,
+            backgroundPosition: {
+              duration: 6.67,
+              ease: "linear",
+              repeat: Infinity,
+            }
           }}
         >
           Featured
