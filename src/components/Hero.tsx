@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -102,8 +103,8 @@ export const Hero = () => {
       
       {/* Background video overlay - solid black background to block matrix effect */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-        {/* Using bg-black/80 for a darker overlay on the main background video */}
-        <div className="absolute inset-0 bg-black/80 z-10"></div>
+        {/* Changed from bg-black/80 to bg-black/60 for a lighter overlay */}
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
         <iframe 
           className="w-full h-full scale-[1.5] object-cover" 
           src="https://www.youtube.com/embed/h13kD1Bga6M?autoplay=1&mute=1&controls=0&loop=1&playlist=h13kD1Bga6M&showinfo=0&rel=0&modestbranding=1" 
@@ -122,7 +123,7 @@ export const Hero = () => {
         transition={{ duration: 0.8 }}
         className="container mx-auto px-4 text-center z-20"
       >
-        {/* Logo container - removed bg-black/50 and backdrop-blur-sm */}
+        {/* Logo container */}
         <div className="w-96 h-96 mx-auto mb-8 relative">
           <div className="w-full h-full flex items-center justify-center">
             <motion.img 

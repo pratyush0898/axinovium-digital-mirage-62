@@ -118,20 +118,10 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text leading-relaxed"
-          animate={{
-            filter: [
-              'hue-rotate(0deg)',
-              'hue-rotate(90deg)',
-              'hue-rotate(180deg)',
-              'hue-rotate(270deg)',
-              'hue-rotate(360deg)',
-            ]
-          }}
-          transition={{
-            duration: 6.67,
-            ease: "linear",
-            repeat: Infinity,
+          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+          style={{
+            backgroundSize: "200% 200%",
+            animation: "gradient-animation 6.67s linear infinite",
           }}
         >
           Featured
@@ -155,18 +145,14 @@ export const Projects = () => {
               <div className="relative h-full">
                 <motion.div
                   className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] h-full border-2 border-purple-500/60 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                  animate={{
-                    borderColor: [
-                      'rgba(168, 85, 247, 0.6)',
-                      'rgba(59, 130, 246, 0.6)',
-                      'rgba(236, 72, 153, 0.6)',
-                      'rgba(168, 85, 247, 0.6)',
-                    ]
+                  whileHover={{ 
+                    scale: 1.02, 
+                    transition: { type: "spring", damping: 20 }
                   }}
                   style={{
-                    transition: 'all 0.3s ease'
+                    borderImage: "linear-gradient(to right, #a855f7, #3b82f6, #ec4899, #a855f7) 1",
+                    borderImageSlice: 1,
+                    animation: "gradient-border-animation 6.67s linear infinite",
                   }}
                 >
                   <div className="relative p-6 rounded-lg h-full flex flex-col">
@@ -296,6 +282,21 @@ export const Projects = () => {
           )}
         </DialogContent>
       </Dialog>
+      
+      {/* Add global styles for the animations */}
+      <style jsx global>{`
+        @keyframes gradient-animation {
+          0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+          50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
+          100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+        }
+        
+        @keyframes gradient-border-animation {
+          0% { filter: hue-rotate(0deg); }
+          50% { filter: hue-rotate(180deg); }
+          100% { filter: hue-rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 };
