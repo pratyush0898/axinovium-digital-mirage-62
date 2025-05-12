@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -143,13 +144,13 @@ export const Projects = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] h-full border-2 border-transparent hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
+                  className="relative overflow-hidden rounded-xl bg-[#1A1A1A] h-full border-2 border-transparent hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
                   whileHover={{ 
                     scale: 1.02, 
                     transition: { type: "spring", damping: 20 }
                   }}
                 >
-                  {/* Apply a pseudo-element for the animated border */}
+                  {/* Apply a pseudo-element for the animated border only */}
                   <div className="absolute inset-0 rounded-xl border-2 border-transparent"
                     style={{
                       background: "linear-gradient(to right, #a855f7, #3b82f6, #ec4899, #a855f7) border-box",
