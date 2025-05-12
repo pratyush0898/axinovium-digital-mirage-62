@@ -16,6 +16,24 @@ export const FeaturedProjectCard = ({ project, onSelect }: FeaturedProjectCardPr
     }
   };
 
+  // Special rendering for Chromatic Frequency award description
+  const renderDescription = () => {
+    if (project.title === "Chromatic Frequency" && project.award) {
+      return (
+        <a 
+          href={project.award.link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="hover:underline"
+        >
+          {project.description}
+        </a>
+      );
+    }
+    
+    return project.description;
+  };
+
   return (
     <div className="relative h-full">
       <motion.div
@@ -83,7 +101,7 @@ export const FeaturedProjectCard = ({ project, onSelect }: FeaturedProjectCardPr
             <div>
               <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
               <div className="text-white text-xl" onClick={(e) => e.stopPropagation()}>
-                {project.description}
+                {renderDescription()}
               </div>
               {project.longDescription && (
                 <p className="text-lg text-gray-300 mt-2">{project.longDescription}</p>

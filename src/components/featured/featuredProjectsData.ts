@@ -11,7 +11,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     title: "Chromatic Frequency",
-    description: <><a href="https://www.labiennale.org/en/cinema/2024/venice-immersive/chromatic-frequency" target="_blank" rel="noopener noreferrer" className="hover:underline">🏆 Featured at the Venice Film Festival 2024, Best of Worlds</a></>,
+    description: "🏆 Featured at the Venice Film Festival 2024, Best of Worlds",
     longDescription: "This \"digital acid trip\" takes the viewer on a journey through a strange, flooded chasm filled with geometric bismuth-like structures.",
     videoId: "Y8yyFeVs1gs",
     link: "https://vrchat.com/home/launch?worldId=wrld_bff9ded4-af0a-4783-8d24-e0df9625bd79",

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 export interface FeaturedProject {
   title: string;
-  description: ReactNode;
+  description: string | ReactNode;
   videoId: string;
   link: string;
   category?: string;
