@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -148,12 +149,17 @@ export const Projects = () => {
                     scale: 1.02, 
                     transition: { type: "spring", damping: 20 }
                   }}
-                  style={{
-                    borderImage: "linear-gradient(to right, #a855f7, #3b82f6, #ec4899, #a855f7) 1",
-                    borderImageSlice: 1,
-                    animation: "gradient-border-animation 6.67s linear infinite",
-                  }}
                 >
+                  {/* Apply a pseudo-element for the animated border */}
+                  <div className="absolute inset-0 rounded-xl border-2 border-transparent"
+                    style={{
+                      background: "linear-gradient(to right, #a855f7, #3b82f6, #ec4899, #a855f7) border-box",
+                      maskImage: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                      maskComposite: "exclude",
+                      animation: "gradient-border-animation 6.67s linear infinite",
+                    }}
+                  ></div>
+                  
                   <div className="relative p-6 rounded-lg h-full flex flex-col">
                     <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]">
                       {project.videoId && project.videoId !== "undefined" ? (
