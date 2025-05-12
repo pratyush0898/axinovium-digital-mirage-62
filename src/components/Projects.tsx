@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -282,21 +281,6 @@ export const Projects = () => {
           )}
         </DialogContent>
       </Dialog>
-      
-      {/* Add global styles for the animations */}
-      <style jsx global>{`
-        @keyframes gradient-animation {
-          0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-          50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
-          100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
-        }
-        
-        @keyframes gradient-border-animation {
-          0% { filter: hue-rotate(0deg); }
-          50% { filter: hue-rotate(180deg); }
-          100% { filter: hue-rotate(360deg); }
-        }
-      `}</style>
     </section>
   );
 };
