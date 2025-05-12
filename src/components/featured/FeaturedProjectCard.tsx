@@ -47,6 +47,26 @@ export const FeaturedProjectCard = ({ project, onSelect }: FeaturedProjectCardPr
         role="button"
         tabIndex={0}
         aria-label={`View project: ${project.title}`}
+        animate={{
+          borderColor: [
+            'rgba(168, 85, 247, 0.7)',
+            'rgba(59, 130, 246, 0.7)',
+            'rgba(236, 72, 153, 0.7)',
+            'rgba(168, 85, 247, 0.7)',
+          ]
+        }}
+        transition={{
+          borderColor: {
+            duration: 6.67,
+            ease: "linear",
+            repeat: Infinity,
+          },
+          scale: {
+            type: "spring",
+            stiffness: 400,
+            damping: 10
+          }
+        }}
       >
         <div className="relative p-6 rounded-lg h-full flex flex-col">
           <div className="relative aspect-video rounded-lg overflow-hidden mb-4 h-[400px]">
