@@ -17,7 +17,7 @@ const Index = () => {
       
       {/* Content needs higher z-index */}
       <div className="relative z-10">
-        <Hero />
+        <Hero hideSubtitle={true} buttonText="Explore Axinovium" />
         <div className="relative z-10">
           <About />
           <Services />
