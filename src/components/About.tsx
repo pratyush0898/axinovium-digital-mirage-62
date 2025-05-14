@@ -87,11 +87,11 @@ export const About = () => {
             </motion.h2>
             <p className="text-gray-300 text-xl leading-relaxed mb-4">
               Independent AI Consultant.<br />
-              Creative Technologist.<br /> 
-              Reality Engineer.
+              Creative technologist.<br /> 
+              Reality engineer.
             </p>
             <p className="text-gray-300 text-xl leading-relaxed">
-              In an era defined by technological acceleration and adaptation, I move faster than anyone else — fusing mind, machine, and aesthetics to create the future.
+              I design intelligent systems and immersive experiences - fusing mind, machine and aesthetics.
             </p>
             <p className="text-gray-300 text-xl leading-relaxed mt-4">
               Based in New Zealand. Operating globally.
