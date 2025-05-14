@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 // Particle component for the background
 const Particle = ({ index }: { index: number }) => {
@@ -86,6 +87,7 @@ interface HeroProps {
 export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase" }: HeroProps) => {
   const particles = Array.from({ length: 30 }, (_, i) => i); // Reduced particle count
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { scrollToSection } = useSmoothScroll();
 
   useEffect(() => {
     // Set up YouTube API
@@ -108,8 +110,8 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
       
       {/* Background video overlay - solid black background to block matrix effect */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-        {/* Changed from bg-black/60 to bg-black/40 for a lighter overlay */}
-        <div className="absolute inset-0 bg-black/40 z-10"></div>
+        {/* Changed to bg-black/30 for a lighter overlay to make the video more visible */}
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
         <iframe 
           className="w-full h-full scale-[1.5] object-cover" 
           src="https://www.youtube.com/embed/h13kD1Bga6M?autoplay=1&mute=1&controls=0&loop=1&playlist=h13kD1Bga6M&showinfo=0&rel=0&modestbranding=1" 
@@ -171,7 +173,7 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
           className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/30 relative overflow-hidden group"
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => scrollToSection('about')}
         >
           <span className="relative z-10">{buttonText}</span>
           <motion.span

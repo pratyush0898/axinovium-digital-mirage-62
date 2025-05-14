@@ -39,6 +39,7 @@
 
   html {
     @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
 }
 
@@ -60,6 +61,21 @@
     linear-gradient(to right, rgba(127, 95, 248, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(127, 95, 248, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Parallax content styling */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  will-change: transform;
 }
 
 /* Custom scrollbar */
@@ -177,4 +193,15 @@
 
 .hue-shift-border {
   animation: border-hue-shift 6.67s linear infinite;
+}
+
+/* Floating animation for parallax elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
 }
