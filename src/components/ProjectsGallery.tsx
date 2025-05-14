@@ -97,14 +97,7 @@ const projects: Project[] = [
     videoId: "VoUWYyVmcoQ",
     link: "https://www.youtube.com/watch?v=VoUWYyVmcoQ"
   },
-  {
-    id: 9,
-    title: "Meshy 2-year Anniversary showcase",
-    category: "Content Creation",
-    description: "A scene I created using community models submitted for the Meshy #AroundTheWorld# celebration event. Animated with AI.",
-    videoId: "14Kcrj3iAH0",
-    link: "https://www.youtube.com/watch?v=14Kcrj3iAH0"
-  },
+  // Removed the Meshy 2-year Anniversary showcase project since it's already in the featured section
   // Adding the new video
   {
     id: 10,
