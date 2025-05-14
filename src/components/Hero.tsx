@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Particle component for the background
 const Particle = ({ index }: { index: number }) => {
@@ -88,6 +89,7 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
   const particles = Array.from({ length: 30 }, (_, i) => i); // Reduced particle count
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollToSection } = useSmoothScroll();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Set up YouTube API
@@ -131,12 +133,12 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
         className="container mx-auto px-4 text-center z-20"
       >
         {/* Logo container */}
-        <div className="w-96 h-96 mx-auto mb-8 relative">
+        <div className={`${isMobile ? 'w-64 h-64' : 'w-96 h-96'} mx-auto mb-8 relative`}>
           <div className="w-full h-full flex items-center justify-center">
             <motion.img 
               src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" 
               alt="Axinovium Logo" 
-              className="w-96 h-96"
+              className={`${isMobile ? 'w-64 h-64' : 'w-96 h-96'}`}
               animate={{
                 filter: [
                   'hue-rotate(0deg)',
@@ -172,7 +174,7 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
           whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(139, 92, 246, 0.5)" }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
-          className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/30 relative overflow-hidden group"
+          className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-base md:text-lg hover:shadow-lg hover:shadow-purple-500/30 relative overflow-hidden group"
           onClick={() => scrollToSection('about')}
         >
           <span className="relative z-10">{buttonText}</span>

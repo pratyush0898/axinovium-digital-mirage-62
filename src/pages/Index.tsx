@@ -33,7 +33,7 @@ const Index = () => {
       {/* Parallax background elements */}
       <ParallaxBackground />
       
-      {/* Content needs higher z-index */}
+      {/* Content needs higher z-index and relative positioning */}
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />
         <div className="relative z-10">
@@ -42,6 +42,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
+            className="relative" // Added relative positioning
           >
             <About />
           </motion.div>
@@ -51,6 +52,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
+            className="relative" // Added relative positioning
           >
             <Services />
           </motion.div>
@@ -60,6 +62,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
+            className="relative" // Added relative positioning
           >
             <Projects />
           </motion.div>
@@ -70,6 +73,7 @@ const Index = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={sectionVariants}
+              className="relative" // Added relative positioning
             >
               <ProjectsGallery />
             </motion.div>
@@ -80,6 +84,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
+            className="relative" // Added relative positioning
           >
             <Partners />
           </motion.div>
@@ -89,6 +94,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
+            className="relative" // Added relative positioning
           >
             <ContactForm />
           </motion.div>
