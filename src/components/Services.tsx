@@ -95,7 +95,7 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-8 py-5 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Increased padding */
+                      className="glass-card px-8 py-5 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Consistent styling */
                     >
                       <p 
                         className="font-medium text-lg bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text" /* Added text-lg */
@@ -147,7 +147,7 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-8 py-5 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Increased padding */
+                      className="glass-card px-8 py-5 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Consistent styling */
                     >
                       <p 
                         className="font-medium text-lg bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text" /* Added text-lg */
@@ -182,7 +182,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center" /* Increased size, padding and gap */
+            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Consistent styling */
           >
             <Users className="w-10 h-10 text-purple-400" /> {/* Increased icon size */}
             <span className="text-white font-semibold text-xl">Community Ambassador for 2.5 million Users</span> {/* Increased from text-lg to text-xl */}
@@ -192,7 +192,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center" /* Increased size, padding and gap */
+            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Consistent styling */
           >
             <img
               src="/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"
@@ -206,7 +206,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center" /* Increased size, padding and gap */
+            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Consistent styling */
           >
             <Check className="w-10 h-10 text-green-500" /> {/* Increased icon size */}
             <span className="text-white font-semibold text-xl">Over 1 million player world visits & impressions</span> {/* Increased from text-lg to text-xl */}

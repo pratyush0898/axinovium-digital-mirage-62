@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 
@@ -107,8 +108,8 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
       
       {/* Background video overlay - solid black background to block matrix effect */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-        {/* Changed from bg-black/80 to bg-black/60 for a lighter overlay */}
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
+        {/* Changed from bg-black/60 to bg-black/40 for a lighter overlay */}
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
         <iframe 
           className="w-full h-full scale-[1.5] object-cover" 
           src="https://www.youtube.com/embed/h13kD1Bga6M?autoplay=1&mute=1&controls=0&loop=1&playlist=h13kD1Bga6M&showinfo=0&rel=0&modestbranding=1" 
