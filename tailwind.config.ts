@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -87,11 +88,17 @@ export default {
           to: {
             height: '0'
           }
+        },
+        'gradient-animation': {
+          '0%': { backgroundPosition: '0% 50%', filter: 'hue-rotate(0deg)' },
+          '50%': { backgroundPosition: '100% 50%', filter: 'hue-rotate(180deg)' },
+          '100%': { backgroundPosition: '0% 50%', filter: 'hue-rotate(360deg)' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out'
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'gradient-animation': 'gradient-animation 8s infinite linear'
       }
     }
   },

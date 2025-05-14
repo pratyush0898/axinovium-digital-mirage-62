@@ -57,8 +57,8 @@ export const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-12 bg-black">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-12 bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-400/5 before:via-purple-500/5 before:to-pink-400/5 before:opacity-20 before:animate-[gradient-animation_8s_infinite]">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

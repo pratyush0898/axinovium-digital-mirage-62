@@ -122,7 +122,7 @@ export const FeaturedProjectCard = ({ project, onSelect }: FeaturedProjectCardPr
               <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
               <div 
                 className="text-white text-xl cursor-pointer" 
-                onClick={() => project.title === "Meshy 2-year Anniversary showcase" ? onSelect(project) : null}
+                onClick={() => onSelect(project)}
               >
                 {renderDescription()}
               </div>
