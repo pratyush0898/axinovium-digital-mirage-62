@@ -37,7 +37,7 @@ export const FeaturedProjectCard = ({ project, onSelect }: FeaturedProjectCardPr
   return (
     <div className="relative h-full">
       <motion.div
-        className="relative overflow-hidden rounded-xl glass-card h-full bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"
+        className="relative overflow-hidden rounded-xl glass-card h-full bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,255,0.8)]"
         whileHover={{ 
           scale: 1.02, 
           transition: { type: "spring", damping: 20 }

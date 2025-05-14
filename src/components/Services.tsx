@@ -61,7 +61,7 @@ export const Services = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-8xl font-bold text-center mb-16 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+          className="text-7xl font-bold text-center mb-16 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
           style={{
             backgroundSize: "200% 200%",
             animation: "gradient-animation 6.67s linear infinite",
@@ -95,10 +95,10 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-10 py-6 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
+                      className="glass-card px-12 py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
                     >
                       <p 
-                        className="font-medium text-xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        className="font-medium text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
                         style={{
                           backgroundSize: "200% 200%",
                           animation: "gradient-animation 6.67s linear infinite",
@@ -107,15 +107,15 @@ export const Services = () => {
                         {service.title}
                       </p>
                       {expandedServices[service.title] ? (
-                        <ChevronUp className="h-7 w-7 text-white" />
+                        <ChevronUp className="h-8 w-8 text-white" />
                       ) : (
-                        <ChevronDown className="h-7 w-7 text-white" />
+                        <ChevronDown className="h-8 w-8 text-white" />
                       )}
                     </motion.div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <div className="px-10 py-6 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl border-x border-b border-white/5">
-                      <p className="text-white text-lg">{service.details}</p>
+                    <div className="px-12 py-7 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl border-x border-b border-white/5">
+                      <p className="text-white text-xl">{service.details}</p>
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
@@ -147,10 +147,10 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-10 py-6 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
+                      className="glass-card px-12 py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
                     >
                       <p 
-                        className="font-medium text-xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        className="font-medium text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
                         style={{
                           backgroundSize: "200% 200%",
                           animation: "gradient-animation 6.67s linear infinite",
@@ -159,15 +159,15 @@ export const Services = () => {
                         {service.title}
                       </p>
                       {expandedServices[service.title] ? (
-                        <ChevronUp className="h-7 w-7 text-white" />
+                        <ChevronUp className="h-8 w-8 text-white" />
                       ) : (
-                        <ChevronDown className="h-7 w-7 text-white" />
+                        <ChevronDown className="h-8 w-8 text-white" />
                       )}
                     </motion.div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <div className="px-10 py-6 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl border-x border-b border-white/5">
-                      <p className="text-white text-lg">{service.details}</p>
+                    <div className="px-12 py-7 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl border-x border-b border-white/5">
+                      <p className="text-white text-xl">{service.details}</p>
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
