@@ -34,7 +34,7 @@ const services = {
       details: "High-quality, engaging video content and tutorials that educate, entertain, and convert. My content creation services are designed to showcase your products and services effectively."
     },
     { 
-      title: "Event design, Management and Execution",
+      title: "Event design and leadership",
       details: "Virtual event design and leadership services that create memorable experiences for your users — powered by advanced AI workflows to reduce costs."
     },
     { 
