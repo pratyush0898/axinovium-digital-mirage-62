@@ -1,0 +1,58 @@
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(127, 95, 248, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(127, 95, 248, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animation for gradient borders and text */
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+}
+
+/* Rainbow circuit board animation */
+@keyframes circuit-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.circuit-node {
+  animation: circuit-pulse 3s infinite;
+}
+
+/* Circuit board cursor trail effect */
+.circuit-node {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #8b5cf6, #6366f1);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.circuit-node::before,
+.circuit-node::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.7), rgba(139, 92, 246, 0));
+}
+
+.circuit-node::before {
+  left: 4px;
+  top: 1.5px;
+  transform: rotate(45deg);
+}
+
+.circuit-node::after {
+  left: 4px;
+  top: 1.5px;
+  transform: rotate(-45deg);
+}

@@ -1,0 +1,17 @@
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .text-7xl {
+    font-size: 3.5rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-24 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}

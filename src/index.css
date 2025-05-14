@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './styles/animations.css';
+@import './styles/background.css';
+@import './styles/components.css';
+@import './styles/interface.css';
+@import './styles/responsive.css';
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -42,138 +48,3 @@
     scroll-behavior: smooth;
   }
 }
-
-.glass-card {
-  @apply bg-gradient-to-r from-purple-900/20 to-blue-900/20 backdrop-blur-lg border border-transparent hover:border-white/10 rounded-xl hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 hue-shift-border;
-}
-
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500;
-}
-
-.hover-glow {
-  @apply hover:shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300;
-}
-
-/* Background grid pattern */
-.bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(127, 95, 248, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(127, 95, 248, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* Rainbow circuit board animation */
-@keyframes circuit-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-.circuit-node {
-  animation: circuit-pulse 3s infinite;
-}
-
-/* Custom cursor styles for the torch effect */
-body {
-  cursor: none;
-}
-
-.custom-cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.7);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: difference;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #6b46c1, #4834d4);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #8b5cf6, #6366f1);
-}
-
-/* Circuit board cursor trail effect */
-.circuit-node {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: linear-gradient(45deg, #8b5cf6, #6366f1);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.6;
-  transition: transform 0.2s ease;
-}
-
-.circuit-node::before,
-.circuit-node::after {
-  content: '';
-  position: absolute;
-  width: 12px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(139, 92, 246, 0.7), rgba(139, 92, 246, 0));
-}
-
-.circuit-node::before {
-  left: 4px;
-  top: 1.5px;
-  transform: rotate(45deg);
-}
-
-.circuit-node::after {
-  left: 4px;
-  top: 1.5px;
-  transform: rotate(-45deg);
-}
-
-/* Animation for gradient borders and text */
-@keyframes gradient-animation {
-  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-  50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
-  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
-}
-
-@keyframes border-hue-shift {
-  0% { border-color: rgba(168, 85, 247, 0.7); }
-  33% { border-color: rgba(59, 130, 246, 0.7); }
-  66% { border-color: rgba(236, 72, 153, 0.7); }
-  100% { border-color: rgba(168, 85, 247, 0.7); }
-}
-
-.hue-shift-border {
-  animation: border-hue-shift 6.67s linear infinite;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .text-7xl {
-    font-size: 3.5rem;
-  }
-  
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .py-24 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-/* ... keep existing code */

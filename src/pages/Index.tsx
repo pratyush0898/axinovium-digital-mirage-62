@@ -1,3 +1,4 @@
+
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
@@ -6,7 +7,6 @@ import { ProjectsGallery } from "@/components/ProjectsGallery";
 import { Partners } from "@/components/Partners";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
-import { CursorEffect } from "@/components/CursorEffect";
 import { ParallaxBackground } from "@/components/ParallaxBackground";
 import { motion } from "framer-motion";
 
