@@ -1,6 +1,8 @@
 
+
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
+import { Newsletter } from "@/components/Newsletter";
 import { Services } from "@/components/Services";
 import { Projects } from "@/components/Projects";
 import { ProjectsGallery } from "@/components/ProjectsGallery";
@@ -40,6 +42,16 @@ const Index = () => {
             className="relative"
           >
             <About />
+          </motion.div>
+          
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
+            className="relative"
+          >
+            <Newsletter />
           </motion.div>
           
           <motion.div
