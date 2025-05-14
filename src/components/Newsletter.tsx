@@ -73,7 +73,7 @@ export const Newsletter = () => {
                         <div className="relative">
                           <Input
                             placeholder="Enter your email address"
-                            className="h-14 pl-4 pr-32 text-white bg-black border border-white/20 backdrop-blur-sm rounded-full focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            className="h-14 pl-4 pr-32 text-white bg-black border border-white/20 backdrop-blur-sm rounded-full focus:ring-2 focus:ring-purple-500 focus:border-transparent focus:bg-black focus:text-white"
                             {...field}
                           />
                           <Button 
