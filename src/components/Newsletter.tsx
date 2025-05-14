@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
@@ -29,6 +29,7 @@ export const Newsletter = () => {
     toast({
       title: "Success!",
       description: "You're now subscribed to the newsletter!",
+      className: "bg-gradient-to-r from-blue-900/80 to-purple-900/80 border border-white/20 text-white shadow-lg",
     });
     
     console.log("Email to add to newsletter_subscribers table:", values.email);
@@ -57,12 +58,8 @@ export const Newsletter = () => {
               animation: "gradient-animation 6.67s linear infinite",
             }}
           >
-            Stay Connected
+            Join Mailing List
           </motion.h2>
-          
-          <p className="text-lg md:text-xl mb-8 md:mb-10 text-gray-300">
-            Subscribe to receive updates on AI innovations, new projects, and exclusive insights.
-          </p>
           
           <div className="w-full max-w-md mx-auto">
             <Form {...form}>
@@ -96,10 +93,6 @@ export const Newsletter = () => {
               </form>
             </Form>
           </div>
-          
-          <p className="text-sm text-gray-500 mt-6">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
         </motion.div>
       </div>
     </div>
