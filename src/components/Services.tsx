@@ -72,7 +72,15 @@ export const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-white mb-6">Technology & Strategy</h3>
+            <h3 
+              className="text-2xl font-semibold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+              style={{
+                backgroundSize: "200% 200%",
+                animation: "gradient-animation 6.67s linear infinite",
+              }}
+            >
+              Technology & Strategy
+            </h3>
             <div className="grid gap-4">
               {services.technology.map((service, index) => (
                 <Collapsible
@@ -89,7 +97,15 @@ export const Services = () => {
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"
                     >
-                      <p className="text-white font-medium">{service.title}</p>
+                      <p 
+                        className="font-medium bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        style={{
+                          backgroundSize: "200% 200%",
+                          animation: "gradient-animation 6.67s linear infinite",
+                        }}
+                      >
+                        {service.title}
+                      </p>
                       {expandedServices[service.title] ? (
                         <ChevronUp className="h-5 w-5 text-white" />
                       ) : (
@@ -108,7 +124,15 @@ export const Services = () => {
           </div>
 
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-white mb-6">Content & Community</h3>
+            <h3 
+              className="text-2xl font-semibold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+              style={{
+                backgroundSize: "200% 200%",
+                animation: "gradient-animation 6.67s linear infinite",
+              }}
+            >
+              Content & Community
+            </h3>
             <div className="grid gap-4">
               {services.content.map((service, index) => (
                 <Collapsible
@@ -125,7 +149,15 @@ export const Services = () => {
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"
                     >
-                      <p className="text-white font-medium">{service.title}</p>
+                      <p 
+                        className="font-medium bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        style={{
+                          backgroundSize: "200% 200%",
+                          animation: "gradient-animation 6.67s linear infinite",
+                        }}
+                      >
+                        {service.title}
+                      </p>
                       {expandedServices[service.title] ? (
                         <ChevronUp className="h-5 w-5 text-white" />
                       ) : (
