@@ -7,7 +7,6 @@ import { ProjectsGallery } from "@/components/ProjectsGallery";
 import { Partners } from "@/components/Partners";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
-import { ParallaxBackground } from "@/components/ParallaxBackground";
 import { motion } from "framer-motion";
 
 // Animation variants for section fade-ins
@@ -26,9 +25,6 @@ const sectionVariants = {
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative">
-      {/* Torch effect circuit board background */}
-      <ParallaxBackground />
-      
       {/* Content needs higher z-index and relative positioning */}
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />

@@ -10,3 +10,21 @@
   50% { filter: hue-rotate(180deg); }
   100% { filter: hue-rotate(360deg); }
 }
+
+@keyframes neon-pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+
+/* Neon text effect animation */
+.neon-text {
+  animation: neon-pulse 1.5s ease-in-out infinite;
+  text-shadow: 
+    0 0 5px rgba(139, 92, 246, 0.7),
+    0 0 10px rgba(139, 92, 246, 0.6),
+    0 0 15px rgba(139, 92, 246, 0.5),
+    0 0 20px rgba(139, 92, 246, 0.4),
+    0 0 35px rgba(139, 92, 246, 0.3),
+    0 0 40px rgba(139, 92, 246, 0.2);
+  filter: brightness(1.2) contrast(1.1);
+}

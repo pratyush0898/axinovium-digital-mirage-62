@@ -37,49 +37,6 @@ const Particle = ({ index }: { index: number }) => {
   );
 };
 
-// Cursor ripple effect
-const CursorRipple = () => {
-  const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
-  const [nextId, setNextId] = useState(0);
-
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const newRipple = {
-        x: e.clientX,
-        y: e.clientY,
-        id: nextId,
-      };
-      setRipples((prev) => [...prev, newRipple]);
-      setNextId((prev) => prev + 1);
-
-      setTimeout(() => {
-        setRipples((prev) => prev.filter((ripple) => ripple.id !== newRipple.id));
-      }, 1000);
-    };
-
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
-  }, [nextId]);
-
-  return (
-    <>
-      {ripples.map((ripple) => (
-        <motion.div
-          key={ripple.id}
-          className="fixed pointer-events-none w-4 h-4 rounded-full bg-purple-400 -translate-x-1/2 -translate-y-1/2 z-50"
-          initial={{ opacity: 0.8, scale: 0 }}
-          animate={{ opacity: 0, scale: 4 }}
-          transition={{ duration: 1 }}
-          style={{
-            left: ripple.x,
-            top: ripple.y,
-          }}
-        />
-      ))}
-    </>
-  );
-};
-
 interface HeroProps {
   hideSubtitle?: boolean;
   buttonText?: string;
@@ -105,7 +62,6 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
 
   return (
     <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-black">
-      <CursorRipple />
       {particles.map((i) => (
         <Particle key={i} index={i} />
       ))}
