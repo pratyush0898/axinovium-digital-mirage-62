@@ -21,7 +21,7 @@ export const About = () => {
             className="md:w-1/2 text-center md:text-left mb-10 md:mb-0 md:pr-10"
           >
             <motion.h2 
-              className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text neon-text"
+              className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
               animate={{
                 filter: [
                   'hue-rotate(0deg)',
