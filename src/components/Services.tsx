@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -54,13 +55,13 @@ export const Services = () => {
   };
 
   return (
-    <div className="py-16 bg-black overflow-hidden">
+    <div className="py-24 bg-black overflow-hidden"> {/* Increased vertical padding */}
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+          className="text-8xl font-bold text-center mb-16 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text" /* Increased from text-7xl to text-8xl and mb-12 to mb-16 */
           style={{
             backgroundSize: "200% 200%",
             animation: "gradient-animation 6.67s linear infinite",
@@ -69,10 +70,10 @@ export const Services = () => {
           Services
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto mb-20"> {/* Increased gap and max-width, increased bottom margin */}
+          <div className="space-y-8"> {/* Increased vertical space */}
             <h3 
-              className="text-2xl font-semibold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+              className="text-3xl font-semibold mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text" /* Increased from text-2xl to text-3xl and mb-6 to mb-8 */
               style={{
                 backgroundSize: "200% 200%",
                 animation: "gradient-animation 6.67s linear infinite",
@@ -80,7 +81,7 @@ export const Services = () => {
             >
               Technology & Strategy
             </h3>
-            <div className="grid gap-4">
+            <div className="grid gap-6"> {/* Increased gap from 4 to 6 */}
               {services.technology.map((service, index) => (
                 <Collapsible
                   key={index}
@@ -94,10 +95,10 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"
+                      className="glass-card px-8 py-5 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Increased padding */
                     >
                       <p 
-                        className="font-medium bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        className="font-medium text-lg bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text" /* Added text-lg */
                         style={{
                           backgroundSize: "200% 200%",
                           animation: "gradient-animation 6.67s linear infinite",
@@ -106,15 +107,15 @@ export const Services = () => {
                         {service.title}
                       </p>
                       {expandedServices[service.title] ? (
-                        <ChevronUp className="h-5 w-5 text-white" />
+                        <ChevronUp className="h-6 w-6 text-white" /> /* Increased from h-5 w-5 */
                       ) : (
-                        <ChevronDown className="h-5 w-5 text-white" />
+                        <ChevronDown className="h-6 w-6 text-white" /> /* Increased from h-5 w-5 */
                       )}
                     </motion.div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <div className="px-6 py-4 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl">
-                      <p className="text-white text-sm">{service.details}</p>
+                    <div className="px-8 py-5 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl"> {/* Increased padding */}
+                      <p className="text-white text-base">{service.details}</p> {/* Increased from text-sm to text-base */}
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
@@ -122,9 +123,9 @@ export const Services = () => {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-8"> {/* Increased vertical space */}
             <h3 
-              className="text-2xl font-semibold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+              className="text-3xl font-semibold mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text" /* Increased from text-2xl to text-3xl and mb-6 to mb-8 */
               style={{
                 backgroundSize: "200% 200%",
                 animation: "gradient-animation 6.67s linear infinite",
@@ -132,7 +133,7 @@ export const Services = () => {
             >
               Content & Community
             </h3>
-            <div className="grid gap-4">
+            <div className="grid gap-6"> {/* Increased gap from 4 to 6 */}
               {services.content.map((service, index) => (
                 <Collapsible
                   key={index}
@@ -146,10 +147,10 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-6 py-4 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"
+                      className="glass-card px-8 py-5 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300" /* Increased padding */
                     >
                       <p 
-                        className="font-medium bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        className="font-medium text-lg bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text" /* Added text-lg */
                         style={{
                           backgroundSize: "200% 200%",
                           animation: "gradient-animation 6.67s linear infinite",
@@ -158,15 +159,15 @@ export const Services = () => {
                         {service.title}
                       </p>
                       {expandedServices[service.title] ? (
-                        <ChevronUp className="h-5 w-5 text-white" />
+                        <ChevronUp className="h-6 w-6 text-white" /> /* Increased from h-5 w-5 */
                       ) : (
-                        <ChevronDown className="h-5 w-5 text-white" />
+                        <ChevronDown className="h-6 w-6 text-white" /> /* Increased from h-5 w-5 */
                       )}
                     </motion.div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <div className="px-6 py-4 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl">
-                      <p className="text-white text-sm">{service.details}</p>
+                    <div className="px-8 py-5 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl"> {/* Increased padding */}
+                      <p className="text-white text-base">{service.details}</p> {/* Increased from text-sm to text-base */}
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
@@ -175,40 +176,40 @@ export const Services = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 mt-16"> {/* Increased gap and margin */}
           {/* Making all three boxes the same width/height with consistent styling and larger font */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
+            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center" /* Increased size, padding and gap */
           >
-            <Users className="w-8 h-8 text-purple-400" />
-            <span className="text-white font-semibold text-lg">Community Ambassador for 2.5 million Users</span>
+            <Users className="w-10 h-10 text-purple-400" /> {/* Increased icon size */}
+            <span className="text-white font-semibold text-xl">Community Ambassador for 2.5 million Users</span> {/* Increased from text-lg to text-xl */}
           </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
+            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center" /* Increased size, padding and gap */
           >
             <img
               src="/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"
               alt="Venice Award"
-              className="w-12 h-12 object-contain"
+              className="w-14 h-14 object-contain" /* Increased image size */
             />
-            <span className="text-white font-semibold text-lg">Multi-award winning creativity</span>
+            <span className="text-white font-semibold text-xl">Multi-award winning creativity</span> {/* Increased from text-lg to text-xl */}
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
+            className="flex items-center gap-5 glass-card px-10 py-8 w-96 h-28 justify-center" /* Increased size, padding and gap */
           >
-            <Check className="w-8 h-8 text-green-500" />
-            <span className="text-white font-semibold text-lg">Over 1 million player world visits & impressions</span>
+            <Check className="w-10 h-10 text-green-500" /> {/* Increased icon size */}
+            <span className="text-white font-semibold text-xl">Over 1 million player world visits & impressions</span> {/* Increased from text-lg to text-xl */}
           </motion.div>
         </div>
       </div>
