@@ -43,7 +43,7 @@
 }
 
 .glass-card {
-  @apply bg-gradient-to-r from-purple-900/20 to-blue-900/20 backdrop-blur-lg border border-white/10 rounded-xl hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300;
+  @apply bg-gradient-to-r from-purple-900/20 to-blue-900/20 backdrop-blur-lg border border-transparent hover:border-white/10 rounded-xl hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 hue-shift-border;
 }
 
 .text-gradient {

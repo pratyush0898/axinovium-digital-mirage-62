@@ -53,7 +53,7 @@ export const Partners = () => {
   const particles = Array.from({ length: 30 }, (_, i) => i);
 
   return (
-    <section className="py-12 bg-black relative overflow-hidden">
+    <section className="py-24 bg-black relative overflow-hidden">
       {particles.map((i) => (
         <Particle key={i} index={i} />
       ))}
@@ -63,7 +63,7 @@ export const Partners = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-7xl font-bold text-center mb-8 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+          className="text-8xl font-bold text-center mb-16 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
           style={{
             backgroundSize: "200% 200%",
             animation: "gradient-animation 6.67s linear infinite",
@@ -77,27 +77,27 @@ export const Partners = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto"
         >
           {partners.map((partner) => (
             <motion.div
               key={partner.name}
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-5"
             >
               <motion.a
                 href={partner.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-br from-[#131313] via-[#1A1A1A] to-[#080808] p-8 flex items-center justify-center hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] transition-all duration-300 h-48 group rounded-xl border border-gray-800"
+                className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-10 flex items-center justify-center hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 h-60 group rounded-xl border border-transparent hover:border-white/10 hue-shift-border"
                 whileHover={{ scale: 1.05 }}
               >
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className="max-h-32 object-contain filter brightness-100 group-hover:brightness-110 transition-all duration-300"
+                  className="max-h-40 object-contain filter brightness-100 group-hover:brightness-110 transition-all duration-300"
                 />
               </motion.a>
-              <p className="text-gray-300 text-center text-sm leading-relaxed font-light">
+              <p className="text-gray-300 text-center text-lg leading-relaxed font-light">
                 {partner.description}
               </p>
             </motion.div>
