@@ -63,19 +63,31 @@
   background-size: 40px 40px;
 }
 
-/* Parallax content styling */
-.parallax-container {
-  position: relative;
-  overflow: hidden;
+/* Rainbow circuit board animation */
+@keyframes circuit-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
-.parallax-layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  will-change: transform;
+.circuit-node {
+  animation: circuit-pulse 3s infinite;
+}
+
+/* Custom cursor styles for the torch effect */
+body {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
 }
 
 /* Custom scrollbar */
@@ -129,54 +141,6 @@
   transform: rotate(-45deg);
 }
 
-/* Terminal-like text appearance */
-.terminal-text {
-  font-family: monospace;
-  color: #50fa7b;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(80, 250, 123, 0.3);
-  overflow: hidden;
-  white-space: pre-wrap;
-  line-height: 1.5;
-}
-
-/* Welcome screen styles */
-.welcome-screen {
-  background-color: #000000;
-  color: #50fa7b;
-  font-family: monospace;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.welcome-input {
-  background-color: rgba(0, 0, a0, 0.3);
-  border: 1px solid rgba(80, 250, 123, 0.3);
-  color: #50fa7b;
-  padding: 0.5rem 1rem;
-  font-family: monospace;
-  border-radius: 0.25rem;
-}
-
-.welcome-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(80, 250, 123, 0.2);
-}
-
-/* Animation for typing effect */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.cursor-blink {
-  animation: blink 1s step-end infinite;
-}
-
 /* Animation for gradient borders and text */
 @keyframes gradient-animation {
   0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
@@ -195,17 +159,6 @@
   animation: border-hue-shift 6.67s linear infinite;
 }
 
-/* Floating animation for parallax elements */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-
 /* Responsive styles */
 @media (max-width: 768px) {
   .text-7xl {
@@ -222,3 +175,5 @@
     padding-bottom: 4rem;
   }
 }
+
+/* ... keep existing code */

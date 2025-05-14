@@ -1,4 +1,3 @@
-
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
@@ -27,10 +26,7 @@ const sectionVariants = {
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative">
-      {/* Cursor effect behind everything */}
-      <CursorEffect />
-      
-      {/* Parallax background elements */}
+      {/* Torch effect circuit board background */}
       <ParallaxBackground />
       
       {/* Content needs higher z-index and relative positioning */}
@@ -42,7 +38,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
-            className="relative" // Added relative positioning
+            className="relative"
           >
             <About />
           </motion.div>
@@ -52,7 +48,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
-            className="relative" // Added relative positioning
+            className="relative"
           >
             <Services />
           </motion.div>
@@ -62,7 +58,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
-            className="relative" // Added relative positioning
+            className="relative"
           >
             <Projects />
           </motion.div>
@@ -73,7 +69,7 @@ const Index = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={sectionVariants}
-              className="relative" // Added relative positioning
+              className="relative"
             >
               <ProjectsGallery />
             </motion.div>
@@ -84,7 +80,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
-            className="relative" // Added relative positioning
+            className="relative"
           >
             <Partners />
           </motion.div>
@@ -94,7 +90,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={sectionVariants}
-            className="relative" // Added relative positioning
+            className="relative"
           >
             <ContactForm />
           </motion.div>
