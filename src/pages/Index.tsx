@@ -25,6 +25,9 @@ const sectionVariants = {
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative">
+      {/* Interactive grid background */}
+      <div className="interactive-grid"></div>
+      
       {/* Content needs higher z-index and relative positioning */}
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />

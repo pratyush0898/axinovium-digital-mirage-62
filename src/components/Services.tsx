@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -57,13 +56,16 @@ export const Services = () => {
   };
 
   return (
-    <div className="py-16 md:py-24 bg-black overflow-hidden">
-      <div className="container mx-auto px-4">
+    <div className="py-16 md:py-24 bg-black overflow-hidden relative">
+      {/* Interactive grid background */}
+      <div className="interactive-grid"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-7xl font-bold text-center mb-10 md:mb-16 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+          className="text-5xl md:text-7xl font-bold text-center mb-8 md:mb-12 py-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
           style={{
             backgroundSize: "200% 200%",
             animation: "gradient-animation 6.67s linear infinite",
@@ -72,10 +74,10 @@ export const Services = () => {
           Services
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-7xl mx-auto mb-16 md:mb-24">
-          <div className="space-y-6 md:space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-7xl mx-auto mb-16 md:mb-24">
+          <div className="space-y-8 md:space-y-12">
             <h3 
-              className="text-3xl md:text-4xl font-semibold mb-6 md:mb-10 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+              className="text-3xl md:text-4xl font-semibold mb-6 md:mb-10 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
               style={{
                 backgroundSize: "200% 200%",
                 animation: "gradient-animation 6.67s linear infinite",
@@ -83,7 +85,7 @@ export const Services = () => {
             >
               Technology & Strategy
             </h3>
-            <div className="grid gap-4 md:gap-7">
+            <div className="grid gap-6 md:gap-10">
               {services.technology.map((service, index) => (
                 <Collapsible
                   key={index}
@@ -100,7 +102,7 @@ export const Services = () => {
                       className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
                     >
                       <p 
-                        className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
                         style={{
                           backgroundSize: "200% 200%",
                           animation: "gradient-animation 6.67s linear infinite",
@@ -125,9 +127,9 @@ export const Services = () => {
             </div>
           </div>
 
-          <div className="space-y-6 md:space-y-10 mt-8 md:mt-0">
+          <div className="space-y-8 md:space-y-12 mt-8 md:mt-0">
             <h3 
-              className="text-3xl md:text-4xl font-semibold mb-6 md:mb-10 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+              className="text-3xl md:text-4xl font-semibold mb-6 md:mb-10 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
               style={{
                 backgroundSize: "200% 200%",
                 animation: "gradient-animation 6.67s linear infinite",
@@ -135,7 +137,7 @@ export const Services = () => {
             >
               Content & Community
             </h3>
-            <div className="grid gap-4 md:gap-7">
+            <div className="grid gap-6 md:gap-10">
               {services.content.map((service, index) => (
                 <Collapsible
                   key={index}
@@ -152,7 +154,7 @@ export const Services = () => {
                       className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
                     >
                       <p 
-                        className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text"
+                        className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
                         style={{
                           backgroundSize: "200% 200%",
                           animation: "gradient-animation 6.67s linear infinite",
@@ -178,7 +180,7 @@ export const Services = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mt-10 md:mt-16">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mt-12 md:mt-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
