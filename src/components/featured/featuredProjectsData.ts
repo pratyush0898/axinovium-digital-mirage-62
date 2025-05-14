@@ -30,7 +30,7 @@ export const featuredProjects: FeaturedProject[] = [
     link: "https://vrchat.com/home/launch?worldId=wrld_4d0d9c56-716f-4abc-b832-63a80ab5f076",
     category: "VRChat",
     visits: "60,000+",
-    impressions: "Over 180k impressions on X",
+    impressions: "1 Million+ VR World Visits and Impressions",
     impressionsLink: "https://x.com/search?q=%22The%20Writers%20Parlor%22&src=typed_query&f=top"
   }
 ];
