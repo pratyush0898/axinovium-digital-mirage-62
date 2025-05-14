@@ -93,9 +93,7 @@ export const About = () => {
             <p className="text-gray-300 text-xl leading-relaxed">
               In an era defined by technological acceleration and adaptation, I move faster than anyone else — fusing mind, machine, and aesthetics to create the future.
             </p>
-            <p className="text-gray-300 text-xl leading-relaxed mt-4">
-              Based in New Zealand. Operating globally.
-            </p>
+            {/* Removed "Based in New Zealand. Operating globally." text */}
           </motion.div>
           
           <motion.div

@@ -35,7 +35,7 @@ const services = {
     },
     { 
       title: "Event design, Management and Execution",
-      details: "End-to-end event planning and execution services that create memorable experiences for your audience. From concept to completion, we handle all aspects of physical and virtual events."
+      details: "Virtual event design and leadership services that create memorable experiences for your users — powered by advanced AI workflows to reduce costs."
     },
     { 
       title: "AI Education and user training",
@@ -185,7 +185,7 @@ export const Services = () => {
             className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
           >
             <Users className="w-8 h-8 text-purple-400" />
-            <span className="text-white font-semibold text-lg">Community Ambassador for 2.5 million Meshy Users</span>
+            <span className="text-white font-semibold text-lg">Community Ambassador for 2.5 million Users</span>
           </motion.div>
           
           <motion.div
@@ -209,7 +209,7 @@ export const Services = () => {
             className="flex items-center gap-4 glass-card px-8 py-6 w-80 h-24 justify-center"
           >
             <Check className="w-8 h-8 text-green-500" />
-            <span className="text-white font-semibold text-lg">700k+ Player World Visits</span>
+            <span className="text-white font-semibold text-lg">Over 1 million player world visits & impressions</span>
           </motion.div>
         </div>
       </div>
