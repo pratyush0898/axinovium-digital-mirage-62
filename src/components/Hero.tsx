@@ -78,7 +78,12 @@ const CursorRipple = () => {
   );
 };
 
-export const Hero = () => {
+interface HeroProps {
+  hideSubtitle?: boolean;
+  buttonText?: string;
+}
+
+export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase" }: HeroProps) => {
   const particles = Array.from({ length: 30 }, (_, i) => i); // Reduced particle count
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -148,14 +153,16 @@ export const Hero = () => {
           </div>
         </div>
         
-        <motion.p 
-          className="text-xl md:text-2xl text-gray-300 mb-8 px-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          AI strategy, immersive virtual spaces, and bold event execution - Let's create the future together.
-        </motion.p>
+        {!hideSubtitle && (
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 mb-8 px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            AI strategy, immersive virtual spaces, and bold event execution - Let's create the future together.
+          </motion.p>
+        )}
         <motion.button
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -165,7 +172,7 @@ export const Hero = () => {
           className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/30 relative overflow-hidden group"
           onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
         >
-          <span className="relative z-10">Explore the Showcase</span>
+          <span className="relative z-10">{buttonText}</span>
           <motion.span
             className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           />
