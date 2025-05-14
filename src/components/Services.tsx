@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -9,29 +8,29 @@ const services = {
   technology: [
     { 
       title: "AI Consulting and Strategy",
-      details: "Expert guidance on implementing AI solutions tailored to your business needs. We help you identify opportunities, evaluate technologies, and develop comprehensive roadmaps for AI integration that align with your goals."
+      details: "Expert guidance on implementing AI solutions tailored to your business needs. I help you identify opportunities, evaluate technologies, and develop comprehensive roadmaps for AI integration that align with your goals."
     },
     { 
       title: "AI Systems Architecture", 
-      details: "Design and implementation of robust, scalable AI systems that seamlessly integrate with your existing infrastructure. Our architecture solutions prioritize performance, security, and future adaptability."
+      details: "Design and implementation of robust, scalable AI systems that seamlessly integrate with your existing infrastructure. My architecture solutions prioritize performance, security, and future adaptability."
     },
     { 
       title: "AI Automation",
-      details: "Transform repetitive tasks into automated workflows powered by AI. Our automation solutions increase efficiency, reduce human error, and free up valuable resources for more strategic initiatives."
+      details: "Transform repetitive tasks into automated workflows powered by AI. My automation solutions increase efficiency, reduce human error, and free up valuable resources for more strategic initiatives."
     },
     { 
       title: "Custom Unity Game Dev Tooling",
-      details: "Specialized tools and plugins for Unity game development that streamline workflows and enhance productivity. Our custom tooling solutions address specific challenges faced by game developers."
+      details: "Specialized tools and plugins for Unity game development that streamline workflows and enhance productivity. My custom tooling solutions address specific challenges faced by game developers."
     },
   ],
   content: [
     { 
       title: "Community Management",
-      details: "Strategic community building and management services that foster engagement, loyalty, and growth. We help you create vibrant communities around your brand or product with proven strategies."
+      details: "Strategic community building and management services that foster engagement, loyalty, and growth. I help you create vibrant communities around your brand or product with proven strategies."
     },
     { 
       title: "Video & Tutorial Content Creation",
-      details: "High-quality, engaging video content and tutorials that educate, entertain, and convert. Our content creation services are designed to showcase your products and services effectively."
+      details: "High-quality, engaging video content and tutorials that educate, entertain, and convert. My content creation services are designed to showcase your products and services effectively."
     },
     { 
       title: "Event design, Management and Execution",
@@ -39,7 +38,7 @@ const services = {
     },
     { 
       title: "AI Education and user training",
-      details: "Comprehensive training programs that empower your team to leverage AI technologies effectively. Our education services are tailored to different skill levels and learning styles."
+      details: "Comprehensive training programs that empower your team to leverage AI technologies effectively. My education services are tailored to different skill levels and learning styles."
     },
   ],
 };
