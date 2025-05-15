@@ -1,5 +1,4 @@
 
-
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Newsletter } from "@/components/Newsletter";

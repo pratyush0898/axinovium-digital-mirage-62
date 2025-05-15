@@ -1,7 +1,10 @@
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export const About = () => {
+  const [logoHovered, setLogoHovered] = useState(false);
+  
   return (
     <section id="about" className="py-20 bg-black relative">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -36,6 +39,8 @@ export const About = () => {
                 ease: "linear",
                 repeat: Infinity,
               }}
+              onMouseEnter={() => setLogoHovered(true)}
+              onMouseLeave={() => setLogoHovered(false)}
             >
               Axinovium.AI
             </motion.h2>
@@ -70,13 +75,20 @@ export const About = () => {
                       'hue-rotate(180deg)',
                       'hue-rotate(270deg)',
                       'hue-rotate(360deg)',
-                    ]
+                    ],
+                    scale: logoHovered ? 1.2 : 1
                   }}
                   transition={{
                     duration: 6.67, // Sped up from 10 to 6.67 (1.5x faster)
                     ease: "linear",
                     repeat: Infinity,
+                    scale: {
+                      duration: 0.3,
+                      ease: "easeOut"
+                    }
                   }}
+                  onMouseEnter={() => setLogoHovered(true)}
+                  onMouseLeave={() => setLogoHovered(false)}
                 />
               </div>
             </div>

@@ -44,7 +44,7 @@ export const Footer = () => {
           <motion.img 
             src="/lovable-uploads/b097f846-1de0-4406-b97b-0d93f5e4be35.png" 
             alt="Axinovium Logo" 
-            className="h-8 mt-12"
+            className="h-16 mt-12" /* Changed from h-8 to h-16 (2x bigger) */
             animate={{
               filter: [
                 'hue-rotate(0deg)',

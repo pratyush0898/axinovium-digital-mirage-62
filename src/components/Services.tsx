@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -8,7 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const services = {
   technology: [
     { 
-      title: "AI Consulting and Strategy",
+      title: "AI Consulting",
       details: "Expert guidance on implementing AI solutions tailored to your business needs. I help you identify opportunities, evaluate technologies, and develop comprehensive roadmaps for AI integration that align with your goals."
     },
     { 
@@ -20,7 +21,7 @@ const services = {
       details: "Transform repetitive tasks into automated workflows powered by AI. My automation solutions increase efficiency, reduce human error, and free up valuable resources for more strategic initiatives."
     },
     { 
-      title: "Custom Unity Game Dev Tooling",
+      title: "Custom Game Dev Tooling",
       details: "Specialized tools and plugins for Unity game development that streamline workflows and enhance productivity. My custom tooling solutions address specific challenges faced by game developers."
     },
   ],
@@ -30,7 +31,7 @@ const services = {
       details: "Strategic community building and management services that foster engagement, loyalty, and growth. I help you create vibrant communities around your brand or product with proven strategies."
     },
     { 
-      title: "Video & Tutorial Content Creation",
+      title: "Content Creation",
       details: "High-quality, engaging video content and tutorials that educate, entertain, and convert. My content creation services are designed to showcase your products and services effectively."
     },
     { 
