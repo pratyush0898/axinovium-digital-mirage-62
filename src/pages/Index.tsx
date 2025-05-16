@@ -1,5 +1,4 @@
 
-
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Newsletter } from "@/components/Newsletter";
@@ -34,15 +33,29 @@ const Index = () => {
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />
         <div className="relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={sectionVariants}
-            className="relative"
-          >
-            <About />
-          </motion.div>
+          {/* About section with circuitry background */}
+          <div className="relative">
+            {/* Circuitry background image */}
+            <div 
+              className="absolute inset-0 z-0 opacity-60"
+              style={{
+                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
+            
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={sectionVariants}
+              className="relative z-10"
+            >
+              <About />
+            </motion.div>
+          </div>
           
           <motion.div
             initial="hidden"
