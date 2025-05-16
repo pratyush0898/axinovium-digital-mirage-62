@@ -33,7 +33,7 @@ const Index = () => {
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />
         <div className="relative z-10">
-          {/* About section with circuitry background */}
+          {/* About section with circuitry background - already implemented */}
           <div className="relative">
             {/* Circuitry background image */}
             <div 
@@ -87,37 +87,77 @@ const Index = () => {
             <Projects />
           </motion.div>
           
-          <div className="relative bg-black">
+          {/* Projects gallery with circuitry background */}
+          <div className="relative">
+            {/* Circuitry background image */}
+            <div 
+              className="absolute inset-0 z-0 opacity-30"
+              style={{
+                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
+            
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={sectionVariants}
-              className="relative"
+              className="relative z-10"
             >
               <ProjectsGallery />
             </motion.div>
           </div>
           
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={sectionVariants}
-            className="relative"
-          >
-            <Partners />
-          </motion.div>
+          {/* Partners section with circuitry background */}
+          <div className="relative">
+            {/* Circuitry background image */}
+            <div 
+              className="absolute inset-0 z-0 opacity-40"
+              style={{
+                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
+            
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={sectionVariants}
+              className="relative z-10"
+            >
+              <Partners />
+            </motion.div>
+          </div>
           
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={sectionVariants}
-            className="relative"
-          >
-            <ContactForm />
-          </motion.div>
+          {/* Contact form with circuitry background */}
+          <div className="relative">
+            {/* Circuitry background image */}
+            <div 
+              className="absolute inset-0 z-0 opacity-30"
+              style={{
+                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
+            
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={sectionVariants}
+              className="relative z-10"
+            >
+              <ContactForm />
+            </motion.div>
+          </div>
           
           <Footer />
         </div>

@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -58,15 +57,14 @@ export const Services = () => {
 
   return (
     <div className="py-16 md:py-24 bg-black overflow-hidden relative">
-      {/* Nebula background image - reduced size by 30% */}
+      {/* Circuitboard background image replacing nebula */}
       <div 
-        className="absolute inset-0 z-0 opacity-70"
+        className="absolute inset-0 z-0 opacity-60"
         style={{
-          backgroundImage: "url('/lovable-uploads/6b2ea41b-8617-4272-97ef-ef6185647e2f.png')",
-          backgroundSize: "77%", /* Reduced from 110% to 77% (30% smaller) */
+          backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          filter: "brightness(1.4) contrast(1.1)",
         }}
       ></div>
       
