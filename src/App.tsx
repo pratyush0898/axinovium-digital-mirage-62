@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CustomCursor } from "./components/CustomCursor";
+import BloomEffect from "./components/BloomEffect";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -14,6 +15,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <CustomCursor />
+      <BloomEffect />
       <Toaster />
       <Sonner />
       <BrowserRouter>
