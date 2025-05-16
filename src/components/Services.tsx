@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -57,8 +58,20 @@ export const Services = () => {
 
   return (
     <div className="py-16 md:py-24 bg-black overflow-hidden relative">
-      {/* Interactive grid background */}
-      <div className="interactive-grid"></div>
+      {/* Nebula background image */}
+      <div 
+        className="absolute inset-0 z-0 opacity-40"
+        style={{
+          backgroundImage: "url('/lovable-uploads/6b2ea41b-8617-4272-97ef-ef6185647e2f.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "blur(2px)",
+        }}
+      ></div>
+      
+      {/* Overlay gradient to help text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
@@ -99,7 +112,7 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
+                      className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
                     >
                       <p 
                         className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
@@ -118,7 +131,7 @@ export const Services = () => {
                     </motion.div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl border-x border-b border-white/5">
+                    <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-b-xl border-x border-b border-white/10 backdrop-blur-md">
                       <p className="text-white text-lg md:text-xl">{service.details}</p>
                     </div>
                   </CollapsibleContent>
@@ -151,7 +164,7 @@ export const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
+                      className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
                     >
                       <p 
                         className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
@@ -170,7 +183,7 @@ export const Services = () => {
                     </motion.div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-b-xl border-x border-b border-white/5">
+                    <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-b-xl border-x border-b border-white/10 backdrop-blur-md">
                       <p className="text-white text-lg md:text-xl">{service.details}</p>
                     </div>
                   </CollapsibleContent>
@@ -185,7 +198,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-3 md:gap-5 glass-card px-6 md:px-10 py-6 md:py-8 w-full md:w-96 h-auto md:h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
+            className="flex items-center gap-3 md:gap-5 glass-card px-6 md:px-10 py-6 md:py-8 w-full md:w-96 h-auto md:h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
           >
             <Users className="w-8 h-8 md:w-10 md:h-10 text-purple-400 flex-shrink-0" />
             <span className="text-white font-semibold text-lg md:text-xl">Community Ambassador for 2.5 million Users</span>
@@ -195,7 +208,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-3 md:gap-5 glass-card px-6 md:px-10 py-6 md:py-8 w-full md:w-96 h-auto md:h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
+            className="flex items-center gap-3 md:gap-5 glass-card px-6 md:px-10 py-6 md:py-8 w-full md:w-96 h-auto md:h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
           >
             <img
               src="/lovable-uploads/84a09bb2-7dc3-44e9-9ef6-bbf3a1258b17.png"
@@ -209,7 +222,7 @@ export const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-3 md:gap-5 glass-card px-6 md:px-10 py-6 md:py-8 w-full md:w-96 h-auto md:h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border"
+            className="flex items-center gap-3 md:gap-5 glass-card px-6 md:px-10 py-6 md:py-8 w-full md:w-96 h-auto md:h-28 justify-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
           >
             <Check className="w-8 h-8 md:w-10 md:h-10 text-green-500 flex-shrink-0" />
             <span className="text-white font-semibold text-lg md:text-xl">Over 1 million player world visits & impressions</span>
