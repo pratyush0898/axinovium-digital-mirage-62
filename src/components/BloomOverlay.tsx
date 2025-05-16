@@ -21,18 +21,19 @@ export const BloomOverlay = () => {
     });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setClearColor(0x000000, 0); // Fully transparent background
     canvasRef.current.appendChild(renderer.domElement);
 
     // Position camera
     camera.position.z = 1;
     
-    // Create a full-screen quad with white material
+    // Create a full-screen quad but make it nearly invisible
+    // We'll use the bloom effect on this almost-invisible quad
     const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.MeshBasicMaterial({ 
       color: 0xffffff,
       transparent: true,
-      opacity: 0.15 // Low base opacity
+      opacity: 0.03 // Very low opacity, almost invisible
     });
     const quad = new THREE.Mesh(geometry, material);
     scene.add(quad);
@@ -42,12 +43,12 @@ export const BloomOverlay = () => {
     const renderPass = new RenderPass(scene, camera);
     composer.addPass(renderPass);
     
-    // Add bloom effect
+    // Add bloom effect with adjusted parameters
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(window.innerWidth, window.innerHeight),
-      0.75, // Intensity
-      0.3,  // Radius
-      0.2   // Threshold
+      1.2,  // Increased intensity
+      0.5,  // Increased radius for a wider glow
+      0.1   // Lower threshold to make more elements bloom
     );
     composer.addPass(bloomPass);
     
@@ -92,10 +93,10 @@ export const BloomOverlay = () => {
   return (
     <div 
       ref={canvasRef} 
-      className="fixed inset-0 pointer-events-none z-50 mix-blend-screen"
+      className="fixed inset-0 pointer-events-none z-50"
       style={{ 
         pointerEvents: "none",
-        mixBlendMode: "screen",
+        mixBlendMode: "screen"
       }}
     />
   );

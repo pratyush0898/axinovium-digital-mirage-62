@@ -8,10 +8,10 @@
   height: 100vh;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: screen;
 }
 
-/* Fix for potential z-index and stacking context issues */
+/* Make sure canvas uses screen blend mode */
 canvas {
   display: block;
+  mix-blend-mode: screen !important;
 }
