@@ -76,7 +76,13 @@ export const BloomOverlay = () => {
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      canvasRef.current?.removeChild(renderer.domElement);
+      if (canvasRef.current && renderer.domElement) {
+        try {
+          canvasRef.current.removeChild(renderer.domElement);
+        } catch (e) {
+          console.error("Error removing renderer element:", e);
+        }
+      }
       renderer.dispose();
       material.dispose();
       geometry.dispose();
