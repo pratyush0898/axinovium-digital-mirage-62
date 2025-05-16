@@ -58,20 +58,20 @@ export const Services = () => {
 
   return (
     <div className="py-16 md:py-24 bg-black overflow-hidden relative">
-      {/* Nebula background image */}
+      {/* Nebula background image - enhanced brightness and size */}
       <div 
-        className="absolute inset-0 z-0 opacity-40"
+        className="absolute inset-0 z-0 opacity-70" /* Increased opacity from 40% to 70% */
         style={{
           backgroundImage: "url('/lovable-uploads/6b2ea41b-8617-4272-97ef-ef6185647e2f.png')",
-          backgroundSize: "cover",
+          backgroundSize: "110% 110%", /* Increased size from cover to 110% */
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          filter: "blur(2px)",
+          filter: "brightness(1.4) contrast(1.1)", /* Added brightness and contrast */
         }}
       ></div>
       
       {/* Overlay gradient to help text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60 z-1"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
