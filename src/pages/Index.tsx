@@ -8,6 +8,7 @@ import { ProjectsGallery } from "@/components/ProjectsGallery";
 import { Partners } from "@/components/Partners";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
+import { BloomOverlay } from "@/components/BloomOverlay";
 import { motion } from "framer-motion";
 
 // Animation variants for section fade-ins
@@ -26,6 +27,9 @@ const sectionVariants = {
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative">
+      {/* Bloom overlay effect */}
+      <BloomOverlay />
+      
       {/* Interactive grid background */}
       <div className="interactive-grid"></div>
       
