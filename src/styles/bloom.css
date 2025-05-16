@@ -7,6 +7,6 @@
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.6;
+  opacity: 0.8; /* Increased opacity from 0.6 to 0.8 */
   mix-blend-mode: screen;
 }

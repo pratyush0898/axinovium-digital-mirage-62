@@ -24,7 +24,7 @@ const BloomEffect = () => {
     
     // Add glowing particles
     const particlesGeometry = new THREE.BufferGeometry();
-    const particleCount = 50;
+    const particleCount = 150; // Increased particle count from 50 to 150
     const posArray = new Float32Array(particleCount * 3);
     
     for (let i = 0; i < particleCount * 3; i++) {
@@ -35,10 +35,10 @@ const BloomEffect = () => {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.012,
+      size: 0.025, // Increased size from 0.012 to 0.025
       color: 0xffffff,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.8 // Increased opacity from 0.6 to 0.8
     });
     
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -57,9 +57,9 @@ const BloomEffect = () => {
     const animate = () => {
       frameId = requestAnimationFrame(animate);
       
-      // Subtle rotation of particles
-      particlesMesh.rotation.x += 0.0003;
-      particlesMesh.rotation.y += 0.0002;
+      // Increased rotation speed for more noticeable movement
+      particlesMesh.rotation.x += 0.0005;
+      particlesMesh.rotation.y += 0.0004;
       
       renderer.render(scene, camera);
     };
