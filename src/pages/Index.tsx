@@ -33,13 +33,13 @@ const Index = () => {
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />
         <div className="relative z-10">
-          {/* About section with circuitry background - already implemented */}
+          {/* About section with nebulae background */}
           <div className="relative">
-            {/* Circuitry background image */}
+            {/* Nebulae background image */}
             <div 
               className="absolute inset-0 z-0 opacity-60"
               style={{
-                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -87,13 +87,13 @@ const Index = () => {
             <Projects />
           </motion.div>
           
-          {/* Projects gallery with circuitry background */}
+          {/* Projects gallery with nebulae background */}
           <div className="relative">
-            {/* Circuitry background image */}
+            {/* Nebulae background image */}
             <div 
               className="absolute inset-0 z-0 opacity-30"
               style={{
-                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -111,13 +111,13 @@ const Index = () => {
             </motion.div>
           </div>
           
-          {/* Partners section with circuitry background */}
+          {/* Partners section with nebulae background */}
           <div className="relative">
-            {/* Circuitry background image */}
+            {/* Nebulae background image */}
             <div 
               className="absolute inset-0 z-0 opacity-40"
               style={{
-                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -135,13 +135,13 @@ const Index = () => {
             </motion.div>
           </div>
           
-          {/* Contact form with circuitry background */}
+          {/* Contact form with nebulae background */}
           <div className="relative">
-            {/* Circuitry background image */}
+            {/* Nebulae background image */}
             <div 
               className="absolute inset-0 z-0 opacity-30"
               style={{
-                backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
+                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
