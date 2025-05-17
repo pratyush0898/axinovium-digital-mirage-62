@@ -33,19 +33,8 @@ const Index = () => {
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />
         <div className="relative z-10">
-          {/* About section with nebulae background */}
+          {/* About section - removed background image */}
           <div className="relative">
-            {/* Nebulae background image */}
-            <div 
-              className="absolute inset-0 z-0 opacity-60"
-              style={{
-                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-            
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -87,19 +76,8 @@ const Index = () => {
             <Projects />
           </motion.div>
           
-          {/* Projects gallery with nebulae background */}
+          {/* Projects gallery - removed background image */}
           <div className="relative">
-            {/* Nebulae background image */}
-            <div 
-              className="absolute inset-0 z-0 opacity-30"
-              style={{
-                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-            
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -111,19 +89,8 @@ const Index = () => {
             </motion.div>
           </div>
           
-          {/* Partners section with nebulae background */}
+          {/* Partners section - removed background image */}
           <div className="relative">
-            {/* Nebulae background image */}
-            <div 
-              className="absolute inset-0 z-0 opacity-40"
-              style={{
-                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-            
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -135,19 +102,8 @@ const Index = () => {
             </motion.div>
           </div>
           
-          {/* Contact form with nebulae background */}
+          {/* Contact form - removed background image */}
           <div className="relative">
-            {/* Nebulae background image */}
-            <div 
-              className="absolute inset-0 z-0 opacity-30"
-              style={{
-                backgroundImage: "url('/lovable-uploads/90614c79-690c-406a-8d83-9155e96cc176.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-            
             <motion.div
               initial="hidden"
               whileInView="visible"
