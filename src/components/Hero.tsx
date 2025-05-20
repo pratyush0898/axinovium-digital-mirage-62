@@ -90,17 +90,17 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
           frameBorder="0"
           allowFullScreen
         ></iframe>
-        
-        {/* YouTube button - positioned in bottom right with popup functionality */}
-        <a 
-          href="https://www.youtube.com/watch?v=h13kD1Bga6M" 
-          onClick={openYoutubePopup}
-          className="absolute bottom-4 right-4 z-20 flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full backdrop-blur-sm transition-all duration-300 text-sm border border-white/10 cursor-pointer"
-        >
-          <Youtube size={16} className="text-red-500" />
-          <span>View Showcase on YouTube</span>
-        </a>
       </div>
+      
+      {/* YouTube button - moved outside the video container and elevated z-index to ensure clickability */}
+      <a 
+        href="https://www.youtube.com/watch?v=h13kD1Bga6M" 
+        onClick={openYoutubePopup}
+        className="absolute bottom-4 right-4 z-30 flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full backdrop-blur-sm transition-all duration-300 text-sm border border-white/10 cursor-pointer"
+      >
+        <Youtube size={16} className="text-red-500" />
+        <span>View Showcase on YouTube</span>
+      </a>
       
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent z-10" />
       
