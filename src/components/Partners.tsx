@@ -36,12 +36,6 @@ const Particle = ({ index }: { index: number }) => {
 
 const partners = [
   {
-    name: "Telos Initiative",
-    logo: "/lovable-uploads/2ac04193-85f6-4c6c-862a-438f48d4b051.png",
-    description: "A visionary conversation group that hosts philosophical Salons and theatrical Situations in VRChat.",
-    link: "https://vrchat.com/home/group/grp_c87607f7-1688-48dd-86b9-6e49519e92f7"
-  },
-  {
     name: "Meshy",
     logo: "/lovable-uploads/2d866918-3c58-48dd-9123-342a542c7b7d.png",
     description: "A revolutionary platform for AI-generated 3D assets and creative tools for digital artists.",
@@ -77,12 +71,12 @@ export const Partners = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto"
+          className="flex justify-center"
         >
           {partners.map((partner) => (
             <motion.div
               key={partner.name}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-5 max-w-md"
             >
               <motion.a
                 href={partner.link}

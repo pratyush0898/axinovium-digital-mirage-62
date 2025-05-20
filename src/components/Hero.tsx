@@ -49,6 +49,17 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
   const { scrollToSection } = useSmoothScroll();
   const isMobile = useIsMobile();
 
+  // Function to open YouTube in a popup window
+  const openYoutubePopup = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const youtubeUrl = "https://www.youtube.com/watch?v=h13kD1Bga6M";
+    window.open(
+      youtubeUrl,
+      "YoutubeVideo",
+      "width=800,height=600,resizable=yes,scrollbars=yes,status=yes"
+    );
+  };
+
   useEffect(() => {
     // Set up YouTube API
     const tag = document.createElement('script');
@@ -80,11 +91,10 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
           allowFullScreen
         ></iframe>
         
-        {/* YouTube button - positioned in bottom right */}
+        {/* YouTube button - positioned in bottom right with popup functionality */}
         <a 
           href="https://www.youtube.com/watch?v=h13kD1Bga6M" 
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={openYoutubePopup}
           className="absolute bottom-4 right-4 z-20 flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full backdrop-blur-sm transition-all duration-300 text-sm border border-white/10"
         >
           <Youtube size={16} className="text-red-500" />
