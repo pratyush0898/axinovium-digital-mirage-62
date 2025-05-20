@@ -95,7 +95,7 @@ export const Hero = ({ hideSubtitle = false, buttonText = "Explore the Showcase"
         <a 
           href="https://www.youtube.com/watch?v=h13kD1Bga6M" 
           onClick={openYoutubePopup}
-          className="absolute bottom-4 right-4 z-20 flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full backdrop-blur-sm transition-all duration-300 text-sm border border-white/10"
+          className="absolute bottom-4 right-4 z-20 flex items-center gap-2 bg-black/40 hover:bg-black/60 text-white px-3 py-2 rounded-full backdrop-blur-sm transition-all duration-300 text-sm border border-white/10 cursor-pointer"
         >
           <Youtube size={16} className="text-red-500" />
           <span>View Showcase on YouTube</span>
