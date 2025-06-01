@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Users, ChevronDown, ChevronUp } from "lucide-react";
@@ -58,20 +57,19 @@ export const Services = () => {
 
   return (
     <div className="py-16 md:py-24 bg-black overflow-hidden relative">
-      {/* Circuitboard background image replacing nebula - fixed positioning */}
+      {/* Circuitboard background image replacing nebula */}
       <div 
-        className="fixed inset-0 z-0 opacity-60"
+        className="absolute inset-0 z-0 opacity-60"
         style={{
           backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
         }}
       ></div>
       
-      {/* Overlay gradient to help text readability - fixed positioning */}
-      <div className="fixed inset-0 bg-gradient-to-b from-black/70 to-black/50 z-1"></div>
+      {/* Overlay gradient to help text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
@@ -100,43 +98,42 @@ export const Services = () => {
             </h3>
             <div className="grid gap-6 md:gap-10">
               {services.technology.map((service, index) => (
-                <div key={index} className="w-full">
-                  <Collapsible
-                    open={expandedServices[service.title] || false}
-                    onOpenChange={() => toggleService(service.title)}
-                    className="w-full"
-                  >
-                    <CollapsibleTrigger className="w-full">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                        className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
+                <Collapsible
+                  key={index}
+                  open={expandedServices[service.title] || false}
+                  onOpenChange={() => toggleService(service.title)}
+                  className="w-full"
+                >
+                  <CollapsibleTrigger className="w-full">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
+                    >
+                      <p 
+                        className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
+                        style={{
+                          backgroundSize: "200% 200%",
+                          animation: "gradient-animation 6.67s linear infinite",
+                        }}
                       >
-                        <p 
-                          className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
-                          style={{
-                            backgroundSize: "200% 200%",
-                            animation: "gradient-animation 6.67s linear infinite",
-                          }}
-                        >
-                          {service.title}
-                        </p>
-                        {expandedServices[service.title] ? (
-                          <ChevronUp className="h-6 w-6 md:h-8 md:w-8 text-white flex-shrink-0" />
-                        ) : (
-                          <ChevronDown className="h-6 w-6 md:h-8 md:w-8 text-white flex-shrink-0" />
-                        )}
-                      </motion.div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-b-xl border-x border-b border-white/10 backdrop-blur-md">
-                        <p className="text-white text-lg md:text-xl">{service.details}</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Collapsible>
-                </div>
+                        {service.title}
+                      </p>
+                      {expandedServices[service.title] ? (
+                        <ChevronUp className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                      ) : (
+                        <ChevronDown className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                      )}
+                    </motion.div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-b-xl border-x border-b border-white/10 backdrop-blur-md">
+                      <p className="text-white text-lg md:text-xl">{service.details}</p>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
               ))}
             </div>
           </div>
@@ -153,43 +150,42 @@ export const Services = () => {
             </h3>
             <div className="grid gap-6 md:gap-10">
               {services.content.map((service, index) => (
-                <div key={index} className="w-full">
-                  <Collapsible
-                    open={expandedServices[service.title] || false}
-                    onOpenChange={() => toggleService(service.title)}
-                    className="w-full"
-                  >
-                    <CollapsibleTrigger className="w-full">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                        className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
+                <Collapsible
+                  key={index}
+                  open={expandedServices[service.title] || false}
+                  onOpenChange={() => toggleService(service.title)}
+                  className="w-full"
+                >
+                  <CollapsibleTrigger className="w-full">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="glass-card px-6 md:px-12 py-5 md:py-7 rounded-xl bg-gradient-to-r from-purple-900/20 to-blue-900/20 flex justify-between items-center w-full cursor-pointer hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300 border border-transparent hover:border-white/10 hue-shift-border backdrop-blur-md"
+                    >
+                      <p 
+                        className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
+                        style={{
+                          backgroundSize: "200% 200%",
+                          animation: "gradient-animation 6.67s linear infinite",
+                        }}
                       >
-                        <p 
-                          className="font-medium text-xl md:text-2xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-400 text-transparent bg-clip-text font-orbitron"
-                          style={{
-                            backgroundSize: "200% 200%",
-                            animation: "gradient-animation 6.67s linear infinite",
-                          }}
-                        >
-                          {service.title}
-                        </p>
-                        {expandedServices[service.title] ? (
-                          <ChevronUp className="h-6 w-6 md:h-8 md:w-8 text-white flex-shrink-0" />
-                        ) : (
-                          <ChevronDown className="h-6 w-6 md:h-8 md:w-8 text-white flex-shrink-0" />
-                        )}
-                      </motion.div>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-b-xl border-x border-b border-white/10 backdrop-blur-md">
-                        <p className="text-white text-lg md:text-xl">{service.details}</p>
-                      </div>
-                    </CollapsibleContent>
-                  </Collapsible>
-                </div>
+                        {service.title}
+                      </p>
+                      {expandedServices[service.title] ? (
+                        <ChevronUp className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                      ) : (
+                        <ChevronDown className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                      )}
+                    </motion.div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <div className="px-6 md:px-12 py-5 md:py-7 mt-1 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-b-xl border-x border-b border-white/10 backdrop-blur-md">
+                      <p className="text-white text-lg md:text-xl">{service.details}</p>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
               ))}
             </div>
           </div>

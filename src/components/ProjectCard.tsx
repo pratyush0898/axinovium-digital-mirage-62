@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
 import { Film } from "lucide-react";
@@ -31,11 +32,9 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       onClick={handleClick}
     >
       <motion.div
-        className="rounded-xl overflow-hidden h-full flex flex-col transition-all duration-500 ease-out shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] border border-gray-700 bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30"
-        whileHover={{ 
-          scale: 1.02,
-          transition: { type: "spring", stiffness: 300, damping: 20 }
-        }}
+        className="rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] border border-gray-700 bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30"
+        whileHover={{ scale: 1.05 }}
+        style={{ transition: 'all 0.3s ease' }}
         animate={{
           borderColor: [
             'rgba(168, 85, 247, 0.7)',
@@ -49,6 +48,11 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
             duration: 6.67,
             ease: "linear",
             repeat: Infinity,
+          },
+          scale: {
+            type: "spring",
+            stiffness: 400,
+            damping: 10
           }
         }}
       >
