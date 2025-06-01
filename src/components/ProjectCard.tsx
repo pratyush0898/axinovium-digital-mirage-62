@@ -32,7 +32,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       onClick={handleClick}
     >
       <motion.div
-        className="rounded-xl overflow-hidden h-[420px] flex flex-col transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] border border-gray-700 bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30"
+        className="rounded-xl overflow-hidden h-[500px] flex flex-col transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] border border-gray-700 bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30"
         whileHover={{ scale: 1.02 }}
         style={{ transition: 'all 0.3s ease' }}
         animate={{
@@ -56,7 +56,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
           }
         }}
       >
-        <div className="relative h-44 flex-shrink-0">
+        <div className="relative h-56 flex-shrink-0">
           {project.videoId ? (
             <div className="w-full h-full cursor-pointer">
               {project.award && (
