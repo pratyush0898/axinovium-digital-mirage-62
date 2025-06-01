@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
@@ -7,6 +6,14 @@ import { ProjectList } from './projects/ProjectList';
 import { CategoryFilter } from './projects/CategoryFilter';
 
 const projects: Project[] = [
+  {
+    id: 15,
+    title: "RISE OF THE AI GODS",
+    category: "Music",
+    description: "My Experimental AI Psytrance album",
+    videoId: "7Q2g-jv3-gA",
+    link: "https://www.youtube.com/watch?v=7Q2g-jv3-gA&list=PLEBUUNmoYMAS4QSei24FvhFhZ5-TMTJIU"
+  },
   {
     id: 1,
     slideshow: [
@@ -141,15 +148,6 @@ const projects: Project[] = [
     description: "Tool to create striking visual differences between desktop and VR viewing modes",
     link: "https://axinovium.booth.pm/items/6645490",
     slideshow: ["/lovable-uploads/d7b29035-0ca6-4795-b00a-ff85628c0eaa.png"]
-  },
-  // Adding new Music project
-  {
-    id: 15,
-    title: "RISE OF THE AI GODS",
-    category: "Music",
-    description: "My Experimental AI Psytrance album",
-    videoId: "7Q2g-jv3-gA",
-    link: "https://www.youtube.com/watch?v=7Q2g-jv3-gA&list=PLEBUUNmoYMAS4QSei24FvhFhZ5-TMTJIU"
   }
 ];
 
