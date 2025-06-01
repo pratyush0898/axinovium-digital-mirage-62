@@ -57,20 +57,6 @@ export const Services = () => {
 
   return (
     <div className="py-16 md:py-24 bg-black overflow-hidden relative">
-      {/* Circuitboard background image replacing nebula */}
-      <div 
-        className="absolute inset-0 z-0 opacity-60"
-        style={{
-          backgroundImage: "url('/lovable-uploads/3ba82e58-f734-4878-b8c4-186ec0dcea46.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
-      
-      {/* Overlay gradient to help text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-1"></div>
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0 }}
