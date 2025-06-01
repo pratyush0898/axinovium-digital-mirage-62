@@ -1,6 +1,5 @@
 
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export const ParallaxBackground = () => {
@@ -12,7 +11,6 @@ export const ParallaxBackground = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
-        // Get position relative to the container
         const rect = containerRef.current.getBoundingClientRect();
         setMousePosition({
           x: e.clientX - rect.left,
@@ -31,7 +29,8 @@ export const ParallaxBackground = () => {
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 overflow-hidden z-0 bg-black"
+      className="fixed inset-0 overflow-hidden z-0"
+      style={{ backgroundColor: '#000000' }}
     >
       {/* Torch light effect */}
       <div 

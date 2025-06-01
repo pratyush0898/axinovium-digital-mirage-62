@@ -43,11 +43,13 @@
   
   body {
     @apply bg-black text-white antialiased;
+    background-image: none !important;
   }
 
   html {
     @apply scroll-smooth;
     scroll-behavior: smooth;
+    background: #000000 !important;
   }
   
   h1, h2, h3, h4, h5, h6 {
