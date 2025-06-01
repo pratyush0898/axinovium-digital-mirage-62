@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
 import { Film } from "lucide-react";
@@ -56,7 +55,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
           }
         }}
       >
-        <div className="relative aspect-video flex-shrink-0">
+        <div className="relative h-48 flex-shrink-0">
           {project.videoId ? (
             <div className="w-full h-full cursor-pointer">
               {project.award && (
@@ -108,15 +107,15 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
             {project.category}
           </div>
         </div>
-        <div className="p-4 flex-grow flex flex-col min-h-0">
-          <h3 className="text-2xl font-semibold text-white mb-2 line-clamp-2">{project.title}</h3>
-          <div className="flex flex-col justify-between flex-grow min-h-0">
-            <div className="text-white space-y-1 flex-grow overflow-hidden">
+        <div className="p-4 flex-grow flex flex-col justify-between min-h-0">
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-3 line-clamp-2">{project.title}</h3>
+            <div className="text-white space-y-2">
               {project.visits && (
                 <p className="text-sm text-purple-400">Player visits: {project.visits}</p>
               )}
               {project.description && (
-                <div className="text-white text-sm leading-relaxed overflow-hidden" onClick={(e) => e.stopPropagation()}>
+                <div className="text-white text-base leading-relaxed" onClick={(e) => e.stopPropagation()}>
                   {typeof project.description === 'object' ? project.description : project.description}
                 </div>
               )}
