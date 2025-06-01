@@ -21,6 +21,8 @@ export const CategoryFilter = ({ categories, activeCategory, onSelectCategory }:
         return "bg-green-500 text-green-100 border-green-500";
       case "Community":
         return "bg-yellow-500 text-yellow-100 border-yellow-500";
+      case "Music":
+        return "bg-purple-900 text-purple-100 border-purple-900";
       case "All":
         return "bg-purple-500 text-purple-100 border-purple-500";
       default:

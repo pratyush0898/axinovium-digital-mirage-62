@@ -138,6 +138,8 @@ const getCategoryStyles = (category: string) => {
       return { tag: "bg-green-500/70 text-green-200 border border-green-500/80" };
     case "Community":
       return { tag: "bg-yellow-500/70 text-yellow-200 border border-yellow-500/80" };
+    case "Music":
+      return { tag: "bg-purple-900/70 text-purple-200 border border-purple-900/80" };
     default:
       return { tag: "bg-purple-500/70 text-purple-200 border border-purple-500/80" };
   }
