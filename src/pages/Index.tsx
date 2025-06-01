@@ -25,14 +25,11 @@ const sectionVariants = {
 const Index = () => {
   return (
     <div className="min-h-screen bg-black relative">
-      {/* Interactive grid background */}
-      <div className="interactive-grid"></div>
-      
       {/* Content needs higher z-index and relative positioning */}
       <div className="relative z-10">
         <Hero hideSubtitle={true} buttonText="Explore Axinovium" />
         <div className="relative z-10">
-          {/* About section - removed background image */}
+          {/* About section */}
           <div className="relative">
             <motion.div
               initial="hidden"
@@ -65,7 +62,7 @@ const Index = () => {
             <Projects />
           </motion.div>
           
-          {/* Projects gallery - removed background image */}
+          {/* Projects gallery */}
           <div className="relative">
             <motion.div
               initial="hidden"
@@ -78,7 +75,7 @@ const Index = () => {
             </motion.div>
           </div>
           
-          {/* Partners section - removed background image */}
+          {/* Partners section */}
           <div className="relative">
             <motion.div
               initial="hidden"
@@ -91,7 +88,7 @@ const Index = () => {
             </motion.div>
           </div>
           
-          {/* Contact form - removed background image */}
+          {/* Contact form */}
           <div className="relative">
             <motion.div
               initial="hidden"

@@ -31,10 +31,7 @@ export const ParallaxBackground = () => {
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 overflow-hidden z-0"
-      style={{ 
-        background: 'black'
-      }}
+      className="fixed inset-0 overflow-hidden z-0 bg-black"
     >
       {/* Torch light effect */}
       <div 
