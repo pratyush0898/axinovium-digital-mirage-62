@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
 import { Film } from "lucide-react";
@@ -33,7 +32,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
     >
       <motion.div
         className="rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] border border-gray-700 bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30"
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.02 }}
         style={{ transition: 'all 0.3s ease' }}
         animate={{
           borderColor: [

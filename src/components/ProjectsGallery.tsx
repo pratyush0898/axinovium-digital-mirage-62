@@ -10,7 +10,7 @@ const projects: Project[] = [
     id: 15,
     title: "RISE OF THE AI GODS",
     category: "Music",
-    description: "My Experimental AI Psytrance album",
+    description: "An experimental Psytrance music album created with Suno.AI. Animated visuals created with Domo and Higgsfield AI.",
     videoId: "7Q2g-jv3-gA",
     link: "https://www.youtube.com/watch?v=7Q2g-jv3-gA&list=PLEBUUNmoYMAS4QSei24FvhFhZ5-TMTJIU"
   },
