@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Project } from "@/types/project";
 import { Film } from "lucide-react";
@@ -31,7 +32,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
       onClick={handleClick}
     >
       <motion.div
-        className="rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] border border-gray-700 bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30"
+        className="rounded-xl overflow-hidden h-[500px] flex flex-col transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(255,0,255,0.8)] border border-gray-700 bg-gradient-to-br from-purple-900/20 to-blue-900/20 hover:from-purple-900/30 hover:to-blue-900/30"
         whileHover={{ scale: 1.02 }}
         style={{ transition: 'all 0.3s ease' }}
         animate={{
@@ -55,7 +56,7 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
           }
         }}
       >
-        <div className="relative aspect-video">
+        <div className="relative aspect-video flex-shrink-0">
           {project.videoId ? (
             <div className="w-full h-full cursor-pointer">
               {project.award && (
@@ -107,15 +108,15 @@ export const ProjectCard = ({ project, onSelect, index }: ProjectCardProps) => {
             {project.category}
           </div>
         </div>
-        <div className="p-6 flex-grow flex flex-col">
-          <h3 className="text-3xl font-semibold text-white mb-2">{project.title}</h3>
-          <div className="flex flex-col justify-between flex-grow">
-            <div className="text-white text-xl space-y-2">
+        <div className="p-4 flex-grow flex flex-col min-h-0">
+          <h3 className="text-2xl font-semibold text-white mb-2 line-clamp-2">{project.title}</h3>
+          <div className="flex flex-col justify-between flex-grow min-h-0">
+            <div className="text-white space-y-1 flex-grow overflow-hidden">
               {project.visits && (
-                <p className="text-lg text-purple-400">Player visits: {project.visits}</p>
+                <p className="text-sm text-purple-400">Player visits: {project.visits}</p>
               )}
               {project.description && (
-                <div className="text-white" onClick={(e) => e.stopPropagation()}>
+                <div className="text-white text-sm leading-relaxed overflow-hidden" onClick={(e) => e.stopPropagation()}>
                   {typeof project.description === 'object' ? project.description : project.description}
                 </div>
               )}
